@@ -229,9 +229,15 @@ int main()
     CyGlobalIntEnable; 
     UART_1_Start();
   
-    int f;
-    int l;
-    int r;
+    int vase;
+    int oikee;
+    int flipr1;
+    int flipl1;
+    double speedOtupla;
+    double speedVtupla;
+    int speedO = (int)speedOtupla;
+    int speedV = (int)speedVtupla;
+    
     
     
     sensor_isr_StartEx(sensor_isr_handler);
@@ -261,9 +267,10 @@ int main()
             volts = ADC_Battery_CountsTo_Volts(adcresult);                  // convert value to Volts
             float realvolts = volts * 1.5;
             // If you want to print value
-            printf("%d %f\r\n",adcresult, realvolts);
+            //printf("%d %f\r\n",adcresult, realvolts);
             
-            if (realvolts< 0.8){
+            // jos volttimäärä pattereissa putoaa alle 4 niin pysäyttää moottorit
+            if (realvolts< 4){
             motor_stop();
             }
     
@@ -272,123 +279,152 @@ int main()
     for(;;)
     {
         reflectance_read(&ref);
-        printf("%d %d %d %d \r\n", ref.l3, ref.l1, ref.r1, ref.r3);       //print out each period of reflectance sensors
+       // printf("%d %d %d %d \r\n", ref.l3-5735, ref.l1-4874, ref.r1-4816, ref.r3-7000);       //print out each period of reflectance sensors
         reflectance_digital(&dig);      //print out 0 or 1 according to results of reflectance period
-        printf("%d %d %d %d \r\n", dig.l3, dig.l1, dig.r1, dig.r3);       //print out 0 or 1 according to results of reflectance period
-         CyDelay(10);
+       // printf("%d %d %d %d \r\n", dig.l3, dig.l1, dig.r1, dig.r3);       //print out 0 or 1 according to results of reflectance period
         
-
+        
+        //ei anna IR sensorin antaman lukeman mennä alle 0
+        if (ref.l1<=0){
+            ref.l1=0;
+        }
+        if (ref.r1<=0){
+            ref.r1=0;
+        }
+        
+        //flippaa IR sensoreiden antamat arvot jotta zumo ei sekoittaisi sisä ja ulkokurvin valkoista väriä.
+        if (ref.l1>ref.r1){
+            flipl1=ref.r1;
+            flipr1=ref.l1;
+        }else{
+            flipl1=ref.l1;
+            flipr1=ref.r1;
+        }
+        
+        
+        // matikkaa
+        oikee = flipl1-4850;
+        vase = flipr1-4850;
+        speedO = (vase * 0.013333);
+        speedV = -0.013326*oikee+255;
+        
+        
+        
+        CyDelay(10);
+        
+        // ei anna yksittäisen moottorin nopeuden nousta yli 255
+        if (speedO >=254){
+            speedO=255;
+        }
+        if (speedV >=254){
+            speedV=255;
+        }
+        
+        // ajaa täysiä eteenpäin jos molemmat moottorit ovat nopeudelta yli 240
+        if (speedV >240 && speedO>240){
+            speedV=255;
+            speedO=255;
+        }
+        
+        //jos toisen moottorin nopeus laskee alle 5, niin antaa sen nopeuden + 250 nopeutta vastakkaiselle puolelle
+        if (speedO < 5) {
+            speedV = 250+speedO;
+        }
+        if (speedV < 5) {
+            speedO = 250+speedV;
+        }
+        
+        //antaa pienen tönäisyn jos jostain syystä molemmat moottorit hidastuvat alle 5
+        if (speedV < 5 && speedO < 5) {
+            motor_start();
+            motor_forward(100,10);
+        }
+        
+        // koodi joka määrää moottorien nopeutta    
+        motor_start();
+        motor_turn(speedV,speedO,0);
+        
             
-            if (ref.l1>10000 && ref.r1>10000){
-                l=0;
-                r=0;
-                f=250;
+                
+            /*if (oikee<=18000 && oikee>16000){
+                
                 motor_start();
-        motor_forward(f,0);
+                motor_turn(250,160,0);
+                
+            }
+            if (vase<=18000 && vase>16000){
                  
-            }else{
-                l=0;
-                r=0;
-                f=250;
                 motor_start();
-        motor_forward(f,0);
-            }
+                motor_turn(160,250,0);
                 
-            if (ref.r1<10000 && ref.r1>9000){
-                f=0;
-                l=250;
-                r=230; 
+            }
+            if (oikee<=16000 && oikee>14000){
+                
                 motor_start();
-        motor_turn(l,r,0);
+                motor_turn(250,80,0);
                 
             }
-            if (ref.l1<10000 && ref.l1>9000){
-                f=0;
-                l=230;
-                r=250; 
+            if (vase<=16000 && vase>14000){
+                 
                 motor_start();
-        motor_turn(l,r,0);
+                motor_turn(80,250,0);
                 
             }
-             if (ref.r1<9000 && ref.r1>8000){
-                f=0;
-                l=250;
-                r=200; 
+             if (oikee<=14000 && oikee>10000){
+                 
                 motor_start();
-        motor_turn(l,r,0);
+                motor_turn(250,40,0);
                 
             }
-            if (ref.l1<9000 && ref.l1>8000){
-                f=0;
-                l=200;
-                r=250; 
+            if (vase<=14000 && vase>10000){
+                 
                 motor_start();
-        motor_turn(l,r,0);
+                motor_turn(40,250,0);
                 
             }
-             if (ref.r1<8000 && ref.r1>7000){
-                f=0;
-                l=250;
-                r=100; 
+             if (oikee<=10000 && oikee>6000){
+                 
                 motor_start();
-        motor_turn(l,r,0);
+                motor_turn(250,20,0);
                 
             }
-            if (ref.l1<8000 && ref.l1>7000){
-                f=0;
-                l=100;
-                r=250;  
+            if (vase<=10000 && vase>6000){
+                  
                 motor_start();
-        motor_turn(l,r,0);
+                motor_turn(20,250,0);
                 
             }
-            if (ref.r1<7000 && ref.r1>0){
-                f=0;
-                l=250;
-                r=0; 
+            if (oikee<=6000 && oikee>2000){
+                
                 motor_start();
-        motor_turn(l,r,0);
+                motor_turn(250,10,0);
                 
             }
-            if (ref.l1<7000 && ref.l1>0){
-                f=0;
-                l=0;
-                r=250;  
+            if (vase<=6000 && vase>2000){
+                  
                 motor_start();
-        motor_turn(l,r,0);
+                motor_turn(10,250,0);
+                
+
+        }
+            if (oikee<=2000 ){
+                
+                motor_start();
+                motor_turn(250,0,0);
                 
             }
-            if ((dig.r1==1 || dig.l1==1) && dig.r3==0){
-                motor_start();  
-                motor_turboturnRight(150,0);
+            if (vase<=2000){
+                  
+                motor_start();
+                motor_turn(0,250,0);
                 
-                
-                
-            }
-            if ((dig.r1==1 || dig.l1==1) && dig.l3==0){
-                motor_start();  
-                motor_turboturnLeft(150,0);
-                
-                
-            }
-            if ((dig.r1==0 || dig.l1==0) && dig.r3==0){
-                motor_start();  
-                motor_turboturnRight(150,0);
-                
-                
-                
-            }
-            if ((dig.r1==0 || dig.l1==0) && dig.l3==0){
-                motor_start();  
-                motor_turboturnLeft(150,0);
-                
-                
-            }
-            if (dig.r3==0 && dig.l3==0){
+
+        }
+            if (ref.r3>19000 && ref.l3>19000){
                 motor_stop();  
                 
                 
-            }
+            }*/
             }
         
        
