@@ -52,7 +52,7 @@ int rread(void);
 
 
 //battery level//
-int main()
+/*int main()
 {
     CyGlobalIntEnable; 
     UART_1_Start();
@@ -68,6 +68,9 @@ int main()
     //button = SW1_Read(); // read SW1 on pSoC board
 
     
+   
+   
+    
     
     
     for(;;)
@@ -77,12 +80,12 @@ int main()
         if(ADC_Battery_IsEndConversion(ADC_Battery_WAIT_FOR_RESULT)) {   // wait for get ADC converted value
             adcresult = ADC_Battery_GetResult16();
             volts = ADC_Battery_CountsTo_Volts(adcresult);                  // convert value to Volts
-        
+            float realvolts = volts * 1.5;
             // If you want to print value
-            printf("%d %f\r\n",adcresult, volts);
-            if (volts < 0.8){
-                
-            }
+            printf("%d %f\r\n",adcresult, realvolts);
+            
+            
+            
         }
         CyDelay(10000);
         
@@ -130,6 +133,8 @@ int main()
     UART_1_Start();
     
     unsigned int IR_val; 
+    
+    
     
     for(;;)
     {
@@ -216,7 +221,7 @@ int main()
 //*/
 
 
-/*//reflectance//
+//reflectance//
 int main()
 {
     struct sensors_ ref;
@@ -224,24 +229,175 @@ int main()
     CyGlobalIntEnable; 
     UART_1_Start();
   
+    int f;
+    int l;
+    int r;
+    
+    
     sensor_isr_StartEx(sensor_isr_handler);
     
     reflectance_start();
 
     IR_led_Write(1);
+
+    ADC_Battery_Start();        
+    int16 adcresult =0;
+    float volts = 0.0;
+    
+    printf("\nBoot\n");
+
+    //BatteryLed_Write(1); // Switch led on 
+    BatteryLed_Write(0); // Switch led off 
+    //uint8 button;
+    //button = SW1_Read(); // read SW1 on pSoC board
+    
+    CyDelay(3000);
+    
+    for (;;){
+        
+            ADC_Battery_StartConvert();
+            if(ADC_Battery_IsEndConversion(ADC_Battery_WAIT_FOR_RESULT)) {   // wait for get ADC converted value
+            adcresult = ADC_Battery_GetResult16();
+            volts = ADC_Battery_CountsTo_Volts(adcresult);                  // convert value to Volts
+            float realvolts = volts * 1.5;
+            // If you want to print value
+            printf("%d %f\r\n",adcresult, realvolts);
+            
+            if (realvolts< 0.8){
+            motor_stop();
+            }
+    
+    }
+    
     for(;;)
     {
         reflectance_read(&ref);
         printf("%d %d %d %d \r\n", ref.l3, ref.l1, ref.r1, ref.r3);       //print out each period of reflectance sensors
         reflectance_digital(&dig);      //print out 0 or 1 according to results of reflectance period
-        printf("%d %d %d %d \r\n", dig.l3, dig.l1, dig.r1, dig.r3);        //print out 0 or 1 according to results of reflectance period
+        printf("%d %d %d %d \r\n", dig.l3, dig.l1, dig.r1, dig.r3);       //print out 0 or 1 according to results of reflectance period
+         CyDelay(10);
         
-        CyDelay(500);
+
+            
+            if (ref.l1>10000 && ref.r1>10000){
+                l=0;
+                r=0;
+                f=250;
+                motor_start();
+        motor_forward(f,0);
+                 
+            }else{
+                l=0;
+                r=0;
+                f=250;
+                motor_start();
+        motor_forward(f,0);
+            }
+                
+            if (ref.r1<10000 && ref.r1>9000){
+                f=0;
+                l=250;
+                r=230; 
+                motor_start();
+        motor_turn(l,r,0);
+                
+            }
+            if (ref.l1<10000 && ref.l1>9000){
+                f=0;
+                l=230;
+                r=250; 
+                motor_start();
+        motor_turn(l,r,0);
+                
+            }
+             if (ref.r1<9000 && ref.r1>8000){
+                f=0;
+                l=250;
+                r=200; 
+                motor_start();
+        motor_turn(l,r,0);
+                
+            }
+            if (ref.l1<9000 && ref.l1>8000){
+                f=0;
+                l=200;
+                r=250; 
+                motor_start();
+        motor_turn(l,r,0);
+                
+            }
+             if (ref.r1<8000 && ref.r1>7000){
+                f=0;
+                l=250;
+                r=100; 
+                motor_start();
+        motor_turn(l,r,0);
+                
+            }
+            if (ref.l1<8000 && ref.l1>7000){
+                f=0;
+                l=100;
+                r=250;  
+                motor_start();
+        motor_turn(l,r,0);
+                
+            }
+            if (ref.r1<7000 && ref.r1>0){
+                f=0;
+                l=250;
+                r=0; 
+                motor_start();
+        motor_turn(l,r,0);
+                
+            }
+            if (ref.l1<7000 && ref.l1>0){
+                f=0;
+                l=0;
+                r=250;  
+                motor_start();
+        motor_turn(l,r,0);
+                
+            }
+            if ((dig.r1==1 || dig.l1==1) && dig.r3==0){
+                motor_start();  
+                motor_turboturnRight(150,0);
+                
+                
+                
+            }
+            if ((dig.r1==1 || dig.l1==1) && dig.l3==0){
+                motor_start();  
+                motor_turboturnLeft(150,0);
+                
+                
+            }
+            if ((dig.r1==0 || dig.l1==0) && dig.r3==0){
+                motor_start();  
+                motor_turboturnRight(150,0);
+                
+                
+                
+            }
+            if ((dig.r1==0 || dig.l1==0) && dig.l3==0){
+                motor_start();  
+                motor_turboturnLeft(150,0);
+                
+                
+            }
+            if (dig.r3==0 && dig.l3==0){
+                motor_stop();  
+                
+                
+            }
+            }
+        
+       
+        
     }
 }   
-//*/
+//
 
- /* //motor//
+  /*//motor//
 int main()
 {
     CyGlobalIntEnable; 
@@ -250,8 +406,8 @@ int main()
     motor_start();              // motor start
 
     motor_forward(100,2000);     // moving forward
-    motor_turn(200,50,2000);     // turn
-    motor_turn(50,200,2000);     // turn
+    motor_turn(200,50,2000);     // turn vasen 200 oikee 50
+    motor_turn(50,200,2000);     // turn oikee 200 vasen 50
     motor_backward(100,2000);    // movinb backward
        
     motor_stop();               // motor stop

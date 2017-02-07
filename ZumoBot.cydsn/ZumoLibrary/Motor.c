@@ -71,3 +71,21 @@ void motor_backward(uint8 speed,uint32 delay)
     PWM_WriteCompare2(speed); 
     CyDelay(delay);
 }
+
+void motor_turboturnLeft (uint8 speed,uint32 delay)
+{
+    MotorDirLeft_Write(1);      // set LeftMotor forward mode
+    MotorDirRight_Write(0);     // set RightMotor backward mode
+    PWM_WriteCompare1(speed); 
+    PWM_WriteCompare2(speed); 
+    CyDelay(delay);
+}
+
+void motor_turboturnRight (uint8 speed,uint32 delay)
+{
+    MotorDirLeft_Write(0);      // set LeftMotor forward mode
+    MotorDirRight_Write(1);     // set RightMotor backward mode
+    PWM_WriteCompare1(speed); 
+    PWM_WriteCompare2(speed); 
+    CyDelay(delay);
+}
