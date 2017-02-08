@@ -259,13 +259,6 @@
 <v>Zumo\ZumoBot\Generated_Source\PSoC5\project.h</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
-<v>Zumo\ZumoBot\Header Files\Motor.h</v>
-<v>Zumo\ZumoBot\Header Files\Nunchuk.h</v>
-<v>Zumo\ZumoBot\Header Files\Reflectance.h</v>
-<v>Zumo\ZumoBot\Header Files\Ultra.h</v>
-<v>Zumo\ZumoBot\Source Files</v>
-<v>Zumo\ZumoBot\Source Files\Accel.c</v>
-<v>Zumo\ZumoBot\Source Files\Ambient.c</v>
 <v>Zumo\ZumoBot\Source Files\Beep.c</v>
 <v>Zumo\ZumoBot\Source Files\Gyro.c</v>
 <v>Zumo\ZumoBot\Source Files\I2C_made.c</v>
@@ -307,6 +300,12 @@
 <v>Zumo\ZumoBot\Generated_Source\PSoC5\Buzzer\Buzzer_aliases.h</v>
 <v>Zumo\ZumoBot\Generated_Source\PSoC5\Buzzer_PWM</v>
 <v>Zumo\ZumoBot\Generated_Source\PSoC5\Buzzer_PWM\Buzzer_PWM.c</v>
+<v>Zumo\ZumoBot\Generated_Source\PSoC5\Buzzer_PWM\Buzzer_PWM.h</v>
+<v>Zumo\ZumoBot\Generated_Source\PSoC5\Buzzer_PWM\Buzzer_PWM_PM.c</v>
+<v>Zumo\ZumoBot\Generated_Source\PSoC5\Clock_1</v>
+<v>Zumo\ZumoBot\Generated_Source\PSoC5\Clock_1\Clock_1.c</v>
+<v>Zumo\ZumoBot\Generated_Source\PSoC5\Clock_1\Clock_1.h</v>
+<v>Zumo\ZumoBot\Generated_Source\PSoC5\Clock_2</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -420,6 +419,51 @@
 <VisibleNodeIds>
 <v>Zumo</v>
 <v>Zumo\ZumoBot</v>
+<v>Zumo\ZumoBot\CortexM3</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\Accel.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Battery.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Battery_Bypass.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Battery_INT.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Battery_IRQ.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Battery_PM.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Battery_theACLK.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\Ambient.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\Battery_pin.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\BatteryLed.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\Beep.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\Buzzer.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\Buzzer_PWM.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\Buzzer_PWM_PM.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_1.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_2.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\Echo.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\Gyro.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_BOOT.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_INT.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_made.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_MASTER.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_PM.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_SLAVE.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\IR.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\IR_led.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\IR_receiver.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\L1.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\L3.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\Magnet.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -489,7 +533,10 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\ZumoBot.cydsn\main.c" />
-<name v="..\Exercise 01\Exercise 10.cydsn\main.c" />
+<name v=".\ZumoBot.cydsn\Generated_Source\PSoC5\Cm3Start.c" />
+<name v=".\ZumoBot.cydsn\ZumoLibrary\Motor.c" />
+<name v=".\ZumoBot.cydsn\ZumoLibrary\Motor.h" />
+<name v=".\ZumoBot.cydsn\Generated_Source\PSoC5\ADC_Battery.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -497,7 +544,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1608, 711" SelectedTabbedMdiWindow="38540efb-e241-4c00-bc6a-4f8fabdbca7e"><DocumentWindow Key="29bb76a1-9d9f-4d06-9e35-5ebbebe35504" Guid="b9b2ebf0-4f39-48a8-b2d9-6ad2eee53b7d" /><DocumentWindow Key="dff4520b-70ef-4840-b84c-75643dc55206" Guid="38540efb-e241-4c00-bc6a-4f8fabdbca7e" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="719, 702" SelectedTabbedMdiWindow="cd16f1f2-5af3-4b70-a553-ab956cf8b73a"><DocumentWindow Key="d582af8d-f6e9-4b74-a97b-4ea38c61d4b4" Guid="cd16f1f2-5af3-4b70-a553-ab956cf8b73a" /><DocumentWindow Key="e1018016-1e64-4294-bea3-6944419d71b9" Guid="92f98042-df24-4811-b832-bdb447f34b40" /><DocumentWindow Key="3532cd81-87e7-428e-973b-e1f172bc7437" Guid="16714abb-e1da-41da-aabe-2143a2bbae47" /><DocumentWindow Key="cb38f76b-0fbc-488b-b940-5e7784efb0c9" Guid="4e86d510-d213-4fed-a5e2-046e5f23b3e7" /><DocumentWindow Key="bd1257c5-8e5d-4f40-8172-4d265e39accb" Guid="b826045b-cddc-4fc5-94c5-fd8aa97967b9" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

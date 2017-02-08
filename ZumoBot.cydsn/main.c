@@ -41,6 +41,7 @@
 #include "IR.h"
 #include "Ambient.h"
 #include "Beep.h"
+#include "math.h"
 
 int rread(void);
 
@@ -231,22 +232,22 @@ int main()
   
     int vase;
     int oikee;
-    int flipr1;
-    int flipl1;
+    int flip = 0;
+    int flip2 = 0;
     double speedOtupla;
     double speedVtupla;
-    int speedO = (int)speedOtupla;
-    int speedV = (int)speedVtupla;
     
     
+    CyDelay(3000);
     
-    sensor_isr_StartEx(sensor_isr_handler);
+    //starters
     
     reflectance_start();
-
+    ADC_Battery_Start();
+    motor_start();
     IR_led_Write(1);
-
-    ADC_Battery_Start();        
+    sensor_isr_StartEx(sensor_isr_handler);
+    
     int16 adcresult =0;
     float volts = 0.0;
     
@@ -257,24 +258,28 @@ int main()
     //uint8 button;
     //button = SW1_Read(); // read SW1 on pSoC board
     
-    CyDelay(3000);
     
-    for (;;){
+    
+    /*for (;;){
         
             ADC_Battery_StartConvert();
             if(ADC_Battery_IsEndConversion(ADC_Battery_WAIT_FOR_RESULT)) {   // wait for get ADC converted value
-            adcresult = ADC_Battery_GetResult16();
-            volts = ADC_Battery_CountsTo_Volts(adcresult);                  // convert value to Volts
-            float realvolts = volts * 1.5;
-            // If you want to print value
-            //printf("%d %f\r\n",adcresult, realvolts);
+                adcresult = ADC_Battery_GetResult16();
+                volts = ADC_Battery_CountsTo_Volts(adcresult);                  // convert value to Volts
+                float realvolts = volts * 1.5;
+                // If you want to print value
+                 //printf("%d %f\r\n",adcresult, realvolts);
             
-            // jos volttimäärä pattereissa putoaa alle 4 niin pysäyttää moottorit
-            if (realvolts< 4){
-            motor_stop();
+                // jos volttimäärä pattereissa putoaa alle 4 niin pysäyttää moottorit
+
+                
+
+                if (realvolts< 4){
+                    printf("AKKULOPPU\n");
+                    motor_stop();
+                }
             }
-    
-    }
+    }*/
     
     for(;;)
     {
@@ -283,154 +288,80 @@ int main()
         reflectance_digital(&dig);      //print out 0 or 1 according to results of reflectance period
        // printf("%d %d %d %d \r\n", dig.l3, dig.l1, dig.r1, dig.r3);       //print out 0 or 1 according to results of reflectance period
         
+       
         
-        //ei anna IR sensorin antaman lukeman mennä alle 0
-        if (ref.l1<=0){
-            ref.l1=0;
-        }
-        if (ref.r1<=0){
-            ref.r1=0;
-        }
+        /*if(ref.l1>=ref.r1){
+            flip++;
+            flip2++;
+        }else if (flip2>500){
+            flip=0;
+        }*/
         
-        //flippaa IR sensoreiden antamat arvot jotta zumo ei sekoittaisi sisä ja ulkokurvin valkoista väriä.
-        if (ref.l1>ref.r1){
-            flipl1=ref.r1;
-            flipr1=ref.l1;
-        }else{
-            flipl1=ref.l1;
-            flipr1=ref.r1;
-        }
         
+        //printf("%i\n",flip);
         
         // matikkaa
-        oikee = flipl1-4850;
-        vase = flipr1-4850;
-        speedO = (vase * 0.013333);
-        speedV = -0.013326*oikee+255;
+        oikee = ref.r1;
+        vase = ref.l1;
         
+        if (oikee<=12000){
+            oikee=ref.r1/2;
+        }
+        if (vase<=12000){
+            vase=ref.l1/2;
+        }
         
+        double speedO = ((0.391571*oikee*oikee)-(3.84672*oikee)-227.19)/1000000;
+        double speedV = ((0.391571*vase*vase)-(3.84672*vase)-227.19)/1000000;
         
-        CyDelay(10);
+        int speedOtupla = (int)speedO;
+        int speedVtupla = (int)speedV;
+
         
         // ei anna yksittäisen moottorin nopeuden nousta yli 255
         if (speedO >=254){
             speedO=255;
+            printf("1");
         }
         if (speedV >=254){
             speedV=255;
+            printf("2");
         }
         
         // ajaa täysiä eteenpäin jos molemmat moottorit ovat nopeudelta yli 240
-        if (speedV >240 && speedO>240){
+        if (speedV >200 && speedO>200){
             speedV=255;
             speedO=255;
+            printf("3");
         }
+        
         
         //jos toisen moottorin nopeus laskee alle 5, niin antaa sen nopeuden + 250 nopeutta vastakkaiselle puolelle
         if (speedO < 5) {
             speedV = 250+speedO;
+            printf("4");
         }
         if (speedV < 5) {
             speedO = 250+speedV;
+            printf("5");
         }
         
         //antaa pienen tönäisyn jos jostain syystä molemmat moottorit hidastuvat alle 5
-        if (speedV < 5 && speedO < 5) {
-            motor_start();
-            motor_forward(100,10);
-        }
-        
-        // koodi joka määrää moottorien nopeutta    
-        motor_start();
-        motor_turn(speedV,speedO,0);
-        
+
+             motor_turn(speedO,speedV,0);
+            if (speedV < 5 && speedO < 5) {
             
-                
-            /*if (oikee<=18000 && oikee>16000){
-                
-                motor_start();
-                motor_turn(250,160,0);
-                
-            }
-            if (vase<=18000 && vase>16000){
-                 
-                motor_start();
-                motor_turn(160,250,0);
-                
-            }
-            if (oikee<=16000 && oikee>14000){
-                
-                motor_start();
-                motor_turn(250,80,0);
-                
-            }
-            if (vase<=16000 && vase>14000){
-                 
-                motor_start();
-                motor_turn(80,250,0);
-                
-            }
-             if (oikee<=14000 && oikee>10000){
-                 
-                motor_start();
-                motor_turn(250,40,0);
-                
-            }
-            if (vase<=14000 && vase>10000){
-                 
-                motor_start();
-                motor_turn(40,250,0);
-                
-            }
-             if (oikee<=10000 && oikee>6000){
-                 
-                motor_start();
-                motor_turn(250,20,0);
-                
-            }
-            if (vase<=10000 && vase>6000){
-                  
-                motor_start();
-                motor_turn(20,250,0);
-                
-            }
-            if (oikee<=6000 && oikee>2000){
-                
-                motor_start();
-                motor_turn(250,10,0);
-                
-            }
-            if (vase<=6000 && vase>2000){
-                  
-                motor_start();
-                motor_turn(10,250,0);
-                
-
+            motor_forward(100,10);
+            printf("3");
         }
-            if (oikee<=2000 ){
-                
-                motor_start();
-                motor_turn(250,0,0);
-                
-            }
-            if (vase<=2000){
-                  
-                motor_start();
-                motor_turn(0,250,0);
-                
-
-        }
-            if (ref.r3>19000 && ref.l3>19000){
-                motor_stop();  
-                
-                
-            }*/
-            }
-        
-       
-        
+        /*if (flip>500){
+            
+            motor_turn(speedO,speedV,0);
+        }else{
+            motor_turn(speedV,speedO,0);
+        }*/
     }
-}   
+}
 //
 
   /*//motor//
