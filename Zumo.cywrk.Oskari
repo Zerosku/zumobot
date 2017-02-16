@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Zumo\ZumoBot\Header Files\Motor.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Zumo\ZumoBot\Source Files\IR.c">
 <ExpandedNodeIds>
 <v>Zumo</v>
 <v>Zumo\ZumoBot</v>
@@ -259,6 +259,34 @@
 <v>Zumo\ZumoBot\Generated_Source\PSoC5\project.h</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>Zumo</v>
+<v>Zumo\ZumoBot</v>
+<v>Zumo\ZumoBot\TopDesign</v>
+<v>Zumo\ZumoBot\ZumoBot.cydwr</v>
+<v>Zumo\ZumoBot\ZumoBot.cydwr\Pins</v>
+<v>Zumo\ZumoBot\ZumoBot.cydwr\Analog</v>
+<v>Zumo\ZumoBot\ZumoBot.cydwr\Clocks</v>
+<v>Zumo\ZumoBot\ZumoBot.cydwr\Interrupts</v>
+<v>Zumo\ZumoBot\ZumoBot.cydwr\DMA</v>
+<v>Zumo\ZumoBot\ZumoBot.cydwr\System</v>
+<v>Zumo\ZumoBot\ZumoBot.cydwr\Directives</v>
+<v>Zumo\ZumoBot\ZumoBot.cydwr\Flash Security</v>
+<v>Zumo\ZumoBot\ZumoBot.cydwr\EEPROM</v>
+<v>Zumo\ZumoBot\Header Files</v>
+<v>Zumo\ZumoBot\Header Files\Accel_magnet.h</v>
+<v>Zumo\ZumoBot\Header Files\Ambient.h</v>
+<v>Zumo\ZumoBot\Header Files\Beep.h</v>
+<v>Zumo\ZumoBot\Header Files\cyapicallbacks.h</v>
+<v>Zumo\ZumoBot\Header Files\Gyro.h</v>
+<v>Zumo\ZumoBot\Header Files\I2C_made.h</v>
+<v>Zumo\ZumoBot\Header Files\IR.h</v>
+<v>Zumo\ZumoBot\Header Files\Motor.h</v>
+<v>Zumo\ZumoBot\Header Files\Nunchuk.h</v>
+<v>Zumo\ZumoBot\Header Files\Reflectance.h</v>
+<v>Zumo\ZumoBot\Header Files\Ultra.h</v>
+<v>Zumo\ZumoBot\Source Files</v>
+<v>Zumo\ZumoBot\Source Files\Accel.c</v>
+<v>Zumo\ZumoBot\Source Files\Ambient.c</v>
 <v>Zumo\ZumoBot\Source Files\Beep.c</v>
 <v>Zumo\ZumoBot\Source Files\Gyro.c</v>
 <v>Zumo\ZumoBot\Source Files\I2C_made.c</v>
@@ -279,33 +307,6 @@
 <v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_Bypass</v>
 <v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_Bypass\ADC_Battery_Bypass.c</v>
 <v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_Bypass\ADC_Battery_Bypass.h</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_Bypass\ADC_Battery_Bypass_aliases.h</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_IRQ</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_IRQ\ADC_Battery_IRQ.c</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_IRQ\ADC_Battery_IRQ.h</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_theACLK</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_theACLK\ADC_Battery_theACLK.c</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_theACLK\ADC_Battery_theACLK.h</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Battery_pin</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Battery_pin\Battery_pin.c</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Battery_pin\Battery_pin.h</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Battery_pin\Battery_pin_aliases.h</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\BatteryLed</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\BatteryLed\BatteryLed.c</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\BatteryLed\BatteryLed.h</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\BatteryLed\BatteryLed_aliases.h</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Buzzer</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Buzzer\Buzzer.c</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Buzzer\Buzzer.h</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Buzzer\Buzzer_aliases.h</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Buzzer_PWM</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Buzzer_PWM\Buzzer_PWM.c</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Buzzer_PWM\Buzzer_PWM.h</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Buzzer_PWM\Buzzer_PWM_PM.c</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Clock_1</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Clock_1\Clock_1.c</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Clock_1\Clock_1.h</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\Clock_2</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -464,6 +465,7 @@
 <v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\L1.lst</v>
 <v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\L3.lst</v>
 <v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\Magnet.lst</v>
+<v>Zumo\ZumoBot\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -537,6 +539,7 @@
 <name v=".\ZumoBot.cydsn\ZumoLibrary\Motor.c" />
 <name v=".\ZumoBot.cydsn\ZumoLibrary\Motor.h" />
 <name v=".\ZumoBot.cydsn\Generated_Source\PSoC5\ADC_Battery.c" />
+<name v=".\ZumoBot.cydsn\ZumoLibrary\IR.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -544,7 +547,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="719, 702" SelectedTabbedMdiWindow="cd16f1f2-5af3-4b70-a553-ab956cf8b73a"><DocumentWindow Key="d582af8d-f6e9-4b74-a97b-4ea38c61d4b4" Guid="cd16f1f2-5af3-4b70-a553-ab956cf8b73a" /><DocumentWindow Key="e1018016-1e64-4294-bea3-6944419d71b9" Guid="92f98042-df24-4811-b832-bdb447f34b40" /><DocumentWindow Key="3532cd81-87e7-428e-973b-e1f172bc7437" Guid="16714abb-e1da-41da-aabe-2143a2bbae47" /><DocumentWindow Key="cb38f76b-0fbc-488b-b940-5e7784efb0c9" Guid="4e86d510-d213-4fed-a5e2-046e5f23b3e7" /><DocumentWindow Key="bd1257c5-8e5d-4f40-8172-4d265e39accb" Guid="b826045b-cddc-4fc5-94c5-fd8aa97967b9" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="1681, 711" SelectedTabbedMdiWindow="81c6d1ba-50ee-4e30-9fe2-e1280c45e3c4"><DocumentWindow Key="a455083c-2778-4dae-b6d1-a25467344048" Guid="81c6d1ba-50ee-4e30-9fe2-e1280c45e3c4" /><DocumentWindow Key="747f1c0f-f7f7-4760-8f02-0819b92e2760" Guid="2faa2260-a807-477a-a1ea-4bc865eac895" /><DocumentWindow Key="e7a2f620-cf81-4a90-8580-d399689b4458" Guid="85248366-c59f-442a-b5bf-620ac9d45367" /><DocumentWindow Key="5ed10ecc-128e-4269-b617-436386b8237f" Guid="eb7db8e1-1edc-40ba-80a2-28eaf5698101" /><DocumentWindow Key="1392ae0c-b677-46d4-a310-bb8951ee0db0" Guid="55d9f63c-ec7d-4f9e-b0af-90447497c8e8" /><DocumentWindow Key="ed0ace84-e83c-45c0-8fed-9a2495d63b65" Guid="cb6fb3cf-4883-4c7c-92bc-b84ff6a0b168" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
