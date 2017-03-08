@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 1
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 1
   37              		@ frame_needed = 0, uses_anonymous_args = 0
   38 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
   39              		.cfi_def_cfa_offset 32
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 2
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 2
 
 
   40              		.cfi_offset 4, -32
@@ -112,19 +112,19 @@ ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 1
   70              	.LVL4:
   37:main.c        ****     sensor_isr_StartEx(sensor_isr_handler);
   71              		.loc 1 37 0
-  72 001e A448     		ldr	r0, .L29+40
+  72 001e 9C48     		ldr	r0, .L25+40
   73 0020 FFF7FEFF 		bl	sensor_isr_StartEx
   74              	.LVL5:
   38:main.c        ****     
   39:main.c        ****     int16 adcresult =0;
   40:main.c        ****     float volts = 0.0;
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 3
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 3
 
 
   41:main.c        ****     
   42:main.c        ****     printf("\nBoot\n");
   75              		.loc 1 42 0
-  76 0024 A348     		ldr	r0, .L29+44
+  76 0024 9B48     		ldr	r0, .L25+44
   77 0026 FFF7FEFF 		bl	puts
   78              	.LVL6:
   43:main.c        **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 1
   77:main.c        ****         reflectance_digital(&dig);      //print out 0 or 1 according to results of reflectance peri
   92              		.loc 1 77 0
   93 003a 02A8     		add	r0, sp, #8
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 4
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 4
 
 
   94 003c FFF7FEFF 		bl	reflectance_digital
@@ -192,482 +192,451 @@ ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 1
   99              	.LVL11:
   81:main.c        ****         
   82:main.c        ****         // matikkaa
-  83:main.c        ****         oikee = ref.r1 + 500;
+  83:main.c        ****             oikee = ref.r1 + 500;
  100              		.loc 1 83 0
  101 0046 BDF81420 		ldrh	r2, [sp, #20]
- 102 004a 02F5FA79 		add	r9, r2, #500
+ 102 004a 02F5FA75 		add	r5, r2, #500
  103              	.LVL12:
-  84:main.c        ****         vase = ref.l1 + 500;
+  84:main.c        ****             vase = ref.l1 + 500;
  104              		.loc 1 84 0
  105 004e BDF81230 		ldrh	r3, [sp, #18]
- 106 0052 03F5FA78 		add	r8, r3, #500
+ 106 0052 03F5FA74 		add	r4, r3, #500
  107              	.LVL13:
   85:main.c        ****         
   86:main.c        **** 
-  87:main.c        ****         if (oikee<=11000){
+  87:main.c        ****             if (oikee<=11000){
  108              		.loc 1 87 0
  109 0056 42F6F821 		movw	r1, #11000
- 110 005a 8945     		cmp	r9, r1
- 111 005c 01DC     		bgt	.L3
-  88:main.c        ****             oikee=ref.r1/2;
+ 110 005a 8D42     		cmp	r5, r1
+ 111 005c 00DC     		bgt	.L3
+  88:main.c        ****                 oikee=ref.r1/2;
  112              		.loc 1 88 0
- 113 005e 4FEA5209 		lsr	r9, r2, #1
+ 113 005e 5508     		lsrs	r5, r2, #1
  114              	.LVL14:
  115              	.L3:
-  89:main.c        ****         }
-  90:main.c        ****         if (vase<=11000){
+  89:main.c        ****             }
+  90:main.c        ****             if (vase<=11000){
  116              		.loc 1 90 0
- 117 0062 42F6F822 		movw	r2, #11000
- 118 0066 9045     		cmp	r8, r2
- 119 0068 01DC     		bgt	.L4
-  91:main.c        ****             vase=ref.l1/2;
+ 117 0060 42F6F822 		movw	r2, #11000
+ 118 0064 9442     		cmp	r4, r2
+ 119 0066 00DC     		bgt	.L4
+  91:main.c        ****                 vase=ref.l1/2;
  120              		.loc 1 91 0
- 121 006a 4FEA5308 		lsr	r8, r3, #1
+ 121 0068 5C08     		lsrs	r4, r3, #1
  122              	.LVL15:
  123              	.L4:
-  92:main.c        ****         }
+  92:main.c        ****             }
   93:main.c        ****         
-  94:main.c        ****         //toisen asteen yhtälöä käytetty jotta zumo osaisi kiihdyttää ja jarruttaa todella n�
-  95:main.c        ****         double speedO = ((0.391571*oikee*oikee)-(3.84672*oikee)-227.19)/1000000;
+  94:main.c        ****             //toisen asteen yhtälöä käytetty jotta zumo osaisi kiihdyttää ja jarruttaa todell
+  95:main.c        ****             double speedO = ((0.391571*oikee*oikee)-(3.84672*oikee)-227.19)/1000000;
  124              		.loc 1 95 0
- 125 006e 4846     		mov	r0, r9
- 126 0070 FFF7FEFF 		bl	__aeabi_i2d
+ 125 006a 2846     		mov	r0, r5
+ 126 006c FFF7FEFF 		bl	__aeabi_i2d
  127              	.LVL16:
- 128 0074 0446     		mov	r4, r0
- 129 0076 0D46     		mov	r5, r1
- 130 0078 83A3     		adr	r3, .L29
- 131 007a D3E90023 		ldrd	r2, [r3]
- 132 007e FFF7FEFF 		bl	__aeabi_dmul
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 5
+ 128 0070 0646     		mov	r6, r0
+ 129 0072 0F46     		mov	r7, r1
+ 130 0074 7CA3     		adr	r3, .L25
+ 131 0076 D3E90023 		ldrd	r2, [r3]
+ 132 007a FFF7FEFF 		bl	__aeabi_dmul
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 5
 
 
  133              	.LVL17:
- 134 0082 0246     		mov	r2, r0
- 135 0084 0B46     		mov	r3, r1
- 136 0086 2046     		mov	r0, r4
- 137 0088 2946     		mov	r1, r5
- 138 008a FFF7FEFF 		bl	__aeabi_dmul
+ 134 007e 0246     		mov	r2, r0
+ 135 0080 0B46     		mov	r3, r1
+ 136 0082 3046     		mov	r0, r6
+ 137 0084 3946     		mov	r1, r7
+ 138 0086 FFF7FEFF 		bl	__aeabi_dmul
  139              	.LVL18:
- 140 008e 0646     		mov	r6, r0
- 141 0090 0F46     		mov	r7, r1
- 142 0092 2046     		mov	r0, r4
- 143 0094 2946     		mov	r1, r5
- 144 0096 7EA3     		adr	r3, .L29+8
- 145 0098 D3E90023 		ldrd	r2, [r3]
- 146 009c FFF7FEFF 		bl	__aeabi_dmul
+ 140 008a 8046     		mov	r8, r0
+ 141 008c 8946     		mov	r9, r1
+ 142 008e 3046     		mov	r0, r6
+ 143 0090 3946     		mov	r1, r7
+ 144 0092 77A3     		adr	r3, .L25+8
+ 145 0094 D3E90023 		ldrd	r2, [r3]
+ 146 0098 FFF7FEFF 		bl	__aeabi_dmul
  147              	.LVL19:
- 148 00a0 0246     		mov	r2, r0
- 149 00a2 0B46     		mov	r3, r1
- 150 00a4 3046     		mov	r0, r6
- 151 00a6 3946     		mov	r1, r7
- 152 00a8 FFF7FEFF 		bl	__aeabi_dsub
+ 148 009c 0246     		mov	r2, r0
+ 149 009e 0B46     		mov	r3, r1
+ 150 00a0 4046     		mov	r0, r8
+ 151 00a2 4946     		mov	r1, r9
+ 152 00a4 FFF7FEFF 		bl	__aeabi_dsub
  153              	.LVL20:
- 154 00ac 7AA3     		adr	r3, .L29+16
- 155 00ae D3E90023 		ldrd	r2, [r3]
- 156 00b2 FFF7FEFF 		bl	__aeabi_dsub
+ 154 00a8 73A3     		adr	r3, .L25+16
+ 155 00aa D3E90023 		ldrd	r2, [r3]
+ 156 00ae FFF7FEFF 		bl	__aeabi_dsub
  157              	.LVL21:
- 158 00b6 7AA3     		adr	r3, .L29+24
- 159 00b8 D3E90023 		ldrd	r2, [r3]
- 160 00bc FFF7FEFF 		bl	__aeabi_ddiv
+ 158 00b2 73A3     		adr	r3, .L25+24
+ 159 00b4 D3E90023 		ldrd	r2, [r3]
+ 160 00b8 FFF7FEFF 		bl	__aeabi_ddiv
  161              	.LVL22:
- 162 00c0 0646     		mov	r6, r0
- 163 00c2 0F46     		mov	r7, r1
+ 162 00bc 8046     		mov	r8, r0
+ 163 00be 8946     		mov	r9, r1
  164              	.LVL23:
-  96:main.c        ****         double speedV = ((0.391571*vase*vase)-(3.84672*vase)-227.19)/1000000;
+  96:main.c        ****             double speedV = ((0.391571*vase*vase)-(3.84672*vase)-227.19)/1000000;
  165              		.loc 1 96 0
- 166 00c4 4046     		mov	r0, r8
- 167 00c6 FFF7FEFF 		bl	__aeabi_i2d
+ 166 00c0 2046     		mov	r0, r4
+ 167 00c2 FFF7FEFF 		bl	__aeabi_i2d
  168              	.LVL24:
- 169 00ca 0446     		mov	r4, r0
- 170 00cc 0D46     		mov	r5, r1
- 171 00ce 6EA3     		adr	r3, .L29
- 172 00d0 D3E90023 		ldrd	r2, [r3]
- 173 00d4 FFF7FEFF 		bl	__aeabi_dmul
+ 169 00c6 0646     		mov	r6, r0
+ 170 00c8 0F46     		mov	r7, r1
+ 171 00ca 67A3     		adr	r3, .L25
+ 172 00cc D3E90023 		ldrd	r2, [r3]
+ 173 00d0 FFF7FEFF 		bl	__aeabi_dmul
  174              	.LVL25:
- 175 00d8 0246     		mov	r2, r0
- 176 00da 0B46     		mov	r3, r1
- 177 00dc 2046     		mov	r0, r4
- 178 00de 2946     		mov	r1, r5
- 179 00e0 FFF7FEFF 		bl	__aeabi_dmul
+ 175 00d4 0246     		mov	r2, r0
+ 176 00d6 0B46     		mov	r3, r1
+ 177 00d8 3046     		mov	r0, r6
+ 178 00da 3946     		mov	r1, r7
+ 179 00dc FFF7FEFF 		bl	__aeabi_dmul
  180              	.LVL26:
- 181 00e4 CDE90001 		strd	r0, [sp]
- 182 00e8 2046     		mov	r0, r4
- 183 00ea 2946     		mov	r1, r5
- 184 00ec 68A3     		adr	r3, .L29+8
- 185 00ee D3E90023 		ldrd	r2, [r3]
- 186 00f2 FFF7FEFF 		bl	__aeabi_dmul
+ 181 00e0 CDE90001 		strd	r0, [sp]
+ 182 00e4 3046     		mov	r0, r6
+ 183 00e6 3946     		mov	r1, r7
+ 184 00e8 61A3     		adr	r3, .L25+8
+ 185 00ea D3E90023 		ldrd	r2, [r3]
+ 186 00ee FFF7FEFF 		bl	__aeabi_dmul
  187              	.LVL27:
- 188 00f6 0246     		mov	r2, r0
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 6
+ 188 00f2 0246     		mov	r2, r0
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 6
 
 
- 189 00f8 0B46     		mov	r3, r1
- 190 00fa DDE90001 		ldrd	r0, [sp]
- 191 00fe FFF7FEFF 		bl	__aeabi_dsub
+ 189 00f4 0B46     		mov	r3, r1
+ 190 00f6 DDE90001 		ldrd	r0, [sp]
+ 191 00fa FFF7FEFF 		bl	__aeabi_dsub
  192              	.LVL28:
- 193 0102 65A3     		adr	r3, .L29+16
- 194 0104 D3E90023 		ldrd	r2, [r3]
- 195 0108 FFF7FEFF 		bl	__aeabi_dsub
+ 193 00fe 5EA3     		adr	r3, .L25+16
+ 194 0100 D3E90023 		ldrd	r2, [r3]
+ 195 0104 FFF7FEFF 		bl	__aeabi_dsub
  196              	.LVL29:
- 197 010c 64A3     		adr	r3, .L29+24
- 198 010e D3E90023 		ldrd	r2, [r3]
- 199 0112 FFF7FEFF 		bl	__aeabi_ddiv
+ 197 0108 5DA3     		adr	r3, .L25+24
+ 198 010a D3E90023 		ldrd	r2, [r3]
+ 199 010e FFF7FEFF 		bl	__aeabi_ddiv
  200              	.LVL30:
- 201 0116 0446     		mov	r4, r0
- 202 0118 0D46     		mov	r5, r1
+ 201 0112 0646     		mov	r6, r0
+ 202 0114 0F46     		mov	r7, r1
  203              	.LVL31:
   97:main.c        ****         
-  98:main.c        ****         int speedOtupla = (int)speedO;
-  99:main.c        ****         int speedVtupla = (int)speedV;
+  98:main.c        ****             int speedOtupla = (int)speedO;
+  99:main.c        ****             int speedVtupla = (int)speedV;
  100:main.c        **** 
  101:main.c        ****         
  102:main.c        ****         // asettaa huippunopeuden päälle kun tietyt kriteerit täyttyvät
- 103:main.c        ****         if (speedO >=210){
+ 103:main.c        ****         if (speedO >=200){
  204              		.loc 1 103 0
- 205 011a 3046     		mov	r0, r6
- 206 011c 3946     		mov	r1, r7
- 207 011e 0022     		movs	r2, #0
- 208 0120 654B     		ldr	r3, .L29+48
- 209 0122 FFF7FEFF 		bl	__aeabi_dcmpge
+ 205 0116 4046     		mov	r0, r8
+ 206 0118 4946     		mov	r1, r9
+ 207 011a 0022     		movs	r2, #0
+ 208 011c 5E4B     		ldr	r3, .L25+48
+ 209 011e FFF7FEFF 		bl	__aeabi_dcmpge
  210              	.LVL32:
- 211 0126 28B1     		cbz	r0, .L5
+ 211 0122 30B1     		cbz	r0, .L5
  212              	.LVL33:
  104:main.c        ****             speedO=speedmax;
  105:main.c        ****             printf("1");
  213              		.loc 1 105 0
- 214 0128 3120     		movs	r0, #49
- 215 012a FFF7FEFF 		bl	putchar
+ 214 0124 3120     		movs	r0, #49
+ 215 0126 FFF7FEFF 		bl	putchar
  216              	.LVL34:
  104:main.c        ****             speedO=speedmax;
  217              		.loc 1 104 0
- 218 012e 5EA7     		adr	r7, .L29+32
- 219 0130 D7E90067 		ldrd	r6, [r7]
+ 218 012a 0FF25C19 		adr	r9, .L25+32
+ 219 012e D9E90089 		ldrd	r8, [r9]
  220              	.LVL35:
  221              	.L5:
  106:main.c        ****         }
- 107:main.c        ****         if (speedV >=210){
+ 107:main.c        ****         if (speedV >=200){
  222              		.loc 1 107 0
- 223 0134 2046     		mov	r0, r4
- 224 0136 2946     		mov	r1, r5
- 225 0138 0022     		movs	r2, #0
- 226 013a 5F4B     		ldr	r3, .L29+48
- 227 013c FFF7FEFF 		bl	__aeabi_dcmpge
+ 223 0132 3046     		mov	r0, r6
+ 224 0134 3946     		mov	r1, r7
+ 225 0136 0022     		movs	r2, #0
+ 226 0138 574B     		ldr	r3, .L25+48
+ 227 013a FFF7FEFF 		bl	__aeabi_dcmpge
  228              	.LVL36:
- 229 0140 28B1     		cbz	r0, .L7
+ 229 013e 28B1     		cbz	r0, .L7
  230              	.LVL37:
  108:main.c        ****             speedV=speedmax;
  109:main.c        ****             printf("2");
  231              		.loc 1 109 0
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 7
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 7
 
 
- 232 0142 3220     		movs	r0, #50
- 233 0144 FFF7FEFF 		bl	putchar
+ 232 0140 3220     		movs	r0, #50
+ 233 0142 FFF7FEFF 		bl	putchar
  234              	.LVL38:
  108:main.c        ****             speedV=speedmax;
  235              		.loc 1 108 0
- 236 0148 57A5     		adr	r5, .L29+32
- 237 014a D5E90045 		ldrd	r4, [r5]
+ 236 0146 50A7     		adr	r7, .L25+32
+ 237 0148 D7E90067 		ldrd	r6, [r7]
  238              	.LVL39:
  239              	.L7:
  110:main.c        ****         }
- 111:main.c        ****         if (speedV >=200 && speedO >=200){
- 240              		.loc 1 111 0
- 241 014e 2046     		mov	r0, r4
- 242 0150 2946     		mov	r1, r5
- 243 0152 0022     		movs	r2, #0
- 244 0154 594B     		ldr	r3, .L29+52
- 245 0156 FFF7FEFF 		bl	__aeabi_dcmpge
- 246              	.LVL40:
- 247 015a 58B1     		cbz	r0, .L9
- 248              		.loc 1 111 0 is_stmt 0 discriminator 1
- 249 015c 3046     		mov	r0, r6
- 250 015e 3946     		mov	r1, r7
- 251 0160 0022     		movs	r2, #0
- 252 0162 564B     		ldr	r3, .L29+52
- 253 0164 FFF7FEFF 		bl	__aeabi_dcmpge
- 254              	.LVL41:
- 255 0168 20B1     		cbz	r0, .L9
+ 111:main.c        ****         /*if (speedV >=150 && speedO >=150){
  112:main.c        ****             speedO=speedmax;
  113:main.c        ****             speedV=speedmax;
- 256              		.loc 1 113 0 is_stmt 1
- 257 016a 4FA5     		adr	r5, .L29+32
- 258 016c D5E90045 		ldrd	r4, [r5]
- 259              	.LVL42:
- 112:main.c        ****             speedO=speedmax;
- 260              		.loc 1 112 0
- 261 0170 2646     		mov	r6, r4
- 262              	.LVL43:
- 263 0172 2F46     		mov	r7, r5
- 264              	.L9:
- 265              	.LVL44:
- 114:main.c        ****         }
+ 114:main.c        ****         }*/
  115:main.c        ****         
  116:main.c        ****         
  117:main.c        ****         //jos toisen moottorin nopeus laskee tietyn nopeuden alle niin lisää toiseen moottoriin n
- 118:main.c        ****         if (oikee < 30) {
- 266              		.loc 1 118 0
- 267 0174 B9F11D0F 		cmp	r9, #29
- 268 0178 09DC     		bgt	.L11
+ 118:main.c        ****         if (oikee < 60) {
+ 240              		.loc 1 118 0
+ 241 014c 3B2D     		cmp	r5, #59
+ 242 014e 0BDC     		bgt	.L9
  119:main.c        ****             speedV = 220+speedO;
- 269              		.loc 1 119 0
- 270 017a 3046     		mov	r0, r6
- 271 017c 3946     		mov	r1, r7
- 272 017e 0022     		movs	r2, #0
- 273 0180 4F4B     		ldr	r3, .L29+56
- 274 0182 FFF7FEFF 		bl	__aeabi_dadd
- 275              	.LVL45:
- 276 0186 0446     		mov	r4, r0
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 8
-
-
- 277              	.LVL46:
- 278 0188 0D46     		mov	r5, r1
- 279              	.LVL47:
+ 243              		.loc 1 119 0
+ 244 0150 4046     		mov	r0, r8
+ 245 0152 4946     		mov	r1, r9
+ 246 0154 0022     		movs	r2, #0
+ 247 0156 514B     		ldr	r3, .L25+52
+ 248 0158 FFF7FEFF 		bl	__aeabi_dadd
+ 249              	.LVL40:
+ 250 015c 0646     		mov	r6, r0
+ 251              	.LVL41:
+ 252 015e 0F46     		mov	r7, r1
+ 253              	.LVL42:
  120:main.c        ****             speedO = 0;
- 280              		.loc 1 120 0
- 281 018a 0026     		movs	r6, #0
- 282 018c 0027     		movs	r7, #0
- 283              	.LVL48:
- 284              	.L11:
+ 254              		.loc 1 120 0
+ 255 0160 4FF00008 		mov	r8, #0
+ 256 0164 4FF00009 		mov	r9, #0
+ 257              	.LVL43:
+ 258              	.L9:
  121:main.c        ****         }
- 122:main.c        ****         if (vase < 30) {
- 285              		.loc 1 122 0
- 286 018e B8F11D0F 		cmp	r8, #29
- 287 0192 09DC     		bgt	.L12
+ 122:main.c        ****         if (vase < 60) {
+ 259              		.loc 1 122 0
+ 260 0168 3B2C     		cmp	r4, #59
+ 261 016a 09DC     		bgt	.L10
  123:main.c        ****             speedO = 220+speedV;
- 288              		.loc 1 123 0
- 289 0194 2046     		mov	r0, r4
- 290 0196 2946     		mov	r1, r5
- 291 0198 0022     		movs	r2, #0
- 292 019a 494B     		ldr	r3, .L29+56
- 293 019c FFF7FEFF 		bl	__aeabi_dadd
- 294              	.LVL49:
- 295 01a0 0646     		mov	r6, r0
- 296              	.LVL50:
- 297 01a2 0F46     		mov	r7, r1
- 298              	.LVL51:
+ 262              		.loc 1 123 0
+ 263 016c 3046     		mov	r0, r6
+ 264 016e 3946     		mov	r1, r7
+ 265 0170 0022     		movs	r2, #0
+ 266 0172 4A4B     		ldr	r3, .L25+52
+ 267 0174 FFF7FEFF 		bl	__aeabi_dadd
+ 268              	.LVL44:
+ 269 0178 8046     		mov	r8, r0
+ 270              	.LVL45:
+ 271 017a 8946     		mov	r9, r1
+ 272              	.LVL46:
  124:main.c        ****             speedV = 0;
- 299              		.loc 1 124 0
- 300 01a4 0024     		movs	r4, #0
- 301 01a6 0025     		movs	r5, #0
- 302              	.LVL52:
- 303              	.L12:
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 8
+
+
+ 273              		.loc 1 124 0
+ 274 017c 0026     		movs	r6, #0
+ 275 017e 0027     		movs	r7, #0
+ 276              	.LVL47:
+ 277              	.L10:
  125:main.c        ****         }
- 126:main.c        ****         if (oikee < 80) {
- 304              		.loc 1 126 0
- 305 01a8 B9F14F0F 		cmp	r9, #79
- 306 01ac 02DC     		bgt	.L13
+ 126:main.c        ****         if (oikee < 73) {
+ 278              		.loc 1 126 0
+ 279 0180 482D     		cmp	r5, #72
+ 280 0182 02DC     		bgt	.L11
  127:main.c        ****             speedV = speedmax;
- 307              		.loc 1 127 0
- 308 01ae 3EA5     		adr	r5, .L29+32
- 309 01b0 D5E90045 		ldrd	r4, [r5]
- 310              	.LVL53:
- 311              	.L13:
+ 281              		.loc 1 127 0
+ 282 0184 40A7     		adr	r7, .L25+32
+ 283 0186 D7E90067 		ldrd	r6, [r7]
+ 284              	.LVL48:
+ 285              	.L11:
  128:main.c        ****                     }
- 129:main.c        ****         if (vase < 80) {
- 312              		.loc 1 129 0
- 313 01b4 B8F14F0F 		cmp	r8, #79
- 314 01b8 02DC     		bgt	.L14
+ 129:main.c        ****         if (vase < 73) {
+ 286              		.loc 1 129 0
+ 287 018a 482C     		cmp	r4, #72
+ 288 018c 03DC     		bgt	.L12
  130:main.c        ****             speedO = speedmax;
- 315              		.loc 1 130 0
- 316 01ba 3BA7     		adr	r7, .L29+32
- 317 01bc D7E90067 		ldrd	r6, [r7]
- 318              	.LVL54:
- 319              	.L14:
+ 289              		.loc 1 130 0
+ 290 018e 0FF2F809 		adr	r9, .L25+32
+ 291 0192 D9E90089 		ldrd	r8, [r9]
+ 292              	.LVL49:
+ 293              	.L12:
  131:main.c        ****               
  132:main.c        ****         }
  133:main.c        ****         
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 9
-
-
  134:main.c        ****         // hätätilanteisiin joissa robotti eksyy radalta, käytämme reunimmaisia antureita
  135:main.c        ****         if (ref.r3 > 6000 && dig.l1 == 1 && dig.l3 == 1){
- 320              		.loc 1 135 0
- 321 01c0 BDF81620 		ldrh	r2, [sp, #22]
- 322 01c4 41F27073 		movw	r3, #6000
- 323 01c8 9A42     		cmp	r2, r3
- 324 01ca 0CD9     		bls	.L15
- 325              		.loc 1 135 0 is_stmt 0 discriminator 1
- 326 01cc BDF80A30 		ldrh	r3, [sp, #10]
- 327 01d0 012B     		cmp	r3, #1
- 328 01d2 08D1     		bne	.L15
- 329              		.loc 1 135 0 discriminator 2
- 330 01d4 BDF80830 		ldrh	r3, [sp, #8]
- 331 01d8 012B     		cmp	r3, #1
- 332 01da 04D1     		bne	.L15
+ 294              		.loc 1 135 0
+ 295 0196 BDF81620 		ldrh	r2, [sp, #22]
+ 296 019a 41F27073 		movw	r3, #6000
+ 297 019e 9A42     		cmp	r2, r3
+ 298 01a0 0DD9     		bls	.L13
+ 299              		.loc 1 135 0 is_stmt 0 discriminator 1
+ 300 01a2 BDF80A30 		ldrh	r3, [sp, #10]
+ 301 01a6 012B     		cmp	r3, #1
+ 302 01a8 09D1     		bne	.L13
+ 303              		.loc 1 135 0 discriminator 2
+ 304 01aa BDF80830 		ldrh	r3, [sp, #8]
+ 305 01ae 012B     		cmp	r3, #1
+ 306 01b0 05D1     		bne	.L13
  136:main.c        ****             speedO = speedmax;
- 137:main.c        ****             speedV = 15;
- 333              		.loc 1 137 0 is_stmt 1
- 334 01dc 0024     		movs	r4, #0
- 335              	.LVL55:
- 336 01de 394D     		ldr	r5, .L29+60
+ 137:main.c        ****             speedV = 0;
+ 307              		.loc 1 137 0 is_stmt 1
+ 308 01b2 0026     		movs	r6, #0
+ 309              	.LVL50:
+ 310 01b4 0027     		movs	r7, #0
  136:main.c        ****             speedO = speedmax;
- 337              		.loc 1 136 0
- 338 01e0 31A7     		adr	r7, .L29+32
- 339 01e2 D7E90067 		ldrd	r6, [r7]
- 340              	.LVL56:
- 341              	.L15:
+ 311              		.loc 1 136 0
+ 312 01b6 0FF2D009 		adr	r9, .L25+32
+ 313 01ba D9E90089 		ldrd	r8, [r9]
+ 314              	.LVL51:
+ 315              	.L13:
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 9
+
+
  138:main.c        ****         }
  139:main.c        ****         if (dig.r3 == 1 && dig.r1 == 1 && ref.l3 > 6000){
- 342              		.loc 1 139 0
- 343 01e6 BDF80E30 		ldrh	r3, [sp, #14]
- 344 01ea 012B     		cmp	r3, #1
- 345 01ec 0ED1     		bne	.L16
- 346              		.loc 1 139 0 is_stmt 0 discriminator 1
- 347 01ee BDF80C30 		ldrh	r3, [sp, #12]
- 348 01f2 012B     		cmp	r3, #1
- 349 01f4 0AD1     		bne	.L16
- 350              		.loc 1 139 0 discriminator 2
- 351 01f6 BDF81020 		ldrh	r2, [sp, #16]
- 352 01fa 41F27073 		movw	r3, #6000
- 353 01fe 9A42     		cmp	r2, r3
- 354 0200 04D9     		bls	.L16
+ 316              		.loc 1 139 0
+ 317 01be BDF80E30 		ldrh	r3, [sp, #14]
+ 318 01c2 012B     		cmp	r3, #1
+ 319 01c4 10D1     		bne	.L14
+ 320              		.loc 1 139 0 is_stmt 0 discriminator 1
+ 321 01c6 BDF80C30 		ldrh	r3, [sp, #12]
+ 322 01ca 012B     		cmp	r3, #1
+ 323 01cc 0CD1     		bne	.L14
+ 324              		.loc 1 139 0 discriminator 2
+ 325 01ce BDF81020 		ldrh	r2, [sp, #16]
+ 326 01d2 41F27073 		movw	r3, #6000
+ 327 01d6 9A42     		cmp	r2, r3
+ 328 01d8 06D9     		bls	.L14
  140:main.c        ****             speedV = speedmax;
- 355              		.loc 1 140 0 is_stmt 1
- 356 0202 29A5     		adr	r5, .L29+32
- 357 0204 D5E90045 		ldrd	r4, [r5]
- 358              	.LVL57:
- 141:main.c        ****             speedO = 15;
- 359              		.loc 1 141 0
- 360 0208 0026     		movs	r6, #0
- 361              	.LVL58:
- 362 020a 2E4F     		ldr	r7, .L29+60
- 363              	.L16:
- 364              	.LVL59:
+ 329              		.loc 1 140 0 is_stmt 1
+ 330 01da 2BA7     		adr	r7, .L25+32
+ 331 01dc D7E90067 		ldrd	r6, [r7]
+ 332              	.LVL52:
+ 141:main.c        ****             speedO = 0;
+ 333              		.loc 1 141 0
+ 334 01e0 4FF00008 		mov	r8, #0
+ 335              	.LVL53:
+ 336 01e4 4FF00009 		mov	r9, #0
+ 337              	.L14:
+ 338              	.LVL54:
  142:main.c        ****         }
  143:main.c        ****         if (ref.l3 > 13000 && ref.l3 < 8000){
- 144:main.c        ****             motor_turboturnLeft(255,255);
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 10
-
-
+ 144:main.c        ****             motor_turboturnLeft(255,0);
  145:main.c        ****         }
  146:main.c        ****         if (ref.r3 > 13000 && ref.r3 < 8000){
- 147:main.c        ****             motor_turboturnRight(255,255);
+ 147:main.c        ****             motor_turboturnRight(255,0);
  148:main.c        ****         }
  149:main.c        ****         
  150:main.c        ****         // pääasiallinen ajaminen
  151:main.c        ****              motor_turn(speedO,speedV,0);
- 365              		.loc 1 151 0
- 366 020c 3046     		mov	r0, r6
- 367 020e 3946     		mov	r1, r7
- 368 0210 FFF7FEFF 		bl	__aeabi_d2uiz
- 369              	.LVL60:
- 370 0214 C6B2     		uxtb	r6, r0
- 371              	.LVL61:
- 372 0216 2046     		mov	r0, r4
- 373 0218 2946     		mov	r1, r5
- 374 021a FFF7FEFF 		bl	__aeabi_d2uiz
- 375              	.LVL62:
- 376 021e C4B2     		uxtb	r4, r0
- 377              	.LVL63:
- 378 0220 3046     		mov	r0, r6
- 379 0222 2146     		mov	r1, r4
- 380 0224 0022     		movs	r2, #0
- 381 0226 FFF7FEFF 		bl	motor_turn
- 382              	.LVL64:
+ 339              		.loc 1 151 0
+ 340 01e8 4046     		mov	r0, r8
+ 341 01ea 4946     		mov	r1, r9
+ 342 01ec FFF7FEFF 		bl	__aeabi_d2uiz
+ 343              	.LVL55:
+ 344 01f0 C5B2     		uxtb	r5, r0
+ 345              	.LVL56:
+ 346 01f2 3046     		mov	r0, r6
+ 347 01f4 3946     		mov	r1, r7
+ 348 01f6 FFF7FEFF 		bl	__aeabi_d2uiz
+ 349              	.LVL57:
+ 350 01fa C4B2     		uxtb	r4, r0
+ 351              	.LVL58:
+ 352 01fc 2846     		mov	r0, r5
+ 353 01fe 2146     		mov	r1, r4
+ 354 0200 0022     		movs	r2, #0
+ 355 0202 FFF7FEFF 		bl	motor_turn
+ 356              	.LVL59:
  152:main.c        ****             
  153:main.c        ****         // viivoille pysähtyminen ja ohjaimella lähettäminen
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 10
+
+
  154:main.c        ****         if(dig.l3 == 0 && dig.l1== 0 && dig.r1== 0 && dig.r3== 0){
- 383              		.loc 1 154 0
- 384 022a BDF80830 		ldrh	r3, [sp, #8]
- 385 022e 002B     		cmp	r3, #0
- 386 0230 7FF400AF 		bne	.L2
- 387              		.loc 1 154 0 is_stmt 0 discriminator 1
- 388 0234 BDF80A30 		ldrh	r3, [sp, #10]
- 389 0238 002B     		cmp	r3, #0
- 390 023a 7FF4FBAE 		bne	.L2
- 391              		.loc 1 154 0 discriminator 2
- 392 023e BDF80C30 		ldrh	r3, [sp, #12]
- 393 0242 002B     		cmp	r3, #0
- 394 0244 7FF4F6AE 		bne	.L2
- 395              		.loc 1 154 0 discriminator 3
- 396 0248 BDF80E30 		ldrh	r3, [sp, #14]
- 397 024c 002B     		cmp	r3, #0
- 398 024e 7FF4F1AE 		bne	.L2
+ 357              		.loc 1 154 0
+ 358 0206 BDF80830 		ldrh	r3, [sp, #8]
+ 359 020a 002B     		cmp	r3, #0
+ 360 020c 7FF412AF 		bne	.L2
+ 361              		.loc 1 154 0 is_stmt 0 discriminator 1
+ 362 0210 BDF80A30 		ldrh	r3, [sp, #10]
+ 363 0214 002B     		cmp	r3, #0
+ 364 0216 7FF40DAF 		bne	.L2
+ 365              		.loc 1 154 0 discriminator 2
+ 366 021a BDF80C30 		ldrh	r3, [sp, #12]
+ 367 021e 002B     		cmp	r3, #0
+ 368 0220 7FF408AF 		bne	.L2
+ 369              		.loc 1 154 0 discriminator 3
+ 370 0224 BDF80E30 		ldrh	r3, [sp, #14]
+ 371 0228 002B     		cmp	r3, #0
+ 372 022a 7FF403AF 		bne	.L2
  155:main.c        ****         
  156:main.c        ****             if(mustaviiva==1){
- 399              		.loc 1 156 0 is_stmt 1
- 400 0252 BAF1010F 		cmp	r10, #1
- 401 0256 0BD1     		bne	.L18
+ 373              		.loc 1 156 0 is_stmt 1
+ 374 022e BAF1010F 		cmp	r10, #1
+ 375 0232 0BD1     		bne	.L16
  157:main.c        ****                 motor_stop();
- 402              		.loc 1 157 0
- 403 0258 FFF7FEFF 		bl	motor_stop
- 404              	.LVL65:
+ 376              		.loc 1 157 0
+ 377 0234 FFF7FEFF 		bl	motor_stop
+ 378              	.LVL60:
  158:main.c        ****                 wait_going_down();
- 405              		.loc 1 158 0
- 406 025c FFF7FEFF 		bl	wait_going_down
- 407              	.LVL66:
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 11
-
-
+ 379              		.loc 1 158 0
+ 380 0238 FFF7FEFF 		bl	wait_going_down
+ 381              	.LVL61:
  159:main.c        ****                 motor_start();
- 408              		.loc 1 159 0
- 409 0260 FFF7FEFF 		bl	motor_start
- 410              	.LVL67:
+ 382              		.loc 1 159 0
+ 383 023c FFF7FEFF 		bl	motor_start
+ 384              	.LVL62:
  160:main.c        ****                 motor_turn(speedO,speedV,0);
- 411              		.loc 1 160 0
- 412 0264 3046     		mov	r0, r6
- 413 0266 2146     		mov	r1, r4
- 414 0268 0022     		movs	r2, #0
- 415 026a FFF7FEFF 		bl	motor_turn
- 416              	.LVL68:
- 417 026e 04E0     		b	.L19
- 418              	.L18:
+ 385              		.loc 1 160 0
+ 386 0240 2846     		mov	r0, r5
+ 387 0242 2146     		mov	r1, r4
+ 388 0244 0022     		movs	r2, #0
+ 389 0246 FFF7FEFF 		bl	motor_turn
+ 390              	.LVL63:
+ 391 024a 04E0     		b	.L17
+ 392              	.L16:
  161:main.c        ****             }else if(mustaviiva == 3){
- 419              		.loc 1 161 0
- 420 0270 BAF1030F 		cmp	r10, #3
- 421 0274 01D1     		bne	.L19
+ 393              		.loc 1 161 0
+ 394 024c BAF1030F 		cmp	r10, #3
+ 395 0250 01D1     		bne	.L17
  162:main.c        ****                 motor_stop();
- 422              		.loc 1 162 0
- 423 0276 FFF7FEFF 		bl	motor_stop
- 424              	.LVL69:
- 425              	.L19:
+ 396              		.loc 1 162 0
+ 397 0252 FFF7FEFF 		bl	motor_stop
+ 398              	.LVL64:
+ 399              	.L17:
  163:main.c        ****         }
  164:main.c        ****         mustaviiva++;
- 426              		.loc 1 164 0
- 427 027a 0AF1010A 		add	r10, r10, #1
- 428              	.LVL70:
+ 400              		.loc 1 164 0
+ 401 0256 0AF1010A 		add	r10, r10, #1
+ 402              	.LVL65:
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 11
+
+
  165:main.c        ****         CyDelay(92);
- 429              		.loc 1 165 0
- 430 027e 5C20     		movs	r0, #92
- 431 0280 FFF7FEFF 		bl	CyDelay
- 432              	.LVL71:
- 433 0284 D6E6     		b	.L2
- 434              	.L30:
- 435 0286 00BF     		.align	3
- 436              	.L29:
- 437 0288 12F8C3CF 		.word	-809240558
- 438 028c 7F0FD93F 		.word	1071189887
- 439 0290 F5F3A622 		.word	581366773
- 440 0294 15C60E40 		.word	1074710037
- 441 0298 AE47E17A 		.word	2061584302
- 442 029c 14666C40 		.word	1080845844
- 443 02a0 00000000 		.word	0
- 444 02a4 80842E41 		.word	1093567616
- 445 02a8 00000000 		.word	0
- 446 02ac 00C06F40 		.word	1081065472
- 447 02b0 00000000 		.word	sensor_isr_handler
- 448 02b4 00000000 		.word	.LC0
- 449 02b8 00406A40 		.word	1080705024
- 450 02bc 00006940 		.word	1080623104
- 451 02c0 00806B40 		.word	1080786944
- 452 02c4 00002E40 		.word	1076756480
- 453              	.LBE2:
- 454              		.cfi_endproc
- 455              	.LFE63:
- 456              		.size	main, .-main
- 457              		.section	.text._write,"ax",%progbits
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 12
-
-
- 458              		.align	2
- 459              		.global	_write
- 460              		.thumb
- 461              		.thumb_func
- 462              		.type	_write, %function
- 463              	_write:
- 464              	.LFB64:
+ 403              		.loc 1 165 0
+ 404 025a 5C20     		movs	r0, #92
+ 405 025c FFF7FEFF 		bl	CyDelay
+ 406              	.LVL66:
+ 407 0260 E8E6     		b	.L2
+ 408              	.L26:
+ 409 0262 00BFAFF3 		.align	3
+ 409      0080
+ 410              	.L25:
+ 411 0268 12F8C3CF 		.word	-809240558
+ 412 026c 7F0FD93F 		.word	1071189887
+ 413 0270 F5F3A622 		.word	581366773
+ 414 0274 15C60E40 		.word	1074710037
+ 415 0278 AE47E17A 		.word	2061584302
+ 416 027c 14666C40 		.word	1080845844
+ 417 0280 00000000 		.word	0
+ 418 0284 80842E41 		.word	1093567616
+ 419 0288 00000000 		.word	0
+ 420 028c 00C06F40 		.word	1081065472
+ 421 0290 00000000 		.word	sensor_isr_handler
+ 422 0294 00000000 		.word	.LC0
+ 423 0298 00006940 		.word	1080623104
+ 424 029c 00806B40 		.word	1080786944
+ 425              	.LBE2:
+ 426              		.cfi_endproc
+ 427              	.LFE63:
+ 428              		.size	main, .-main
+ 429              		.section	.text._write,"ax",%progbits
+ 430              		.align	2
+ 431              		.global	_write
+ 432              		.thumb
+ 433              		.thumb_func
+ 434              		.type	_write, %function
+ 435              	_write:
+ 436              	.LFB64:
  166:main.c        ****     }
  167:main.c        **** 
  168:main.c        ****     }
@@ -689,6 +658,9 @@ ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 1
  184:main.c        ****     while(!(Timer_1_ReadStatusRegister() & Timer_1_STATUS_TC)) {
  185:main.c        ****         if(SC0_Read() == 0 && end == 0) {
  186:main.c        ****             end = Timer_1_ReadCounter();
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 12
+
+
  187:main.c        ****         }
  188:main.c        ****     }
  189:main.c        ****     Timer_1_Stop();
@@ -700,2087 +672,2063 @@ ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 1
  195:main.c        **** /* Don't remove the functions below */
  196:main.c        **** int _write(int file, char *ptr, int len)
  197:main.c        **** {
- 465              		.loc 1 197 0
- 466              		.cfi_startproc
- 467              		@ args = 0, pretend = 0, frame = 0
- 468              		@ frame_needed = 0, uses_anonymous_args = 0
- 469              	.LVL72:
- 470 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
- 471              		.cfi_def_cfa_offset 24
- 472              		.cfi_offset 3, -24
- 473              		.cfi_offset 4, -20
- 474              		.cfi_offset 5, -16
- 475              		.cfi_offset 6, -12
- 476              		.cfi_offset 7, -8
- 477              		.cfi_offset 14, -4
- 478 0002 0C46     		mov	r4, r1
- 479 0004 1746     		mov	r7, r2
- 480              	.LVL73:
+ 437              		.loc 1 197 0
+ 438              		.cfi_startproc
+ 439              		@ args = 0, pretend = 0, frame = 0
+ 440              		@ frame_needed = 0, uses_anonymous_args = 0
+ 441              	.LVL67:
+ 442 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 443              		.cfi_def_cfa_offset 24
+ 444              		.cfi_offset 3, -24
+ 445              		.cfi_offset 4, -20
+ 446              		.cfi_offset 5, -16
+ 447              		.cfi_offset 6, -12
+ 448              		.cfi_offset 7, -8
+ 449              		.cfi_offset 14, -4
+ 450 0002 0C46     		mov	r4, r1
+ 451 0004 1746     		mov	r7, r2
+ 452              	.LVL68:
  198:main.c        ****     (void)file; /* Parameter is not used, suppress unused argument warning */
  199:main.c        **** 	int n;
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 13
-
-
  200:main.c        **** 	for(n = 0; n < len; n++) {
- 481              		.loc 1 200 0
- 482 0006 0025     		movs	r5, #0
- 483 0008 0BE0     		b	.L32
- 484              	.LVL74:
- 485              	.L34:
+ 453              		.loc 1 200 0
+ 454 0006 0025     		movs	r5, #0
+ 455 0008 0BE0     		b	.L28
+ 456              	.LVL69:
+ 457              	.L30:
  201:main.c        ****         if(*ptr == '\n') UART_1_PutChar('\r');
- 486              		.loc 1 201 0
- 487 000a 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
- 488 000c 0A2B     		cmp	r3, #10
- 489 000e 02D1     		bne	.L33
- 490              		.loc 1 201 0 is_stmt 0 discriminator 1
- 491 0010 0D20     		movs	r0, #13
- 492 0012 FFF7FEFF 		bl	UART_1_PutChar
- 493              	.LVL75:
- 494              	.L33:
+ 458              		.loc 1 201 0
+ 459 000a 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 460 000c 0A2B     		cmp	r3, #10
+ 461 000e 02D1     		bne	.L29
+ 462              		.loc 1 201 0 is_stmt 0 discriminator 1
+ 463 0010 0D20     		movs	r0, #13
+ 464 0012 FFF7FEFF 		bl	UART_1_PutChar
+ 465              	.LVL70:
+ 466              	.L29:
  202:main.c        **** 		UART_1_PutChar(*ptr++);
- 495              		.loc 1 202 0 is_stmt 1 discriminator 2
- 496 0016 661C     		adds	r6, r4, #1
- 497              	.LVL76:
- 498 0018 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
- 499 001a FFF7FEFF 		bl	UART_1_PutChar
- 500              	.LVL77:
+ 467              		.loc 1 202 0 is_stmt 1 discriminator 2
+ 468 0016 661C     		adds	r6, r4, #1
+ 469              	.LVL71:
+ 470 0018 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 471 001a FFF7FEFF 		bl	UART_1_PutChar
+ 472              	.LVL72:
  200:main.c        ****         if(*ptr == '\n') UART_1_PutChar('\r');
- 501              		.loc 1 200 0 discriminator 2
- 502 001e 0135     		adds	r5, r5, #1
- 503              	.LVL78:
- 504              		.loc 1 202 0 discriminator 2
- 505 0020 3446     		mov	r4, r6
- 506              	.LVL79:
- 507              	.L32:
+ 473              		.loc 1 200 0 discriminator 2
+ 474 001e 0135     		adds	r5, r5, #1
+ 475              	.LVL73:
+ 476              		.loc 1 202 0 discriminator 2
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 13
+
+
+ 477 0020 3446     		mov	r4, r6
+ 478              	.LVL74:
+ 479              	.L28:
  200:main.c        ****         if(*ptr == '\n') UART_1_PutChar('\r');
- 508              		.loc 1 200 0 discriminator 1
- 509 0022 BD42     		cmp	r5, r7
- 510 0024 F1DB     		blt	.L34
+ 480              		.loc 1 200 0 discriminator 1
+ 481 0022 BD42     		cmp	r5, r7
+ 482 0024 F1DB     		blt	.L30
  203:main.c        **** 	}
  204:main.c        **** 	return len;
  205:main.c        **** }
- 511              		.loc 1 205 0
- 512 0026 3846     		mov	r0, r7
- 513 0028 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
- 514              		.cfi_endproc
- 515              	.LFE64:
- 516              		.size	_write, .-_write
- 517 002a 00BF     		.section	.text._read,"ax",%progbits
- 518              		.align	2
- 519              		.global	_read
- 520              		.thumb
- 521              		.thumb_func
- 522              		.type	_read, %function
- 523              	_read:
- 524              	.LFB65:
+ 483              		.loc 1 205 0
+ 484 0026 3846     		mov	r0, r7
+ 485 0028 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 486              		.cfi_endproc
+ 487              	.LFE64:
+ 488              		.size	_write, .-_write
+ 489 002a 00BF     		.section	.text._read,"ax",%progbits
+ 490              		.align	2
+ 491              		.global	_read
+ 492              		.thumb
+ 493              		.thumb_func
+ 494              		.type	_read, %function
+ 495              	_read:
+ 496              	.LFB65:
  206:main.c        **** 
  207:main.c        **** int _read (int file, char *ptr, int count)
  208:main.c        **** {
- 525              		.loc 1 208 0
- 526              		.cfi_startproc
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 14
-
-
- 527              		@ args = 0, pretend = 0, frame = 0
- 528              		@ frame_needed = 0, uses_anonymous_args = 0
- 529              	.LVL80:
- 530 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
- 531              		.cfi_def_cfa_offset 24
- 532              		.cfi_offset 3, -24
- 533              		.cfi_offset 4, -20
- 534              		.cfi_offset 5, -16
- 535              		.cfi_offset 6, -12
- 536              		.cfi_offset 7, -8
- 537              		.cfi_offset 14, -4
- 538 0002 0F46     		mov	r7, r1
- 539 0004 1446     		mov	r4, r2
- 540              	.LVL81:
+ 497              		.loc 1 208 0
+ 498              		.cfi_startproc
+ 499              		@ args = 0, pretend = 0, frame = 0
+ 500              		@ frame_needed = 0, uses_anonymous_args = 0
+ 501              	.LVL75:
+ 502 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 503              		.cfi_def_cfa_offset 24
+ 504              		.cfi_offset 3, -24
+ 505              		.cfi_offset 4, -20
+ 506              		.cfi_offset 5, -16
+ 507              		.cfi_offset 6, -12
+ 508              		.cfi_offset 7, -8
+ 509              		.cfi_offset 14, -4
+ 510 0002 0F46     		mov	r7, r1
+ 511 0004 1446     		mov	r4, r2
+ 512              	.LVL76:
  209:main.c        ****     int chs = 0;
- 541              		.loc 1 209 0
- 542 0006 0026     		movs	r6, #0
+ 513              		.loc 1 209 0
+ 514 0006 0026     		movs	r6, #0
  210:main.c        ****     char ch;
  211:main.c        ****  
  212:main.c        ****     (void)file; /* Parameter is not used, suppress unused argument warning */
  213:main.c        ****     while(count > 0) {
- 543              		.loc 1 213 0
- 544 0008 12E0     		b	.L38
- 545              	.LVL82:
- 546              	.L41:
+ 515              		.loc 1 213 0
+ 516 0008 12E0     		b	.L34
+ 517              	.LVL77:
+ 518              	.L37:
  214:main.c        ****         ch = UART_1_GetChar();
- 547              		.loc 1 214 0
- 548 000a FFF7FEFF 		bl	UART_1_GetChar
- 549              	.LVL83:
+ 519              		.loc 1 214 0
+ 520 000a FFF7FEFF 		bl	UART_1_GetChar
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 14
+
+
+ 521              	.LVL78:
  215:main.c        ****         if(ch != 0) {
- 550              		.loc 1 215 0
- 551 000e 0546     		mov	r5, r0
- 552 0010 70B1     		cbz	r0, .L38
+ 522              		.loc 1 215 0
+ 523 000e 0546     		mov	r5, r0
+ 524 0010 70B1     		cbz	r0, .L34
  216:main.c        ****             UART_1_PutChar(ch);
- 553              		.loc 1 216 0
- 554 0012 FFF7FEFF 		bl	UART_1_PutChar
- 555              	.LVL84:
+ 525              		.loc 1 216 0
+ 526 0012 FFF7FEFF 		bl	UART_1_PutChar
+ 527              	.LVL79:
  217:main.c        ****             chs++;
- 556              		.loc 1 217 0
- 557 0016 0136     		adds	r6, r6, #1
- 558              	.LVL85:
+ 528              		.loc 1 217 0
+ 529 0016 0136     		adds	r6, r6, #1
+ 530              	.LVL80:
  218:main.c        ****             if(ch == '\r') {
- 559              		.loc 1 218 0
- 560 0018 0D2D     		cmp	r5, #13
- 561 001a 03D1     		bne	.L39
- 562              	.LVL86:
+ 531              		.loc 1 218 0
+ 532 0018 0D2D     		cmp	r5, #13
+ 533 001a 03D1     		bne	.L35
+ 534              	.LVL81:
  219:main.c        ****                 ch = '\n';
  220:main.c        ****                 UART_1_PutChar(ch);
- 563              		.loc 1 220 0
- 564 001c 0A20     		movs	r0, #10
- 565 001e FFF7FEFF 		bl	UART_1_PutChar
- 566              	.LVL87:
+ 535              		.loc 1 220 0
+ 536 001c 0A20     		movs	r0, #10
+ 537 001e FFF7FEFF 		bl	UART_1_PutChar
+ 538              	.LVL82:
  219:main.c        ****                 ch = '\n';
- 567              		.loc 1 219 0
- 568 0022 0A25     		movs	r5, #10
- 569              	.LVL88:
- 570              	.L39:
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 15
-
-
+ 539              		.loc 1 219 0
+ 540 0022 0A25     		movs	r5, #10
+ 541              	.LVL83:
+ 542              	.L35:
  221:main.c        ****             }
  222:main.c        ****             *ptr++ = ch;
- 571              		.loc 1 222 0
- 572 0024 7B1C     		adds	r3, r7, #1
- 573              	.LVL89:
- 574 0026 3D70     		strb	r5, [r7]
+ 543              		.loc 1 222 0
+ 544 0024 7B1C     		adds	r3, r7, #1
+ 545              	.LVL84:
+ 546 0026 3D70     		strb	r5, [r7]
  223:main.c        ****             count--;
- 575              		.loc 1 223 0
- 576 0028 013C     		subs	r4, r4, #1
- 577              	.LVL90:
+ 547              		.loc 1 223 0
+ 548 0028 013C     		subs	r4, r4, #1
+ 549              	.LVL85:
  224:main.c        ****             if(ch == '\n') break;
- 578              		.loc 1 224 0
- 579 002a 0A2D     		cmp	r5, #10
- 580 002c 02D0     		beq	.L40
+ 550              		.loc 1 224 0
+ 551 002a 0A2D     		cmp	r5, #10
+ 552 002c 02D0     		beq	.L36
  222:main.c        ****             count--;
- 581              		.loc 1 222 0
- 582 002e 1F46     		mov	r7, r3
- 583              	.LVL91:
- 584              	.L38:
+ 553              		.loc 1 222 0
+ 554 002e 1F46     		mov	r7, r3
+ 555              	.LVL86:
+ 556              	.L34:
  213:main.c        ****         ch = UART_1_GetChar();
- 585              		.loc 1 213 0
- 586 0030 002C     		cmp	r4, #0
- 587 0032 EADC     		bgt	.L41
- 588              	.LVL92:
- 589              	.L40:
+ 557              		.loc 1 213 0
+ 558 0030 002C     		cmp	r4, #0
+ 559 0032 EADC     		bgt	.L37
+ 560              	.LVL87:
+ 561              	.L36:
  225:main.c        ****         }
  226:main.c        ****     }
  227:main.c        ****     return chs;
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 15
+
+
  228:main.c        **** }
- 590              		.loc 1 228 0
- 591 0034 3046     		mov	r0, r6
- 592 0036 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
- 593              		.cfi_endproc
- 594              	.LFE65:
- 595              		.size	_read, .-_read
- 596              		.section	.rodata.str1.4,"aMS",%progbits,1
- 597              		.align	2
- 598              	.LC0:
- 599 0000 0A426F6F 		.ascii	"\012Boot\000"
- 599      7400
- 600 0006 0000     		.text
- 601              	.Letext0:
- 602              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
- 603              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
- 604              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 605              		.file 5 ".\\ZumoLibrary/Reflectance.h"
- 606              		.file 6 "Generated_Source\\PSoC5/CyLib.h"
- 607              		.file 7 ".\\ZumoLibrary/Motor.h"
- 608              		.file 8 ".\\ZumoLibrary/IR.h"
- 609              		.file 9 "Generated_Source\\PSoC5/UART_1.h"
- 610              		.file 10 "Generated_Source\\PSoC5/ADC_Battery.h"
- 611              		.file 11 "Generated_Source\\PSoC5/IR_led.h"
- 612              		.file 12 "Generated_Source\\PSoC5/sensor_isr.h"
- 613              		.file 13 "<built-in>"
- 614              		.file 14 "Generated_Source\\PSoC5/BatteryLed.h"
- 615              		.file 15 "Generated_Source\\PSoC5/core_cm3.h"
- 616              		.section	.debug_info,"",%progbits
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 16
+ 562              		.loc 1 228 0
+ 563 0034 3046     		mov	r0, r6
+ 564 0036 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 565              		.cfi_endproc
+ 566              	.LFE65:
+ 567              		.size	_read, .-_read
+ 568              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 569              		.align	2
+ 570              	.LC0:
+ 571 0000 0A426F6F 		.ascii	"\012Boot\000"
+ 571      7400
+ 572 0006 0000     		.text
+ 573              	.Letext0:
+ 574              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 575              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 576              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 577              		.file 5 ".\\ZumoLibrary/Reflectance.h"
+ 578              		.file 6 "Generated_Source\\PSoC5/CyLib.h"
+ 579              		.file 7 ".\\ZumoLibrary/Motor.h"
+ 580              		.file 8 ".\\ZumoLibrary/IR.h"
+ 581              		.file 9 "Generated_Source\\PSoC5/UART_1.h"
+ 582              		.file 10 "Generated_Source\\PSoC5/ADC_Battery.h"
+ 583              		.file 11 "Generated_Source\\PSoC5/IR_led.h"
+ 584              		.file 12 "Generated_Source\\PSoC5/sensor_isr.h"
+ 585              		.file 13 "<built-in>"
+ 586              		.file 14 "Generated_Source\\PSoC5/BatteryLed.h"
+ 587              		.file 15 "Generated_Source\\PSoC5/core_cm3.h"
+ 588              		.section	.debug_info,"",%progbits
+ 589              	.Ldebug_info0:
+ 590 0000 80050000 		.4byte	0x580
+ 591 0004 0400     		.2byte	0x4
+ 592 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 593 000a 04       		.byte	0x4
+ 594 000b 01       		.uleb128 0x1
+ 595 000c E2010000 		.4byte	.LASF54
+ 596 0010 01       		.byte	0x1
+ 597 0011 A7020000 		.4byte	.LASF55
+ 598 0015 88000000 		.4byte	.LASF56
+ 599 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 600 001d 00000000 		.4byte	0
+ 601 0021 00000000 		.4byte	.Ldebug_line0
+ 602 0025 02       		.uleb128 0x2
+ 603 0026 08       		.byte	0x8
+ 604 0027 04       		.byte	0x4
+ 605 0028 23030000 		.4byte	.LASF0
+ 606 002c 03       		.uleb128 0x3
+ 607 002d 04       		.byte	0x4
+ 608 002e 05       		.byte	0x5
+ 609 002f 696E7400 		.ascii	"int\000"
+ 610 0033 02       		.uleb128 0x2
+ 611 0034 01       		.byte	0x1
+ 612 0035 06       		.byte	0x6
+ 613 0036 81010000 		.4byte	.LASF1
+ 614 003a 02       		.uleb128 0x2
+ 615 003b 01       		.byte	0x1
+ 616 003c 08       		.byte	0x8
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 16
 
 
- 617              	.Ldebug_info0:
- 618 0000 7C050000 		.4byte	0x57c
- 619 0004 0400     		.2byte	0x4
- 620 0006 00000000 		.4byte	.Ldebug_abbrev0
- 621 000a 04       		.byte	0x4
- 622 000b 01       		.uleb128 0x1
- 623 000c E2010000 		.4byte	.LASF54
- 624 0010 01       		.byte	0x1
- 625 0011 A7020000 		.4byte	.LASF55
- 626 0015 88000000 		.4byte	.LASF56
- 627 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 628 001d 00000000 		.4byte	0
- 629 0021 00000000 		.4byte	.Ldebug_line0
- 630 0025 02       		.uleb128 0x2
- 631 0026 08       		.byte	0x8
- 632 0027 04       		.byte	0x4
- 633 0028 23030000 		.4byte	.LASF0
- 634 002c 03       		.uleb128 0x3
- 635 002d 04       		.byte	0x4
- 636 002e 05       		.byte	0x5
- 637 002f 696E7400 		.ascii	"int\000"
- 638 0033 02       		.uleb128 0x2
- 639 0034 01       		.byte	0x1
- 640 0035 06       		.byte	0x6
- 641 0036 81010000 		.4byte	.LASF1
- 642 003a 02       		.uleb128 0x2
- 643 003b 01       		.byte	0x1
- 644 003c 08       		.byte	0x8
- 645 003d 42010000 		.4byte	.LASF2
- 646 0041 02       		.uleb128 0x2
- 647 0042 02       		.byte	0x2
- 648 0043 05       		.byte	0x5
- 649 0044 29000000 		.4byte	.LASF3
- 650 0048 04       		.uleb128 0x4
- 651 0049 58000000 		.4byte	.LASF5
- 652 004d 02       		.byte	0x2
- 653 004e 2B       		.byte	0x2b
- 654 004f 53000000 		.4byte	0x53
- 655 0053 02       		.uleb128 0x2
- 656 0054 02       		.byte	0x2
- 657 0055 07       		.byte	0x7
- 658 0056 BF010000 		.4byte	.LASF4
- 659 005a 04       		.uleb128 0x4
- 660 005b F5020000 		.4byte	.LASF6
- 661 005f 02       		.byte	0x2
- 662 0060 3F       		.byte	0x3f
- 663 0061 65000000 		.4byte	0x65
- 664 0065 02       		.uleb128 0x2
- 665 0066 04       		.byte	0x4
- 666 0067 05       		.byte	0x5
- 667 0068 32010000 		.4byte	.LASF7
- 668 006c 02       		.uleb128 0x2
- 669 006d 04       		.byte	0x4
- 670 006e 07       		.byte	0x7
- 671 006f AE020000 		.4byte	.LASF8
- 672 0073 02       		.uleb128 0x2
- 673 0074 08       		.byte	0x8
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 17
+ 617 003d 42010000 		.4byte	.LASF2
+ 618 0041 02       		.uleb128 0x2
+ 619 0042 02       		.byte	0x2
+ 620 0043 05       		.byte	0x5
+ 621 0044 29000000 		.4byte	.LASF3
+ 622 0048 04       		.uleb128 0x4
+ 623 0049 58000000 		.4byte	.LASF5
+ 624 004d 02       		.byte	0x2
+ 625 004e 2B       		.byte	0x2b
+ 626 004f 53000000 		.4byte	0x53
+ 627 0053 02       		.uleb128 0x2
+ 628 0054 02       		.byte	0x2
+ 629 0055 07       		.byte	0x7
+ 630 0056 BF010000 		.4byte	.LASF4
+ 631 005a 04       		.uleb128 0x4
+ 632 005b F5020000 		.4byte	.LASF6
+ 633 005f 02       		.byte	0x2
+ 634 0060 3F       		.byte	0x3f
+ 635 0061 65000000 		.4byte	0x65
+ 636 0065 02       		.uleb128 0x2
+ 637 0066 04       		.byte	0x4
+ 638 0067 05       		.byte	0x5
+ 639 0068 32010000 		.4byte	.LASF7
+ 640 006c 02       		.uleb128 0x2
+ 641 006d 04       		.byte	0x4
+ 642 006e 07       		.byte	0x7
+ 643 006f AE020000 		.4byte	.LASF8
+ 644 0073 02       		.uleb128 0x2
+ 645 0074 08       		.byte	0x8
+ 646 0075 05       		.byte	0x5
+ 647 0076 44000000 		.4byte	.LASF9
+ 648 007a 02       		.uleb128 0x2
+ 649 007b 08       		.byte	0x8
+ 650 007c 07       		.byte	0x7
+ 651 007d 8D010000 		.4byte	.LASF10
+ 652 0081 02       		.uleb128 0x2
+ 653 0082 04       		.byte	0x4
+ 654 0083 07       		.byte	0x7
+ 655 0084 A4010000 		.4byte	.LASF11
+ 656 0088 04       		.uleb128 0x4
+ 657 0089 B1010000 		.4byte	.LASF12
+ 658 008d 03       		.byte	0x3
+ 659 008e 21       		.byte	0x21
+ 660 008f 48000000 		.4byte	0x48
+ 661 0093 04       		.uleb128 0x4
+ 662 0094 75020000 		.4byte	.LASF13
+ 663 0098 03       		.byte	0x3
+ 664 0099 2C       		.byte	0x2c
+ 665 009a 5A000000 		.4byte	0x5a
+ 666 009e 05       		.uleb128 0x5
+ 667 009f 82000000 		.4byte	.LASF14
+ 668 00a3 04       		.byte	0x4
+ 669 00a4 9201     		.2byte	0x192
+ 670 00a6 3A000000 		.4byte	0x3a
+ 671 00aa 05       		.uleb128 0x5
+ 672 00ab A0020000 		.4byte	.LASF15
+ 673 00af 04       		.byte	0x4
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 17
 
 
- 674 0075 05       		.byte	0x5
- 675 0076 44000000 		.4byte	.LASF9
- 676 007a 02       		.uleb128 0x2
- 677 007b 08       		.byte	0x8
- 678 007c 07       		.byte	0x7
- 679 007d 8D010000 		.4byte	.LASF10
- 680 0081 02       		.uleb128 0x2
- 681 0082 04       		.byte	0x4
- 682 0083 07       		.byte	0x7
- 683 0084 A4010000 		.4byte	.LASF11
- 684 0088 04       		.uleb128 0x4
- 685 0089 B1010000 		.4byte	.LASF12
- 686 008d 03       		.byte	0x3
- 687 008e 21       		.byte	0x21
- 688 008f 48000000 		.4byte	0x48
- 689 0093 04       		.uleb128 0x4
- 690 0094 75020000 		.4byte	.LASF13
- 691 0098 03       		.byte	0x3
- 692 0099 2C       		.byte	0x2c
- 693 009a 5A000000 		.4byte	0x5a
- 694 009e 05       		.uleb128 0x5
- 695 009f 82000000 		.4byte	.LASF14
- 696 00a3 04       		.byte	0x4
- 697 00a4 9201     		.2byte	0x192
- 698 00a6 3A000000 		.4byte	0x3a
- 699 00aa 05       		.uleb128 0x5
- 700 00ab A0020000 		.4byte	.LASF15
- 701 00af 04       		.byte	0x4
- 702 00b0 9401     		.2byte	0x194
- 703 00b2 6C000000 		.4byte	0x6c
- 704 00b6 05       		.uleb128 0x5
- 705 00b7 71000000 		.4byte	.LASF16
- 706 00bb 04       		.byte	0x4
- 707 00bc 9601     		.2byte	0x196
- 708 00be 41000000 		.4byte	0x41
- 709 00c2 02       		.uleb128 0x2
- 710 00c3 04       		.byte	0x4
- 711 00c4 04       		.byte	0x4
- 712 00c5 05010000 		.4byte	.LASF17
- 713 00c9 02       		.uleb128 0x2
- 714 00ca 01       		.byte	0x1
- 715 00cb 08       		.byte	0x8
- 716 00cc DD010000 		.4byte	.LASF18
- 717 00d0 05       		.uleb128 0x5
- 718 00d1 6E010000 		.4byte	.LASF19
- 719 00d5 04       		.byte	0x4
- 720 00d6 4E02     		.2byte	0x24e
- 721 00d8 DC000000 		.4byte	0xdc
- 722 00dc 06       		.uleb128 0x6
- 723 00dd 04       		.byte	0x4
- 724 00de E2000000 		.4byte	0xe2
- 725 00e2 07       		.uleb128 0x7
- 726 00e3 02       		.uleb128 0x2
- 727 00e4 04       		.byte	0x4
- 728 00e5 07       		.byte	0x7
- 729 00e6 33000000 		.4byte	.LASF20
- 730 00ea 06       		.uleb128 0x6
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 18
+ 674 00b0 9401     		.2byte	0x194
+ 675 00b2 6C000000 		.4byte	0x6c
+ 676 00b6 05       		.uleb128 0x5
+ 677 00b7 71000000 		.4byte	.LASF16
+ 678 00bb 04       		.byte	0x4
+ 679 00bc 9601     		.2byte	0x196
+ 680 00be 41000000 		.4byte	0x41
+ 681 00c2 02       		.uleb128 0x2
+ 682 00c3 04       		.byte	0x4
+ 683 00c4 04       		.byte	0x4
+ 684 00c5 05010000 		.4byte	.LASF17
+ 685 00c9 02       		.uleb128 0x2
+ 686 00ca 01       		.byte	0x1
+ 687 00cb 08       		.byte	0x8
+ 688 00cc DD010000 		.4byte	.LASF18
+ 689 00d0 05       		.uleb128 0x5
+ 690 00d1 6E010000 		.4byte	.LASF19
+ 691 00d5 04       		.byte	0x4
+ 692 00d6 4E02     		.2byte	0x24e
+ 693 00d8 DC000000 		.4byte	0xdc
+ 694 00dc 06       		.uleb128 0x6
+ 695 00dd 04       		.byte	0x4
+ 696 00de E2000000 		.4byte	0xe2
+ 697 00e2 07       		.uleb128 0x7
+ 698 00e3 02       		.uleb128 0x2
+ 699 00e4 04       		.byte	0x4
+ 700 00e5 07       		.byte	0x7
+ 701 00e6 33000000 		.4byte	.LASF20
+ 702 00ea 06       		.uleb128 0x6
+ 703 00eb 04       		.byte	0x4
+ 704 00ec C9000000 		.4byte	0xc9
+ 705 00f0 06       		.uleb128 0x6
+ 706 00f1 04       		.byte	0x4
+ 707 00f2 F6000000 		.4byte	0xf6
+ 708 00f6 08       		.uleb128 0x8
+ 709 00f7 C9000000 		.4byte	0xc9
+ 710 00fb 09       		.uleb128 0x9
+ 711 00fc 68000000 		.4byte	.LASF57
+ 712 0100 08       		.byte	0x8
+ 713 0101 05       		.byte	0x5
+ 714 0102 11       		.byte	0x11
+ 715 0103 34010000 		.4byte	0x134
+ 716 0107 0A       		.uleb128 0xa
+ 717 0108 6C3300   		.ascii	"l3\000"
+ 718 010b 05       		.byte	0x5
+ 719 010c 12       		.byte	0x12
+ 720 010d 88000000 		.4byte	0x88
+ 721 0111 00       		.byte	0
+ 722 0112 0A       		.uleb128 0xa
+ 723 0113 6C3100   		.ascii	"l1\000"
+ 724 0116 05       		.byte	0x5
+ 725 0117 14       		.byte	0x14
+ 726 0118 88000000 		.4byte	0x88
+ 727 011c 02       		.byte	0x2
+ 728 011d 0A       		.uleb128 0xa
+ 729 011e 723100   		.ascii	"r1\000"
+ 730 0121 05       		.byte	0x5
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 18
 
 
- 731 00eb 04       		.byte	0x4
- 732 00ec C9000000 		.4byte	0xc9
- 733 00f0 06       		.uleb128 0x6
- 734 00f1 04       		.byte	0x4
- 735 00f2 F6000000 		.4byte	0xf6
- 736 00f6 08       		.uleb128 0x8
- 737 00f7 C9000000 		.4byte	0xc9
- 738 00fb 09       		.uleb128 0x9
- 739 00fc 68000000 		.4byte	.LASF57
- 740 0100 08       		.byte	0x8
- 741 0101 05       		.byte	0x5
- 742 0102 11       		.byte	0x11
- 743 0103 34010000 		.4byte	0x134
- 744 0107 0A       		.uleb128 0xa
- 745 0108 6C3300   		.ascii	"l3\000"
- 746 010b 05       		.byte	0x5
- 747 010c 12       		.byte	0x12
- 748 010d 88000000 		.4byte	0x88
- 749 0111 00       		.byte	0
- 750 0112 0A       		.uleb128 0xa
- 751 0113 6C3100   		.ascii	"l1\000"
- 752 0116 05       		.byte	0x5
- 753 0117 14       		.byte	0x14
- 754 0118 88000000 		.4byte	0x88
- 755 011c 02       		.byte	0x2
- 756 011d 0A       		.uleb128 0xa
- 757 011e 723100   		.ascii	"r1\000"
- 758 0121 05       		.byte	0x5
- 759 0122 15       		.byte	0x15
- 760 0123 88000000 		.4byte	0x88
- 761 0127 04       		.byte	0x4
- 762 0128 0A       		.uleb128 0xa
- 763 0129 723300   		.ascii	"r3\000"
- 764 012c 05       		.byte	0x5
- 765 012d 17       		.byte	0x17
- 766 012e 88000000 		.4byte	0x88
- 767 0132 06       		.byte	0x6
- 768 0133 00       		.byte	0
- 769 0134 02       		.uleb128 0x2
- 770 0135 08       		.byte	0x8
- 771 0136 04       		.byte	0x4
- 772 0137 50010000 		.4byte	.LASF21
- 773 013b 0B       		.uleb128 0xb
- 774 013c 70020000 		.4byte	.LASF58
- 775 0140 01       		.byte	0x1
- 776 0141 11       		.byte	0x11
- 777 0142 2C000000 		.4byte	0x2c
- 778 0146 00000000 		.4byte	.LFB63
- 779 014a C8020000 		.4byte	.LFE63-.LFB63
- 780 014e 01       		.uleb128 0x1
- 781 014f 9C       		.byte	0x9c
- 782 0150 5D030000 		.4byte	0x35d
- 783 0154 0C       		.uleb128 0xc
- 784 0155 72656600 		.ascii	"ref\000"
- 785 0159 01       		.byte	0x1
- 786 015a 13       		.byte	0x13
- 787 015b FB000000 		.4byte	0xfb
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 19
+ 731 0122 15       		.byte	0x15
+ 732 0123 88000000 		.4byte	0x88
+ 733 0127 04       		.byte	0x4
+ 734 0128 0A       		.uleb128 0xa
+ 735 0129 723300   		.ascii	"r3\000"
+ 736 012c 05       		.byte	0x5
+ 737 012d 17       		.byte	0x17
+ 738 012e 88000000 		.4byte	0x88
+ 739 0132 06       		.byte	0x6
+ 740 0133 00       		.byte	0
+ 741 0134 02       		.uleb128 0x2
+ 742 0135 08       		.byte	0x8
+ 743 0136 04       		.byte	0x4
+ 744 0137 50010000 		.4byte	.LASF21
+ 745 013b 0B       		.uleb128 0xb
+ 746 013c 70020000 		.4byte	.LASF58
+ 747 0140 01       		.byte	0x1
+ 748 0141 11       		.byte	0x11
+ 749 0142 2C000000 		.4byte	0x2c
+ 750 0146 00000000 		.4byte	.LFB63
+ 751 014a A0020000 		.4byte	.LFE63-.LFB63
+ 752 014e 01       		.uleb128 0x1
+ 753 014f 9C       		.byte	0x9c
+ 754 0150 61030000 		.4byte	0x361
+ 755 0154 0C       		.uleb128 0xc
+ 756 0155 72656600 		.ascii	"ref\000"
+ 757 0159 01       		.byte	0x1
+ 758 015a 13       		.byte	0x13
+ 759 015b FB000000 		.4byte	0xfb
+ 760 015f 02       		.uleb128 0x2
+ 761 0160 91       		.byte	0x91
+ 762 0161 58       		.sleb128 -40
+ 763 0162 0C       		.uleb128 0xc
+ 764 0163 64696700 		.ascii	"dig\000"
+ 765 0167 01       		.byte	0x1
+ 766 0168 14       		.byte	0x14
+ 767 0169 FB000000 		.4byte	0xfb
+ 768 016d 02       		.uleb128 0x2
+ 769 016e 91       		.byte	0x91
+ 770 016f 50       		.sleb128 -48
+ 771 0170 0D       		.uleb128 0xd
+ 772 0171 D8010000 		.4byte	.LASF22
+ 773 0175 01       		.byte	0x1
+ 774 0176 18       		.byte	0x18
+ 775 0177 2C000000 		.4byte	0x2c
+ 776 017b 00000000 		.4byte	.LLST0
+ 777 017f 0D       		.uleb128 0xd
+ 778 0180 52000000 		.4byte	.LASF23
+ 779 0184 01       		.byte	0x1
+ 780 0185 19       		.byte	0x19
+ 781 0186 2C000000 		.4byte	0x2c
+ 782 018a 13000000 		.4byte	.LLST1
+ 783 018e 0E       		.uleb128 0xe
+ 784 018f 10030000 		.4byte	.LASF24
+ 785 0193 01       		.byte	0x1
+ 786 0194 1A       		.byte	0x1a
+ 787 0195 2C000000 		.4byte	0x2c
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 19
 
 
- 788 015f 02       		.uleb128 0x2
- 789 0160 91       		.byte	0x91
- 790 0161 58       		.sleb128 -40
- 791 0162 0C       		.uleb128 0xc
- 792 0163 64696700 		.ascii	"dig\000"
- 793 0167 01       		.byte	0x1
- 794 0168 14       		.byte	0x14
- 795 0169 FB000000 		.4byte	0xfb
- 796 016d 02       		.uleb128 0x2
- 797 016e 91       		.byte	0x91
- 798 016f 50       		.sleb128 -48
- 799 0170 0D       		.uleb128 0xd
- 800 0171 D8010000 		.4byte	.LASF22
- 801 0175 01       		.byte	0x1
- 802 0176 18       		.byte	0x18
- 803 0177 2C000000 		.4byte	0x2c
- 804 017b 01       		.uleb128 0x1
- 805 017c 58       		.byte	0x58
- 806 017d 0D       		.uleb128 0xd
- 807 017e 52000000 		.4byte	.LASF23
- 808 0182 01       		.byte	0x1
- 809 0183 19       		.byte	0x19
- 810 0184 2C000000 		.4byte	0x2c
- 811 0188 01       		.uleb128 0x1
- 812 0189 59       		.byte	0x59
- 813 018a 0E       		.uleb128 0xe
- 814 018b 10030000 		.4byte	.LASF24
- 815 018f 01       		.byte	0x1
- 816 0190 1A       		.byte	0x1a
- 817 0191 2C000000 		.4byte	0x2c
- 818 0195 FE       		.byte	0xfe
- 819 0196 0F       		.uleb128 0xf
- 820 0197 0B010000 		.4byte	.LASF25
- 821 019b 01       		.byte	0x1
- 822 019c 1B       		.byte	0x1b
- 823 019d 25000000 		.4byte	0x25
- 824 01a1 0F       		.uleb128 0xf
- 825 01a2 C4000000 		.4byte	.LASF26
- 826 01a6 01       		.byte	0x1
- 827 01a7 1C       		.byte	0x1c
- 828 01a8 25000000 		.4byte	0x25
- 829 01ac 10       		.uleb128 0x10
- 830 01ad 37030000 		.4byte	.LASF27
- 831 01b1 01       		.byte	0x1
- 832 01b2 1D       		.byte	0x1d
- 833 01b3 2C000000 		.4byte	0x2c
- 834 01b7 00000000 		.4byte	.LLST0
- 835 01bb 0E       		.uleb128 0xe
- 836 01bc 19030000 		.4byte	.LASF28
- 837 01c0 01       		.byte	0x1
- 838 01c1 27       		.byte	0x27
- 839 01c2 B6000000 		.4byte	0xb6
- 840 01c6 00       		.byte	0
- 841 01c7 11       		.uleb128 0x11
- 842 01c8 D2010000 		.4byte	.LASF29
- 843 01cc 01       		.byte	0x1
- 844 01cd 28       		.byte	0x28
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 20
+ 788 0199 FE       		.byte	0xfe
+ 789 019a 0F       		.uleb128 0xf
+ 790 019b 0B010000 		.4byte	.LASF25
+ 791 019f 01       		.byte	0x1
+ 792 01a0 1B       		.byte	0x1b
+ 793 01a1 25000000 		.4byte	0x25
+ 794 01a5 0F       		.uleb128 0xf
+ 795 01a6 C4000000 		.4byte	.LASF26
+ 796 01aa 01       		.byte	0x1
+ 797 01ab 1C       		.byte	0x1c
+ 798 01ac 25000000 		.4byte	0x25
+ 799 01b0 0D       		.uleb128 0xd
+ 800 01b1 37030000 		.4byte	.LASF27
+ 801 01b5 01       		.byte	0x1
+ 802 01b6 1D       		.byte	0x1d
+ 803 01b7 2C000000 		.4byte	0x2c
+ 804 01bb 26000000 		.4byte	.LLST2
+ 805 01bf 0E       		.uleb128 0xe
+ 806 01c0 19030000 		.4byte	.LASF28
+ 807 01c4 01       		.byte	0x1
+ 808 01c5 27       		.byte	0x27
+ 809 01c6 B6000000 		.4byte	0xb6
+ 810 01ca 00       		.byte	0
+ 811 01cb 10       		.uleb128 0x10
+ 812 01cc D2010000 		.4byte	.LASF29
+ 813 01d0 01       		.byte	0x1
+ 814 01d1 28       		.byte	0x28
+ 815 01d2 C2000000 		.4byte	0xc2
+ 816 01d6 04       		.byte	0x4
+ 817 01d7 00000000 		.4byte	0
+ 818 01db 11       		.uleb128 0x11
+ 819 01dc 34000000 		.4byte	.LBB2
+ 820 01e0 6C020000 		.4byte	.LBE2-.LBB2
+ 821 01e4 FA020000 		.4byte	0x2fa
+ 822 01e8 0D       		.uleb128 0xd
+ 823 01e9 FE000000 		.4byte	.LASF30
+ 824 01ed 01       		.byte	0x1
+ 825 01ee 5F       		.byte	0x5f
+ 826 01ef 25000000 		.4byte	0x25
+ 827 01f3 45000000 		.4byte	.LLST3
+ 828 01f7 0D       		.uleb128 0xd
+ 829 01f8 17010000 		.4byte	.LASF31
+ 830 01fc 01       		.byte	0x1
+ 831 01fd 60       		.byte	0x60
+ 832 01fe 25000000 		.4byte	0x25
+ 833 0202 C5000000 		.4byte	.LLST4
+ 834 0206 0D       		.uleb128 0xd
+ 835 0207 0B010000 		.4byte	.LASF25
+ 836 020b 01       		.byte	0x1
+ 837 020c 62       		.byte	0x62
+ 838 020d 2C000000 		.4byte	0x2c
+ 839 0211 55010000 		.4byte	.LLST5
+ 840 0215 0D       		.uleb128 0xd
+ 841 0216 C4000000 		.4byte	.LASF26
+ 842 021a 01       		.byte	0x1
+ 843 021b 63       		.byte	0x63
+ 844 021c 2C000000 		.4byte	0x2c
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 20
 
 
- 845 01ce C2000000 		.4byte	0xc2
- 846 01d2 04       		.byte	0x4
- 847 01d3 00000000 		.4byte	0
- 848 01d7 12       		.uleb128 0x12
- 849 01d8 34000000 		.4byte	.LBB2
- 850 01dc 94020000 		.4byte	.LBE2-.LBB2
- 851 01e0 F6020000 		.4byte	0x2f6
- 852 01e4 10       		.uleb128 0x10
- 853 01e5 FE000000 		.4byte	.LASF30
- 854 01e9 01       		.byte	0x1
- 855 01ea 5F       		.byte	0x5f
- 856 01eb 25000000 		.4byte	0x25
- 857 01ef 1F000000 		.4byte	.LLST1
- 858 01f3 10       		.uleb128 0x10
- 859 01f4 17010000 		.4byte	.LASF31
- 860 01f8 01       		.byte	0x1
- 861 01f9 60       		.byte	0x60
- 862 01fa 25000000 		.4byte	0x25
- 863 01fe AF000000 		.4byte	.LLST2
- 864 0202 10       		.uleb128 0x10
- 865 0203 0B010000 		.4byte	.LASF25
- 866 0207 01       		.byte	0x1
- 867 0208 62       		.byte	0x62
- 868 0209 2C000000 		.4byte	0x2c
- 869 020d 4F010000 		.4byte	.LLST3
- 870 0211 10       		.uleb128 0x10
- 871 0212 C4000000 		.4byte	.LASF26
- 872 0216 01       		.byte	0x1
- 873 0217 63       		.byte	0x63
- 874 0218 2C000000 		.4byte	0x2c
- 875 021c 69010000 		.4byte	.LLST4
- 876 0220 13       		.uleb128 0x13
- 877 0221 3A000000 		.4byte	.LVL9
- 878 0225 6E040000 		.4byte	0x46e
- 879 0229 34020000 		.4byte	0x234
- 880 022d 14       		.uleb128 0x14
- 881 022e 01       		.uleb128 0x1
- 882 022f 50       		.byte	0x50
- 883 0230 02       		.uleb128 0x2
- 884 0231 91       		.byte	0x91
- 885 0232 58       		.sleb128 -40
- 886 0233 00       		.byte	0
- 887 0234 13       		.uleb128 0x13
- 888 0235 40000000 		.4byte	.LVL10
- 889 0239 85040000 		.4byte	0x485
- 890 023d 48020000 		.4byte	0x248
- 891 0241 14       		.uleb128 0x14
- 892 0242 01       		.uleb128 0x1
- 893 0243 50       		.byte	0x50
- 894 0244 02       		.uleb128 0x2
- 895 0245 91       		.byte	0x91
- 896 0246 50       		.sleb128 -48
- 897 0247 00       		.byte	0
- 898 0248 13       		.uleb128 0x13
- 899 0249 46000000 		.4byte	.LVL11
- 900 024d 96040000 		.4byte	0x496
- 901 0251 5B020000 		.4byte	0x25b
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 21
+ 845 0220 6F010000 		.4byte	.LLST6
+ 846 0224 12       		.uleb128 0x12
+ 847 0225 3A000000 		.4byte	.LVL9
+ 848 0229 72040000 		.4byte	0x472
+ 849 022d 38020000 		.4byte	0x238
+ 850 0231 13       		.uleb128 0x13
+ 851 0232 01       		.uleb128 0x1
+ 852 0233 50       		.byte	0x50
+ 853 0234 02       		.uleb128 0x2
+ 854 0235 91       		.byte	0x91
+ 855 0236 58       		.sleb128 -40
+ 856 0237 00       		.byte	0
+ 857 0238 12       		.uleb128 0x12
+ 858 0239 40000000 		.4byte	.LVL10
+ 859 023d 89040000 		.4byte	0x489
+ 860 0241 4C020000 		.4byte	0x24c
+ 861 0245 13       		.uleb128 0x13
+ 862 0246 01       		.uleb128 0x1
+ 863 0247 50       		.byte	0x50
+ 864 0248 02       		.uleb128 0x2
+ 865 0249 91       		.byte	0x91
+ 866 024a 50       		.sleb128 -48
+ 867 024b 00       		.byte	0
+ 868 024c 12       		.uleb128 0x12
+ 869 024d 46000000 		.4byte	.LVL11
+ 870 0251 9A040000 		.4byte	0x49a
+ 871 0255 5F020000 		.4byte	0x25f
+ 872 0259 13       		.uleb128 0x13
+ 873 025a 01       		.uleb128 0x1
+ 874 025b 50       		.byte	0x50
+ 875 025c 01       		.uleb128 0x1
+ 876 025d 35       		.byte	0x35
+ 877 025e 00       		.byte	0
+ 878 025f 12       		.uleb128 0x12
+ 879 0260 2A010000 		.4byte	.LVL34
+ 880 0264 AB040000 		.4byte	0x4ab
+ 881 0268 73020000 		.4byte	0x273
+ 882 026c 13       		.uleb128 0x13
+ 883 026d 01       		.uleb128 0x1
+ 884 026e 50       		.byte	0x50
+ 885 026f 02       		.uleb128 0x2
+ 886 0270 08       		.byte	0x8
+ 887 0271 31       		.byte	0x31
+ 888 0272 00       		.byte	0
+ 889 0273 12       		.uleb128 0x12
+ 890 0274 46010000 		.4byte	.LVL38
+ 891 0278 AB040000 		.4byte	0x4ab
+ 892 027c 87020000 		.4byte	0x287
+ 893 0280 13       		.uleb128 0x13
+ 894 0281 01       		.uleb128 0x1
+ 895 0282 50       		.byte	0x50
+ 896 0283 02       		.uleb128 0x2
+ 897 0284 08       		.byte	0x8
+ 898 0285 32       		.byte	0x32
+ 899 0286 00       		.byte	0
+ 900 0287 12       		.uleb128 0x12
+ 901 0288 06020000 		.4byte	.LVL59
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 21
 
 
- 902 0255 14       		.uleb128 0x14
- 903 0256 01       		.uleb128 0x1
- 904 0257 50       		.byte	0x50
- 905 0258 01       		.uleb128 0x1
- 906 0259 35       		.byte	0x35
- 907 025a 00       		.byte	0
- 908 025b 13       		.uleb128 0x13
- 909 025c 2E010000 		.4byte	.LVL34
- 910 0260 A7040000 		.4byte	0x4a7
- 911 0264 6F020000 		.4byte	0x26f
- 912 0268 14       		.uleb128 0x14
- 913 0269 01       		.uleb128 0x1
- 914 026a 50       		.byte	0x50
- 915 026b 02       		.uleb128 0x2
- 916 026c 08       		.byte	0x8
- 917 026d 31       		.byte	0x31
- 918 026e 00       		.byte	0
- 919 026f 13       		.uleb128 0x13
- 920 0270 48010000 		.4byte	.LVL38
- 921 0274 A7040000 		.4byte	0x4a7
- 922 0278 83020000 		.4byte	0x283
- 923 027c 14       		.uleb128 0x14
- 924 027d 01       		.uleb128 0x1
- 925 027e 50       		.byte	0x50
- 926 027f 02       		.uleb128 0x2
- 927 0280 08       		.byte	0x8
- 928 0281 32       		.byte	0x32
- 929 0282 00       		.byte	0
- 930 0283 13       		.uleb128 0x13
- 931 0284 2A020000 		.4byte	.LVL64
- 932 0288 C0040000 		.4byte	0x4c0
- 933 028c A2020000 		.4byte	0x2a2
- 934 0290 14       		.uleb128 0x14
- 935 0291 01       		.uleb128 0x1
- 936 0292 52       		.byte	0x52
- 937 0293 01       		.uleb128 0x1
- 938 0294 30       		.byte	0x30
- 939 0295 14       		.uleb128 0x14
- 940 0296 01       		.uleb128 0x1
- 941 0297 51       		.byte	0x51
- 942 0298 02       		.uleb128 0x2
- 943 0299 74       		.byte	0x74
- 944 029a 00       		.sleb128 0
- 945 029b 14       		.uleb128 0x14
- 946 029c 01       		.uleb128 0x1
- 947 029d 50       		.byte	0x50
- 948 029e 02       		.uleb128 0x2
- 949 029f 76       		.byte	0x76
- 950 02a0 00       		.sleb128 0
- 951 02a1 00       		.byte	0
- 952 02a2 15       		.uleb128 0x15
- 953 02a3 5C020000 		.4byte	.LVL65
- 954 02a7 DB040000 		.4byte	0x4db
- 955 02ab 15       		.uleb128 0x15
- 956 02ac 60020000 		.4byte	.LVL66
- 957 02b0 E8040000 		.4byte	0x4e8
- 958 02b4 15       		.uleb128 0x15
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 22
+ 902 028c C4040000 		.4byte	0x4c4
+ 903 0290 A6020000 		.4byte	0x2a6
+ 904 0294 13       		.uleb128 0x13
+ 905 0295 01       		.uleb128 0x1
+ 906 0296 52       		.byte	0x52
+ 907 0297 01       		.uleb128 0x1
+ 908 0298 30       		.byte	0x30
+ 909 0299 13       		.uleb128 0x13
+ 910 029a 01       		.uleb128 0x1
+ 911 029b 51       		.byte	0x51
+ 912 029c 02       		.uleb128 0x2
+ 913 029d 74       		.byte	0x74
+ 914 029e 00       		.sleb128 0
+ 915 029f 13       		.uleb128 0x13
+ 916 02a0 01       		.uleb128 0x1
+ 917 02a1 50       		.byte	0x50
+ 918 02a2 02       		.uleb128 0x2
+ 919 02a3 75       		.byte	0x75
+ 920 02a4 00       		.sleb128 0
+ 921 02a5 00       		.byte	0
+ 922 02a6 14       		.uleb128 0x14
+ 923 02a7 38020000 		.4byte	.LVL60
+ 924 02ab DF040000 		.4byte	0x4df
+ 925 02af 14       		.uleb128 0x14
+ 926 02b0 3C020000 		.4byte	.LVL61
+ 927 02b4 EC040000 		.4byte	0x4ec
+ 928 02b8 14       		.uleb128 0x14
+ 929 02b9 40020000 		.4byte	.LVL62
+ 930 02bd F9040000 		.4byte	0x4f9
+ 931 02c1 12       		.uleb128 0x12
+ 932 02c2 4A020000 		.4byte	.LVL63
+ 933 02c6 C4040000 		.4byte	0x4c4
+ 934 02ca E0020000 		.4byte	0x2e0
+ 935 02ce 13       		.uleb128 0x13
+ 936 02cf 01       		.uleb128 0x1
+ 937 02d0 52       		.byte	0x52
+ 938 02d1 01       		.uleb128 0x1
+ 939 02d2 30       		.byte	0x30
+ 940 02d3 13       		.uleb128 0x13
+ 941 02d4 01       		.uleb128 0x1
+ 942 02d5 51       		.byte	0x51
+ 943 02d6 02       		.uleb128 0x2
+ 944 02d7 74       		.byte	0x74
+ 945 02d8 00       		.sleb128 0
+ 946 02d9 13       		.uleb128 0x13
+ 947 02da 01       		.uleb128 0x1
+ 948 02db 50       		.byte	0x50
+ 949 02dc 02       		.uleb128 0x2
+ 950 02dd 75       		.byte	0x75
+ 951 02de 00       		.sleb128 0
+ 952 02df 00       		.byte	0
+ 953 02e0 14       		.uleb128 0x14
+ 954 02e1 56020000 		.4byte	.LVL64
+ 955 02e5 DF040000 		.4byte	0x4df
+ 956 02e9 15       		.uleb128 0x15
+ 957 02ea 60020000 		.4byte	.LVL66
+ 958 02ee 9A040000 		.4byte	0x49a
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 22
 
 
- 959 02b5 64020000 		.4byte	.LVL67
- 960 02b9 F5040000 		.4byte	0x4f5
- 961 02bd 13       		.uleb128 0x13
- 962 02be 6E020000 		.4byte	.LVL68
- 963 02c2 C0040000 		.4byte	0x4c0
- 964 02c6 DC020000 		.4byte	0x2dc
- 965 02ca 14       		.uleb128 0x14
- 966 02cb 01       		.uleb128 0x1
- 967 02cc 52       		.byte	0x52
- 968 02cd 01       		.uleb128 0x1
- 969 02ce 30       		.byte	0x30
- 970 02cf 14       		.uleb128 0x14
- 971 02d0 01       		.uleb128 0x1
- 972 02d1 51       		.byte	0x51
- 973 02d2 02       		.uleb128 0x2
- 974 02d3 74       		.byte	0x74
- 975 02d4 00       		.sleb128 0
- 976 02d5 14       		.uleb128 0x14
- 977 02d6 01       		.uleb128 0x1
- 978 02d7 50       		.byte	0x50
- 979 02d8 02       		.uleb128 0x2
- 980 02d9 76       		.byte	0x76
- 981 02da 00       		.sleb128 0
- 982 02db 00       		.byte	0
- 983 02dc 15       		.uleb128 0x15
- 984 02dd 7A020000 		.4byte	.LVL69
- 985 02e1 DB040000 		.4byte	0x4db
- 986 02e5 16       		.uleb128 0x16
- 987 02e6 84020000 		.4byte	.LVL71
- 988 02ea 96040000 		.4byte	0x496
- 989 02ee 14       		.uleb128 0x14
- 990 02ef 01       		.uleb128 0x1
- 991 02f0 50       		.byte	0x50
- 992 02f1 02       		.uleb128 0x2
- 993 02f2 08       		.byte	0x8
- 994 02f3 5C       		.byte	0x5c
- 995 02f4 00       		.byte	0
- 996 02f5 00       		.byte	0
- 997 02f6 15       		.uleb128 0x15
- 998 02f7 0C000000 		.4byte	.LVL0
- 999 02fb 02050000 		.4byte	0x502
- 1000 02ff 15       		.uleb128 0x15
- 1001 0300 10000000 		.4byte	.LVL1
- 1002 0304 09050000 		.4byte	0x509
- 1003 0308 15       		.uleb128 0x15
- 1004 0309 14000000 		.4byte	.LVL2
- 1005 030d 10050000 		.4byte	0x510
- 1006 0311 15       		.uleb128 0x15
- 1007 0312 18000000 		.4byte	.LVL3
- 1008 0316 F5040000 		.4byte	0x4f5
- 1009 031a 13       		.uleb128 0x13
- 1010 031b 1E000000 		.4byte	.LVL4
- 1011 031f 17050000 		.4byte	0x517
- 1012 0323 2D030000 		.4byte	0x32d
- 1013 0327 14       		.uleb128 0x14
- 1014 0328 01       		.uleb128 0x1
- 1015 0329 50       		.byte	0x50
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 23
+ 959 02f2 13       		.uleb128 0x13
+ 960 02f3 01       		.uleb128 0x1
+ 961 02f4 50       		.byte	0x50
+ 962 02f5 02       		.uleb128 0x2
+ 963 02f6 08       		.byte	0x8
+ 964 02f7 5C       		.byte	0x5c
+ 965 02f8 00       		.byte	0
+ 966 02f9 00       		.byte	0
+ 967 02fa 14       		.uleb128 0x14
+ 968 02fb 0C000000 		.4byte	.LVL0
+ 969 02ff 06050000 		.4byte	0x506
+ 970 0303 14       		.uleb128 0x14
+ 971 0304 10000000 		.4byte	.LVL1
+ 972 0308 0D050000 		.4byte	0x50d
+ 973 030c 14       		.uleb128 0x14
+ 974 030d 14000000 		.4byte	.LVL2
+ 975 0311 14050000 		.4byte	0x514
+ 976 0315 14       		.uleb128 0x14
+ 977 0316 18000000 		.4byte	.LVL3
+ 978 031a F9040000 		.4byte	0x4f9
+ 979 031e 12       		.uleb128 0x12
+ 980 031f 1E000000 		.4byte	.LVL4
+ 981 0323 1B050000 		.4byte	0x51b
+ 982 0327 31030000 		.4byte	0x331
+ 983 032b 13       		.uleb128 0x13
+ 984 032c 01       		.uleb128 0x1
+ 985 032d 50       		.byte	0x50
+ 986 032e 01       		.uleb128 0x1
+ 987 032f 31       		.byte	0x31
+ 988 0330 00       		.byte	0
+ 989 0331 14       		.uleb128 0x14
+ 990 0332 24000000 		.4byte	.LVL5
+ 991 0336 2C050000 		.4byte	0x52c
+ 992 033a 12       		.uleb128 0x12
+ 993 033b 2A000000 		.4byte	.LVL6
+ 994 033f 3D050000 		.4byte	0x53d
+ 995 0343 51030000 		.4byte	0x351
+ 996 0347 13       		.uleb128 0x13
+ 997 0348 01       		.uleb128 0x1
+ 998 0349 50       		.byte	0x50
+ 999 034a 05       		.uleb128 0x5
+ 1000 034b 03       		.byte	0x3
+ 1001 034c 00000000 		.4byte	.LC0
+ 1002 0350 00       		.byte	0
+ 1003 0351 15       		.uleb128 0x15
+ 1004 0352 30000000 		.4byte	.LVL7
+ 1005 0356 56050000 		.4byte	0x556
+ 1006 035a 13       		.uleb128 0x13
+ 1007 035b 01       		.uleb128 0x1
+ 1008 035c 50       		.byte	0x50
+ 1009 035d 01       		.uleb128 0x1
+ 1010 035e 30       		.byte	0x30
+ 1011 035f 00       		.byte	0
+ 1012 0360 00       		.byte	0
+ 1013 0361 16       		.uleb128 0x16
+ 1014 0362 3B010000 		.4byte	.LASF33
+ 1015 0366 01       		.byte	0x1
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 23
 
 
- 1016 032a 01       		.uleb128 0x1
- 1017 032b 31       		.byte	0x31
- 1018 032c 00       		.byte	0
- 1019 032d 15       		.uleb128 0x15
- 1020 032e 24000000 		.4byte	.LVL5
- 1021 0332 28050000 		.4byte	0x528
- 1022 0336 13       		.uleb128 0x13
- 1023 0337 2A000000 		.4byte	.LVL6
- 1024 033b 39050000 		.4byte	0x539
- 1025 033f 4D030000 		.4byte	0x34d
- 1026 0343 14       		.uleb128 0x14
- 1027 0344 01       		.uleb128 0x1
- 1028 0345 50       		.byte	0x50
- 1029 0346 05       		.uleb128 0x5
- 1030 0347 03       		.byte	0x3
- 1031 0348 00000000 		.4byte	.LC0
- 1032 034c 00       		.byte	0
- 1033 034d 16       		.uleb128 0x16
- 1034 034e 30000000 		.4byte	.LVL7
- 1035 0352 52050000 		.4byte	0x552
- 1036 0356 14       		.uleb128 0x14
- 1037 0357 01       		.uleb128 0x1
- 1038 0358 50       		.byte	0x50
- 1039 0359 01       		.uleb128 0x1
- 1040 035a 30       		.byte	0x30
- 1041 035b 00       		.byte	0
- 1042 035c 00       		.byte	0
- 1043 035d 17       		.uleb128 0x17
- 1044 035e 3B010000 		.4byte	.LASF33
- 1045 0362 01       		.byte	0x1
- 1046 0363 C4       		.byte	0xc4
- 1047 0364 2C000000 		.4byte	0x2c
- 1048 0368 00000000 		.4byte	.LFB64
- 1049 036c 2A000000 		.4byte	.LFE64-.LFB64
- 1050 0370 01       		.uleb128 0x1
- 1051 0371 9C       		.byte	0x9c
- 1052 0372 CD030000 		.4byte	0x3cd
- 1053 0376 18       		.uleb128 0x18
- 1054 0377 63000000 		.4byte	.LASF32
- 1055 037b 01       		.byte	0x1
- 1056 037c C4       		.byte	0xc4
- 1057 037d 2C000000 		.4byte	0x2c
- 1058 0381 83010000 		.4byte	.LLST5
- 1059 0385 19       		.uleb128 0x19
- 1060 0386 70747200 		.ascii	"ptr\000"
- 1061 038a 01       		.byte	0x1
- 1062 038b C4       		.byte	0xc4
- 1063 038c EA000000 		.4byte	0xea
- 1064 0390 A4010000 		.4byte	.LLST6
- 1065 0394 19       		.uleb128 0x19
- 1066 0395 6C656E00 		.ascii	"len\000"
- 1067 0399 01       		.byte	0x1
- 1068 039a C4       		.byte	0xc4
- 1069 039b 2C000000 		.4byte	0x2c
- 1070 039f D8010000 		.4byte	.LLST7
- 1071 03a3 1A       		.uleb128 0x1a
- 1072 03a4 6E00     		.ascii	"n\000"
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 24
+ 1016 0367 C4       		.byte	0xc4
+ 1017 0368 2C000000 		.4byte	0x2c
+ 1018 036c 00000000 		.4byte	.LFB64
+ 1019 0370 2A000000 		.4byte	.LFE64-.LFB64
+ 1020 0374 01       		.uleb128 0x1
+ 1021 0375 9C       		.byte	0x9c
+ 1022 0376 D1030000 		.4byte	0x3d1
+ 1023 037a 17       		.uleb128 0x17
+ 1024 037b 63000000 		.4byte	.LASF32
+ 1025 037f 01       		.byte	0x1
+ 1026 0380 C4       		.byte	0xc4
+ 1027 0381 2C000000 		.4byte	0x2c
+ 1028 0385 89010000 		.4byte	.LLST7
+ 1029 0389 18       		.uleb128 0x18
+ 1030 038a 70747200 		.ascii	"ptr\000"
+ 1031 038e 01       		.byte	0x1
+ 1032 038f C4       		.byte	0xc4
+ 1033 0390 EA000000 		.4byte	0xea
+ 1034 0394 AA010000 		.4byte	.LLST8
+ 1035 0398 18       		.uleb128 0x18
+ 1036 0399 6C656E00 		.ascii	"len\000"
+ 1037 039d 01       		.byte	0x1
+ 1038 039e C4       		.byte	0xc4
+ 1039 039f 2C000000 		.4byte	0x2c
+ 1040 03a3 DE010000 		.4byte	.LLST9
+ 1041 03a7 19       		.uleb128 0x19
+ 1042 03a8 6E00     		.ascii	"n\000"
+ 1043 03aa 01       		.byte	0x1
+ 1044 03ab C7       		.byte	0xc7
+ 1045 03ac 2C000000 		.4byte	0x2c
+ 1046 03b0 FC010000 		.4byte	.LLST10
+ 1047 03b4 12       		.uleb128 0x12
+ 1048 03b5 16000000 		.4byte	.LVL70
+ 1049 03b9 67050000 		.4byte	0x567
+ 1050 03bd C7030000 		.4byte	0x3c7
+ 1051 03c1 13       		.uleb128 0x13
+ 1052 03c2 01       		.uleb128 0x1
+ 1053 03c3 50       		.byte	0x50
+ 1054 03c4 01       		.uleb128 0x1
+ 1055 03c5 3D       		.byte	0x3d
+ 1056 03c6 00       		.byte	0
+ 1057 03c7 14       		.uleb128 0x14
+ 1058 03c8 1E000000 		.4byte	.LVL72
+ 1059 03cc 67050000 		.4byte	0x567
+ 1060 03d0 00       		.byte	0
+ 1061 03d1 16       		.uleb128 0x16
+ 1062 03d2 7B010000 		.4byte	.LASF34
+ 1063 03d6 01       		.byte	0x1
+ 1064 03d7 CF       		.byte	0xcf
+ 1065 03d8 2C000000 		.4byte	0x2c
+ 1066 03dc 00000000 		.4byte	.LFB65
+ 1067 03e0 38000000 		.4byte	.LFE65-.LFB65
+ 1068 03e4 01       		.uleb128 0x1
+ 1069 03e5 9C       		.byte	0x9c
+ 1070 03e6 61040000 		.4byte	0x461
+ 1071 03ea 17       		.uleb128 0x17
+ 1072 03eb 63000000 		.4byte	.LASF32
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 24
 
 
- 1073 03a6 01       		.byte	0x1
- 1074 03a7 C7       		.byte	0xc7
- 1075 03a8 2C000000 		.4byte	0x2c
- 1076 03ac F6010000 		.4byte	.LLST8
- 1077 03b0 13       		.uleb128 0x13
- 1078 03b1 16000000 		.4byte	.LVL75
- 1079 03b5 63050000 		.4byte	0x563
- 1080 03b9 C3030000 		.4byte	0x3c3
- 1081 03bd 14       		.uleb128 0x14
- 1082 03be 01       		.uleb128 0x1
- 1083 03bf 50       		.byte	0x50
- 1084 03c0 01       		.uleb128 0x1
- 1085 03c1 3D       		.byte	0x3d
- 1086 03c2 00       		.byte	0
- 1087 03c3 15       		.uleb128 0x15
- 1088 03c4 1E000000 		.4byte	.LVL77
- 1089 03c8 63050000 		.4byte	0x563
- 1090 03cc 00       		.byte	0
- 1091 03cd 17       		.uleb128 0x17
- 1092 03ce 7B010000 		.4byte	.LASF34
- 1093 03d2 01       		.byte	0x1
- 1094 03d3 CF       		.byte	0xcf
- 1095 03d4 2C000000 		.4byte	0x2c
- 1096 03d8 00000000 		.4byte	.LFB65
- 1097 03dc 38000000 		.4byte	.LFE65-.LFB65
- 1098 03e0 01       		.uleb128 0x1
- 1099 03e1 9C       		.byte	0x9c
- 1100 03e2 5D040000 		.4byte	0x45d
- 1101 03e6 18       		.uleb128 0x18
- 1102 03e7 63000000 		.4byte	.LASF32
- 1103 03eb 01       		.byte	0x1
- 1104 03ec CF       		.byte	0xcf
- 1105 03ed 2C000000 		.4byte	0x2c
- 1106 03f1 15020000 		.4byte	.LLST9
- 1107 03f5 19       		.uleb128 0x19
- 1108 03f6 70747200 		.ascii	"ptr\000"
- 1109 03fa 01       		.byte	0x1
- 1110 03fb CF       		.byte	0xcf
- 1111 03fc EA000000 		.4byte	0xea
- 1112 0400 36020000 		.4byte	.LLST10
- 1113 0404 18       		.uleb128 0x18
- 1114 0405 EF020000 		.4byte	.LASF35
- 1115 0409 01       		.byte	0x1
- 1116 040a CF       		.byte	0xcf
- 1117 040b 2C000000 		.4byte	0x2c
- 1118 040f 6A020000 		.4byte	.LLST11
- 1119 0413 1A       		.uleb128 0x1a
- 1120 0414 63687300 		.ascii	"chs\000"
- 1121 0418 01       		.byte	0x1
- 1122 0419 D1       		.byte	0xd1
- 1123 041a 2C000000 		.4byte	0x2c
- 1124 041e 88020000 		.4byte	.LLST12
- 1125 0422 1A       		.uleb128 0x1a
- 1126 0423 636800   		.ascii	"ch\000"
- 1127 0426 01       		.byte	0x1
- 1128 0427 D2       		.byte	0xd2
- 1129 0428 C9000000 		.4byte	0xc9
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 25
+ 1073 03ef 01       		.byte	0x1
+ 1074 03f0 CF       		.byte	0xcf
+ 1075 03f1 2C000000 		.4byte	0x2c
+ 1076 03f5 1B020000 		.4byte	.LLST11
+ 1077 03f9 18       		.uleb128 0x18
+ 1078 03fa 70747200 		.ascii	"ptr\000"
+ 1079 03fe 01       		.byte	0x1
+ 1080 03ff CF       		.byte	0xcf
+ 1081 0400 EA000000 		.4byte	0xea
+ 1082 0404 3C020000 		.4byte	.LLST12
+ 1083 0408 17       		.uleb128 0x17
+ 1084 0409 EF020000 		.4byte	.LASF35
+ 1085 040d 01       		.byte	0x1
+ 1086 040e CF       		.byte	0xcf
+ 1087 040f 2C000000 		.4byte	0x2c
+ 1088 0413 70020000 		.4byte	.LLST13
+ 1089 0417 19       		.uleb128 0x19
+ 1090 0418 63687300 		.ascii	"chs\000"
+ 1091 041c 01       		.byte	0x1
+ 1092 041d D1       		.byte	0xd1
+ 1093 041e 2C000000 		.4byte	0x2c
+ 1094 0422 8E020000 		.4byte	.LLST14
+ 1095 0426 19       		.uleb128 0x19
+ 1096 0427 636800   		.ascii	"ch\000"
+ 1097 042a 01       		.byte	0x1
+ 1098 042b D2       		.byte	0xd2
+ 1099 042c C9000000 		.4byte	0xc9
+ 1100 0430 AD020000 		.4byte	.LLST15
+ 1101 0434 14       		.uleb128 0x14
+ 1102 0435 0E000000 		.4byte	.LVL78
+ 1103 0439 78050000 		.4byte	0x578
+ 1104 043d 12       		.uleb128 0x12
+ 1105 043e 16000000 		.4byte	.LVL79
+ 1106 0442 67050000 		.4byte	0x567
+ 1107 0446 51040000 		.4byte	0x451
+ 1108 044a 13       		.uleb128 0x13
+ 1109 044b 01       		.uleb128 0x1
+ 1110 044c 50       		.byte	0x50
+ 1111 044d 02       		.uleb128 0x2
+ 1112 044e 75       		.byte	0x75
+ 1113 044f 00       		.sleb128 0
+ 1114 0450 00       		.byte	0
+ 1115 0451 15       		.uleb128 0x15
+ 1116 0452 22000000 		.4byte	.LVL82
+ 1117 0456 67050000 		.4byte	0x567
+ 1118 045a 13       		.uleb128 0x13
+ 1119 045b 01       		.uleb128 0x1
+ 1120 045c 50       		.byte	0x50
+ 1121 045d 01       		.uleb128 0x1
+ 1122 045e 3A       		.byte	0x3a
+ 1123 045f 00       		.byte	0
+ 1124 0460 00       		.byte	0
+ 1125 0461 1A       		.uleb128 0x1a
+ 1126 0462 2A030000 		.4byte	.LASF59
+ 1127 0466 0F       		.byte	0xf
+ 1128 0467 9606     		.2byte	0x696
+ 1129 0469 6D040000 		.4byte	0x46d
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 25
 
 
- 1130 042c A7020000 		.4byte	.LLST13
- 1131 0430 15       		.uleb128 0x15
- 1132 0431 0E000000 		.4byte	.LVL83
- 1133 0435 74050000 		.4byte	0x574
- 1134 0439 13       		.uleb128 0x13
- 1135 043a 16000000 		.4byte	.LVL84
- 1136 043e 63050000 		.4byte	0x563
- 1137 0442 4D040000 		.4byte	0x44d
- 1138 0446 14       		.uleb128 0x14
- 1139 0447 01       		.uleb128 0x1
- 1140 0448 50       		.byte	0x50
- 1141 0449 02       		.uleb128 0x2
- 1142 044a 75       		.byte	0x75
- 1143 044b 00       		.sleb128 0
- 1144 044c 00       		.byte	0
- 1145 044d 16       		.uleb128 0x16
- 1146 044e 22000000 		.4byte	.LVL87
- 1147 0452 63050000 		.4byte	0x563
- 1148 0456 14       		.uleb128 0x14
- 1149 0457 01       		.uleb128 0x1
- 1150 0458 50       		.byte	0x50
- 1151 0459 01       		.uleb128 0x1
- 1152 045a 3A       		.byte	0x3a
- 1153 045b 00       		.byte	0
- 1154 045c 00       		.byte	0
- 1155 045d 1B       		.uleb128 0x1b
- 1156 045e 2A030000 		.4byte	.LASF59
- 1157 0462 0F       		.byte	0xf
- 1158 0463 9606     		.2byte	0x696
- 1159 0465 69040000 		.4byte	0x469
- 1160 0469 1C       		.uleb128 0x1c
- 1161 046a 93000000 		.4byte	0x93
- 1162 046e 1D       		.uleb128 0x1d
- 1163 046f FF020000 		.4byte	.LASF36
- 1164 0473 05       		.byte	0x5
- 1165 0474 1B       		.byte	0x1b
- 1166 0475 7F040000 		.4byte	0x47f
- 1167 0479 1E       		.uleb128 0x1e
- 1168 047a 7F040000 		.4byte	0x47f
- 1169 047e 00       		.byte	0
- 1170 047f 06       		.uleb128 0x6
- 1171 0480 04       		.byte	0x4
- 1172 0481 FB000000 		.4byte	0xfb
- 1173 0485 1D       		.uleb128 0x1d
- 1174 0486 1E010000 		.4byte	.LASF37
- 1175 048a 05       		.byte	0x5
- 1176 048b 1C       		.byte	0x1c
- 1177 048c 96040000 		.4byte	0x496
- 1178 0490 1E       		.uleb128 0x1e
- 1179 0491 7F040000 		.4byte	0x47f
- 1180 0495 00       		.byte	0
- 1181 0496 1D       		.uleb128 0x1d
- 1182 0497 42030000 		.4byte	.LASF38
- 1183 049b 06       		.byte	0x6
- 1184 049c 76       		.byte	0x76
- 1185 049d A7040000 		.4byte	0x4a7
- 1186 04a1 1E       		.uleb128 0x1e
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 26
+ 1130 046d 1B       		.uleb128 0x1b
+ 1131 046e 93000000 		.4byte	0x93
+ 1132 0472 1C       		.uleb128 0x1c
+ 1133 0473 FF020000 		.4byte	.LASF36
+ 1134 0477 05       		.byte	0x5
+ 1135 0478 1B       		.byte	0x1b
+ 1136 0479 83040000 		.4byte	0x483
+ 1137 047d 1D       		.uleb128 0x1d
+ 1138 047e 83040000 		.4byte	0x483
+ 1139 0482 00       		.byte	0
+ 1140 0483 06       		.uleb128 0x6
+ 1141 0484 04       		.byte	0x4
+ 1142 0485 FB000000 		.4byte	0xfb
+ 1143 0489 1C       		.uleb128 0x1c
+ 1144 048a 1E010000 		.4byte	.LASF37
+ 1145 048e 05       		.byte	0x5
+ 1146 048f 1C       		.byte	0x1c
+ 1147 0490 9A040000 		.4byte	0x49a
+ 1148 0494 1D       		.uleb128 0x1d
+ 1149 0495 83040000 		.4byte	0x483
+ 1150 0499 00       		.byte	0
+ 1151 049a 1C       		.uleb128 0x1c
+ 1152 049b 42030000 		.4byte	.LASF38
+ 1153 049f 06       		.byte	0x6
+ 1154 04a0 76       		.byte	0x76
+ 1155 04a1 AB040000 		.4byte	0x4ab
+ 1156 04a5 1D       		.uleb128 0x1d
+ 1157 04a6 AA000000 		.4byte	0xaa
+ 1158 04aa 00       		.byte	0
+ 1159 04ab 1E       		.uleb128 0x1e
+ 1160 04ac 8E020000 		.4byte	.LASF48
+ 1161 04b0 0D       		.byte	0xd
+ 1162 04b1 00       		.byte	0
+ 1163 04b2 3C000000 		.4byte	.LASF50
+ 1164 04b6 2C000000 		.4byte	0x2c
+ 1165 04ba C4040000 		.4byte	0x4c4
+ 1166 04be 1D       		.uleb128 0x1d
+ 1167 04bf 2C000000 		.4byte	0x2c
+ 1168 04c3 00       		.byte	0
+ 1169 04c4 1C       		.uleb128 0x1c
+ 1170 04c5 77000000 		.4byte	.LASF39
+ 1171 04c9 07       		.byte	0x7
+ 1172 04ca 12       		.byte	0x12
+ 1173 04cb DF040000 		.4byte	0x4df
+ 1174 04cf 1D       		.uleb128 0x1d
+ 1175 04d0 9E000000 		.4byte	0x9e
+ 1176 04d4 1D       		.uleb128 0x1d
+ 1177 04d5 9E000000 		.4byte	0x9e
+ 1178 04d9 1D       		.uleb128 0x1d
+ 1179 04da AA000000 		.4byte	0xaa
+ 1180 04de 00       		.byte	0
+ 1181 04df 1F       		.uleb128 0x1f
+ 1182 04e0 1E000000 		.4byte	.LASF40
+ 1183 04e4 07       		.byte	0x7
+ 1184 04e5 0C       		.byte	0xc
+ 1185 04e6 EC040000 		.4byte	0x4ec
+ 1186 04ea 20       		.uleb128 0x20
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 26
 
 
- 1187 04a2 AA000000 		.4byte	0xaa
- 1188 04a6 00       		.byte	0
- 1189 04a7 1F       		.uleb128 0x1f
- 1190 04a8 8E020000 		.4byte	.LASF48
- 1191 04ac 0D       		.byte	0xd
- 1192 04ad 00       		.byte	0
- 1193 04ae 3C000000 		.4byte	.LASF50
- 1194 04b2 2C000000 		.4byte	0x2c
- 1195 04b6 C0040000 		.4byte	0x4c0
- 1196 04ba 1E       		.uleb128 0x1e
- 1197 04bb 2C000000 		.4byte	0x2c
- 1198 04bf 00       		.byte	0
- 1199 04c0 1D       		.uleb128 0x1d
- 1200 04c1 77000000 		.4byte	.LASF39
- 1201 04c5 07       		.byte	0x7
- 1202 04c6 12       		.byte	0x12
- 1203 04c7 DB040000 		.4byte	0x4db
- 1204 04cb 1E       		.uleb128 0x1e
- 1205 04cc 9E000000 		.4byte	0x9e
- 1206 04d0 1E       		.uleb128 0x1e
- 1207 04d1 9E000000 		.4byte	0x9e
- 1208 04d5 1E       		.uleb128 0x1e
- 1209 04d6 AA000000 		.4byte	0xaa
- 1210 04da 00       		.byte	0
- 1211 04db 20       		.uleb128 0x20
- 1212 04dc 1E000000 		.4byte	.LASF40
- 1213 04e0 07       		.byte	0x7
- 1214 04e1 0C       		.byte	0xc
- 1215 04e2 E8040000 		.4byte	0x4e8
- 1216 04e6 21       		.uleb128 0x21
- 1217 04e7 00       		.byte	0
- 1218 04e8 20       		.uleb128 0x20
- 1219 04e9 DF020000 		.4byte	.LASF41
- 1220 04ed 08       		.byte	0x8
- 1221 04ee 0B       		.byte	0xb
- 1222 04ef F5040000 		.4byte	0x4f5
- 1223 04f3 21       		.uleb128 0x21
- 1224 04f4 00       		.byte	0
- 1225 04f5 20       		.uleb128 0x20
- 1226 04f6 D3020000 		.4byte	.LASF42
- 1227 04fa 07       		.byte	0x7
- 1228 04fb 0B       		.byte	0xb
- 1229 04fc 02050000 		.4byte	0x502
- 1230 0500 21       		.uleb128 0x21
- 1231 0501 00       		.byte	0
- 1232 0502 22       		.uleb128 0x22
- 1233 0503 E2000000 		.4byte	.LASF43
- 1234 0507 09       		.byte	0x9
- 1235 0508 54       		.byte	0x54
- 1236 0509 22       		.uleb128 0x22
- 1237 050a D0000000 		.4byte	.LASF44
- 1238 050e 05       		.byte	0x5
- 1239 050f 1A       		.byte	0x1a
- 1240 0510 22       		.uleb128 0x22
- 1241 0511 5C010000 		.4byte	.LASF45
- 1242 0515 0A       		.byte	0xa
- 1243 0516 34       		.byte	0x34
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 27
+ 1187 04eb 00       		.byte	0
+ 1188 04ec 1F       		.uleb128 0x1f
+ 1189 04ed DF020000 		.4byte	.LASF41
+ 1190 04f1 08       		.byte	0x8
+ 1191 04f2 0B       		.byte	0xb
+ 1192 04f3 F9040000 		.4byte	0x4f9
+ 1193 04f7 20       		.uleb128 0x20
+ 1194 04f8 00       		.byte	0
+ 1195 04f9 1F       		.uleb128 0x1f
+ 1196 04fa D3020000 		.4byte	.LASF42
+ 1197 04fe 07       		.byte	0x7
+ 1198 04ff 0B       		.byte	0xb
+ 1199 0500 06050000 		.4byte	0x506
+ 1200 0504 20       		.uleb128 0x20
+ 1201 0505 00       		.byte	0
+ 1202 0506 21       		.uleb128 0x21
+ 1203 0507 E2000000 		.4byte	.LASF43
+ 1204 050b 09       		.byte	0x9
+ 1205 050c 54       		.byte	0x54
+ 1206 050d 21       		.uleb128 0x21
+ 1207 050e D0000000 		.4byte	.LASF44
+ 1208 0512 05       		.byte	0x5
+ 1209 0513 1A       		.byte	0x1a
+ 1210 0514 21       		.uleb128 0x21
+ 1211 0515 5C010000 		.4byte	.LASF45
+ 1212 0519 0A       		.byte	0xa
+ 1213 051a 34       		.byte	0x34
+ 1214 051b 1C       		.uleb128 0x1c
+ 1215 051c 4A030000 		.4byte	.LASF46
+ 1216 0520 0B       		.byte	0xb
+ 1217 0521 26       		.byte	0x26
+ 1218 0522 2C050000 		.4byte	0x52c
+ 1219 0526 1D       		.uleb128 0x1d
+ 1220 0527 9E000000 		.4byte	0x9e
+ 1221 052b 00       		.byte	0
+ 1222 052c 1C       		.uleb128 0x1c
+ 1223 052d C0020000 		.4byte	.LASF47
+ 1224 0531 0C       		.byte	0xc
+ 1225 0532 18       		.byte	0x18
+ 1226 0533 3D050000 		.4byte	0x53d
+ 1227 0537 1D       		.uleb128 0x1d
+ 1228 0538 D0000000 		.4byte	0xd0
+ 1229 053c 00       		.byte	0
+ 1230 053d 1E       		.uleb128 0x1e
+ 1231 053e 00000000 		.4byte	.LASF49
+ 1232 0542 0D       		.byte	0xd
+ 1233 0543 00       		.byte	0
+ 1234 0544 BA010000 		.4byte	.LASF51
+ 1235 0548 2C000000 		.4byte	0x2c
+ 1236 054c 56050000 		.4byte	0x556
+ 1237 0550 1D       		.uleb128 0x1d
+ 1238 0551 F0000000 		.4byte	0xf0
+ 1239 0555 00       		.byte	0
+ 1240 0556 1C       		.uleb128 0x1c
+ 1241 0557 7D020000 		.4byte	.LASF52
+ 1242 055b 0E       		.byte	0xe
+ 1243 055c 26       		.byte	0x26
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 27
 
 
- 1244 0517 1D       		.uleb128 0x1d
- 1245 0518 4A030000 		.4byte	.LASF46
- 1246 051c 0B       		.byte	0xb
- 1247 051d 26       		.byte	0x26
- 1248 051e 28050000 		.4byte	0x528
- 1249 0522 1E       		.uleb128 0x1e
- 1250 0523 9E000000 		.4byte	0x9e
- 1251 0527 00       		.byte	0
- 1252 0528 1D       		.uleb128 0x1d
- 1253 0529 C0020000 		.4byte	.LASF47
- 1254 052d 0C       		.byte	0xc
- 1255 052e 18       		.byte	0x18
- 1256 052f 39050000 		.4byte	0x539
- 1257 0533 1E       		.uleb128 0x1e
- 1258 0534 D0000000 		.4byte	0xd0
- 1259 0538 00       		.byte	0
- 1260 0539 1F       		.uleb128 0x1f
- 1261 053a 00000000 		.4byte	.LASF49
- 1262 053e 0D       		.byte	0xd
- 1263 053f 00       		.byte	0
- 1264 0540 BA010000 		.4byte	.LASF51
- 1265 0544 2C000000 		.4byte	0x2c
- 1266 0548 52050000 		.4byte	0x552
- 1267 054c 1E       		.uleb128 0x1e
- 1268 054d F0000000 		.4byte	0xf0
- 1269 0551 00       		.byte	0
- 1270 0552 1D       		.uleb128 0x1d
- 1271 0553 7D020000 		.4byte	.LASF52
- 1272 0557 0E       		.byte	0xe
- 1273 0558 26       		.byte	0x26
- 1274 0559 63050000 		.4byte	0x563
- 1275 055d 1E       		.uleb128 0x1e
- 1276 055e 9E000000 		.4byte	0x9e
- 1277 0562 00       		.byte	0
- 1278 0563 1D       		.uleb128 0x1d
- 1279 0564 EF000000 		.4byte	.LASF53
- 1280 0568 09       		.byte	0x9
- 1281 0569 8A       		.byte	0x8a
- 1282 056a 74050000 		.4byte	0x574
- 1283 056e 1E       		.uleb128 0x1e
- 1284 056f 9E000000 		.4byte	0x9e
- 1285 0573 00       		.byte	0
- 1286 0574 23       		.uleb128 0x23
- 1287 0575 0F000000 		.4byte	.LASF60
- 1288 0579 09       		.byte	0x9
- 1289 057a 71       		.byte	0x71
- 1290 057b 9E000000 		.4byte	0x9e
- 1291 057f 00       		.byte	0
- 1292              		.section	.debug_abbrev,"",%progbits
- 1293              	.Ldebug_abbrev0:
- 1294 0000 01       		.uleb128 0x1
- 1295 0001 11       		.uleb128 0x11
- 1296 0002 01       		.byte	0x1
- 1297 0003 25       		.uleb128 0x25
- 1298 0004 0E       		.uleb128 0xe
- 1299 0005 13       		.uleb128 0x13
- 1300 0006 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 28
+ 1244 055d 67050000 		.4byte	0x567
+ 1245 0561 1D       		.uleb128 0x1d
+ 1246 0562 9E000000 		.4byte	0x9e
+ 1247 0566 00       		.byte	0
+ 1248 0567 1C       		.uleb128 0x1c
+ 1249 0568 EF000000 		.4byte	.LASF53
+ 1250 056c 09       		.byte	0x9
+ 1251 056d 8A       		.byte	0x8a
+ 1252 056e 78050000 		.4byte	0x578
+ 1253 0572 1D       		.uleb128 0x1d
+ 1254 0573 9E000000 		.4byte	0x9e
+ 1255 0577 00       		.byte	0
+ 1256 0578 22       		.uleb128 0x22
+ 1257 0579 0F000000 		.4byte	.LASF60
+ 1258 057d 09       		.byte	0x9
+ 1259 057e 71       		.byte	0x71
+ 1260 057f 9E000000 		.4byte	0x9e
+ 1261 0583 00       		.byte	0
+ 1262              		.section	.debug_abbrev,"",%progbits
+ 1263              	.Ldebug_abbrev0:
+ 1264 0000 01       		.uleb128 0x1
+ 1265 0001 11       		.uleb128 0x11
+ 1266 0002 01       		.byte	0x1
+ 1267 0003 25       		.uleb128 0x25
+ 1268 0004 0E       		.uleb128 0xe
+ 1269 0005 13       		.uleb128 0x13
+ 1270 0006 0B       		.uleb128 0xb
+ 1271 0007 03       		.uleb128 0x3
+ 1272 0008 0E       		.uleb128 0xe
+ 1273 0009 1B       		.uleb128 0x1b
+ 1274 000a 0E       		.uleb128 0xe
+ 1275 000b 55       		.uleb128 0x55
+ 1276 000c 17       		.uleb128 0x17
+ 1277 000d 11       		.uleb128 0x11
+ 1278 000e 01       		.uleb128 0x1
+ 1279 000f 10       		.uleb128 0x10
+ 1280 0010 17       		.uleb128 0x17
+ 1281 0011 00       		.byte	0
+ 1282 0012 00       		.byte	0
+ 1283 0013 02       		.uleb128 0x2
+ 1284 0014 24       		.uleb128 0x24
+ 1285 0015 00       		.byte	0
+ 1286 0016 0B       		.uleb128 0xb
+ 1287 0017 0B       		.uleb128 0xb
+ 1288 0018 3E       		.uleb128 0x3e
+ 1289 0019 0B       		.uleb128 0xb
+ 1290 001a 03       		.uleb128 0x3
+ 1291 001b 0E       		.uleb128 0xe
+ 1292 001c 00       		.byte	0
+ 1293 001d 00       		.byte	0
+ 1294 001e 03       		.uleb128 0x3
+ 1295 001f 24       		.uleb128 0x24
+ 1296 0020 00       		.byte	0
+ 1297 0021 0B       		.uleb128 0xb
+ 1298 0022 0B       		.uleb128 0xb
+ 1299 0023 3E       		.uleb128 0x3e
+ 1300 0024 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 28
 
 
- 1301 0007 03       		.uleb128 0x3
- 1302 0008 0E       		.uleb128 0xe
- 1303 0009 1B       		.uleb128 0x1b
- 1304 000a 0E       		.uleb128 0xe
- 1305 000b 55       		.uleb128 0x55
- 1306 000c 17       		.uleb128 0x17
- 1307 000d 11       		.uleb128 0x11
- 1308 000e 01       		.uleb128 0x1
- 1309 000f 10       		.uleb128 0x10
- 1310 0010 17       		.uleb128 0x17
- 1311 0011 00       		.byte	0
- 1312 0012 00       		.byte	0
- 1313 0013 02       		.uleb128 0x2
- 1314 0014 24       		.uleb128 0x24
- 1315 0015 00       		.byte	0
- 1316 0016 0B       		.uleb128 0xb
- 1317 0017 0B       		.uleb128 0xb
- 1318 0018 3E       		.uleb128 0x3e
- 1319 0019 0B       		.uleb128 0xb
- 1320 001a 03       		.uleb128 0x3
- 1321 001b 0E       		.uleb128 0xe
- 1322 001c 00       		.byte	0
- 1323 001d 00       		.byte	0
- 1324 001e 03       		.uleb128 0x3
- 1325 001f 24       		.uleb128 0x24
- 1326 0020 00       		.byte	0
- 1327 0021 0B       		.uleb128 0xb
- 1328 0022 0B       		.uleb128 0xb
- 1329 0023 3E       		.uleb128 0x3e
- 1330 0024 0B       		.uleb128 0xb
- 1331 0025 03       		.uleb128 0x3
- 1332 0026 08       		.uleb128 0x8
- 1333 0027 00       		.byte	0
- 1334 0028 00       		.byte	0
- 1335 0029 04       		.uleb128 0x4
- 1336 002a 16       		.uleb128 0x16
- 1337 002b 00       		.byte	0
- 1338 002c 03       		.uleb128 0x3
- 1339 002d 0E       		.uleb128 0xe
- 1340 002e 3A       		.uleb128 0x3a
- 1341 002f 0B       		.uleb128 0xb
- 1342 0030 3B       		.uleb128 0x3b
- 1343 0031 0B       		.uleb128 0xb
- 1344 0032 49       		.uleb128 0x49
- 1345 0033 13       		.uleb128 0x13
- 1346 0034 00       		.byte	0
- 1347 0035 00       		.byte	0
- 1348 0036 05       		.uleb128 0x5
- 1349 0037 16       		.uleb128 0x16
- 1350 0038 00       		.byte	0
- 1351 0039 03       		.uleb128 0x3
- 1352 003a 0E       		.uleb128 0xe
- 1353 003b 3A       		.uleb128 0x3a
- 1354 003c 0B       		.uleb128 0xb
- 1355 003d 3B       		.uleb128 0x3b
- 1356 003e 05       		.uleb128 0x5
- 1357 003f 49       		.uleb128 0x49
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 29
+ 1301 0025 03       		.uleb128 0x3
+ 1302 0026 08       		.uleb128 0x8
+ 1303 0027 00       		.byte	0
+ 1304 0028 00       		.byte	0
+ 1305 0029 04       		.uleb128 0x4
+ 1306 002a 16       		.uleb128 0x16
+ 1307 002b 00       		.byte	0
+ 1308 002c 03       		.uleb128 0x3
+ 1309 002d 0E       		.uleb128 0xe
+ 1310 002e 3A       		.uleb128 0x3a
+ 1311 002f 0B       		.uleb128 0xb
+ 1312 0030 3B       		.uleb128 0x3b
+ 1313 0031 0B       		.uleb128 0xb
+ 1314 0032 49       		.uleb128 0x49
+ 1315 0033 13       		.uleb128 0x13
+ 1316 0034 00       		.byte	0
+ 1317 0035 00       		.byte	0
+ 1318 0036 05       		.uleb128 0x5
+ 1319 0037 16       		.uleb128 0x16
+ 1320 0038 00       		.byte	0
+ 1321 0039 03       		.uleb128 0x3
+ 1322 003a 0E       		.uleb128 0xe
+ 1323 003b 3A       		.uleb128 0x3a
+ 1324 003c 0B       		.uleb128 0xb
+ 1325 003d 3B       		.uleb128 0x3b
+ 1326 003e 05       		.uleb128 0x5
+ 1327 003f 49       		.uleb128 0x49
+ 1328 0040 13       		.uleb128 0x13
+ 1329 0041 00       		.byte	0
+ 1330 0042 00       		.byte	0
+ 1331 0043 06       		.uleb128 0x6
+ 1332 0044 0F       		.uleb128 0xf
+ 1333 0045 00       		.byte	0
+ 1334 0046 0B       		.uleb128 0xb
+ 1335 0047 0B       		.uleb128 0xb
+ 1336 0048 49       		.uleb128 0x49
+ 1337 0049 13       		.uleb128 0x13
+ 1338 004a 00       		.byte	0
+ 1339 004b 00       		.byte	0
+ 1340 004c 07       		.uleb128 0x7
+ 1341 004d 15       		.uleb128 0x15
+ 1342 004e 00       		.byte	0
+ 1343 004f 27       		.uleb128 0x27
+ 1344 0050 19       		.uleb128 0x19
+ 1345 0051 00       		.byte	0
+ 1346 0052 00       		.byte	0
+ 1347 0053 08       		.uleb128 0x8
+ 1348 0054 26       		.uleb128 0x26
+ 1349 0055 00       		.byte	0
+ 1350 0056 49       		.uleb128 0x49
+ 1351 0057 13       		.uleb128 0x13
+ 1352 0058 00       		.byte	0
+ 1353 0059 00       		.byte	0
+ 1354 005a 09       		.uleb128 0x9
+ 1355 005b 13       		.uleb128 0x13
+ 1356 005c 01       		.byte	0x1
+ 1357 005d 03       		.uleb128 0x3
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 29
 
 
- 1358 0040 13       		.uleb128 0x13
- 1359 0041 00       		.byte	0
- 1360 0042 00       		.byte	0
- 1361 0043 06       		.uleb128 0x6
- 1362 0044 0F       		.uleb128 0xf
- 1363 0045 00       		.byte	0
- 1364 0046 0B       		.uleb128 0xb
- 1365 0047 0B       		.uleb128 0xb
- 1366 0048 49       		.uleb128 0x49
- 1367 0049 13       		.uleb128 0x13
- 1368 004a 00       		.byte	0
- 1369 004b 00       		.byte	0
- 1370 004c 07       		.uleb128 0x7
- 1371 004d 15       		.uleb128 0x15
- 1372 004e 00       		.byte	0
- 1373 004f 27       		.uleb128 0x27
- 1374 0050 19       		.uleb128 0x19
- 1375 0051 00       		.byte	0
- 1376 0052 00       		.byte	0
- 1377 0053 08       		.uleb128 0x8
- 1378 0054 26       		.uleb128 0x26
- 1379 0055 00       		.byte	0
- 1380 0056 49       		.uleb128 0x49
- 1381 0057 13       		.uleb128 0x13
- 1382 0058 00       		.byte	0
- 1383 0059 00       		.byte	0
- 1384 005a 09       		.uleb128 0x9
- 1385 005b 13       		.uleb128 0x13
- 1386 005c 01       		.byte	0x1
- 1387 005d 03       		.uleb128 0x3
- 1388 005e 0E       		.uleb128 0xe
- 1389 005f 0B       		.uleb128 0xb
- 1390 0060 0B       		.uleb128 0xb
- 1391 0061 3A       		.uleb128 0x3a
- 1392 0062 0B       		.uleb128 0xb
- 1393 0063 3B       		.uleb128 0x3b
- 1394 0064 0B       		.uleb128 0xb
- 1395 0065 01       		.uleb128 0x1
- 1396 0066 13       		.uleb128 0x13
- 1397 0067 00       		.byte	0
- 1398 0068 00       		.byte	0
- 1399 0069 0A       		.uleb128 0xa
- 1400 006a 0D       		.uleb128 0xd
- 1401 006b 00       		.byte	0
- 1402 006c 03       		.uleb128 0x3
- 1403 006d 08       		.uleb128 0x8
- 1404 006e 3A       		.uleb128 0x3a
- 1405 006f 0B       		.uleb128 0xb
- 1406 0070 3B       		.uleb128 0x3b
- 1407 0071 0B       		.uleb128 0xb
- 1408 0072 49       		.uleb128 0x49
- 1409 0073 13       		.uleb128 0x13
- 1410 0074 38       		.uleb128 0x38
- 1411 0075 0B       		.uleb128 0xb
- 1412 0076 00       		.byte	0
- 1413 0077 00       		.byte	0
- 1414 0078 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 30
+ 1358 005e 0E       		.uleb128 0xe
+ 1359 005f 0B       		.uleb128 0xb
+ 1360 0060 0B       		.uleb128 0xb
+ 1361 0061 3A       		.uleb128 0x3a
+ 1362 0062 0B       		.uleb128 0xb
+ 1363 0063 3B       		.uleb128 0x3b
+ 1364 0064 0B       		.uleb128 0xb
+ 1365 0065 01       		.uleb128 0x1
+ 1366 0066 13       		.uleb128 0x13
+ 1367 0067 00       		.byte	0
+ 1368 0068 00       		.byte	0
+ 1369 0069 0A       		.uleb128 0xa
+ 1370 006a 0D       		.uleb128 0xd
+ 1371 006b 00       		.byte	0
+ 1372 006c 03       		.uleb128 0x3
+ 1373 006d 08       		.uleb128 0x8
+ 1374 006e 3A       		.uleb128 0x3a
+ 1375 006f 0B       		.uleb128 0xb
+ 1376 0070 3B       		.uleb128 0x3b
+ 1377 0071 0B       		.uleb128 0xb
+ 1378 0072 49       		.uleb128 0x49
+ 1379 0073 13       		.uleb128 0x13
+ 1380 0074 38       		.uleb128 0x38
+ 1381 0075 0B       		.uleb128 0xb
+ 1382 0076 00       		.byte	0
+ 1383 0077 00       		.byte	0
+ 1384 0078 0B       		.uleb128 0xb
+ 1385 0079 2E       		.uleb128 0x2e
+ 1386 007a 01       		.byte	0x1
+ 1387 007b 3F       		.uleb128 0x3f
+ 1388 007c 19       		.uleb128 0x19
+ 1389 007d 03       		.uleb128 0x3
+ 1390 007e 0E       		.uleb128 0xe
+ 1391 007f 3A       		.uleb128 0x3a
+ 1392 0080 0B       		.uleb128 0xb
+ 1393 0081 3B       		.uleb128 0x3b
+ 1394 0082 0B       		.uleb128 0xb
+ 1395 0083 49       		.uleb128 0x49
+ 1396 0084 13       		.uleb128 0x13
+ 1397 0085 11       		.uleb128 0x11
+ 1398 0086 01       		.uleb128 0x1
+ 1399 0087 12       		.uleb128 0x12
+ 1400 0088 06       		.uleb128 0x6
+ 1401 0089 40       		.uleb128 0x40
+ 1402 008a 18       		.uleb128 0x18
+ 1403 008b 9642     		.uleb128 0x2116
+ 1404 008d 19       		.uleb128 0x19
+ 1405 008e 01       		.uleb128 0x1
+ 1406 008f 13       		.uleb128 0x13
+ 1407 0090 00       		.byte	0
+ 1408 0091 00       		.byte	0
+ 1409 0092 0C       		.uleb128 0xc
+ 1410 0093 34       		.uleb128 0x34
+ 1411 0094 00       		.byte	0
+ 1412 0095 03       		.uleb128 0x3
+ 1413 0096 08       		.uleb128 0x8
+ 1414 0097 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 30
 
 
- 1415 0079 2E       		.uleb128 0x2e
- 1416 007a 01       		.byte	0x1
- 1417 007b 3F       		.uleb128 0x3f
- 1418 007c 19       		.uleb128 0x19
- 1419 007d 03       		.uleb128 0x3
- 1420 007e 0E       		.uleb128 0xe
- 1421 007f 3A       		.uleb128 0x3a
- 1422 0080 0B       		.uleb128 0xb
- 1423 0081 3B       		.uleb128 0x3b
- 1424 0082 0B       		.uleb128 0xb
- 1425 0083 49       		.uleb128 0x49
- 1426 0084 13       		.uleb128 0x13
- 1427 0085 11       		.uleb128 0x11
- 1428 0086 01       		.uleb128 0x1
- 1429 0087 12       		.uleb128 0x12
- 1430 0088 06       		.uleb128 0x6
- 1431 0089 40       		.uleb128 0x40
- 1432 008a 18       		.uleb128 0x18
- 1433 008b 9642     		.uleb128 0x2116
- 1434 008d 19       		.uleb128 0x19
- 1435 008e 01       		.uleb128 0x1
- 1436 008f 13       		.uleb128 0x13
- 1437 0090 00       		.byte	0
- 1438 0091 00       		.byte	0
- 1439 0092 0C       		.uleb128 0xc
- 1440 0093 34       		.uleb128 0x34
- 1441 0094 00       		.byte	0
- 1442 0095 03       		.uleb128 0x3
- 1443 0096 08       		.uleb128 0x8
- 1444 0097 3A       		.uleb128 0x3a
- 1445 0098 0B       		.uleb128 0xb
- 1446 0099 3B       		.uleb128 0x3b
- 1447 009a 0B       		.uleb128 0xb
- 1448 009b 49       		.uleb128 0x49
- 1449 009c 13       		.uleb128 0x13
- 1450 009d 02       		.uleb128 0x2
- 1451 009e 18       		.uleb128 0x18
- 1452 009f 00       		.byte	0
- 1453 00a0 00       		.byte	0
- 1454 00a1 0D       		.uleb128 0xd
- 1455 00a2 34       		.uleb128 0x34
- 1456 00a3 00       		.byte	0
- 1457 00a4 03       		.uleb128 0x3
- 1458 00a5 0E       		.uleb128 0xe
- 1459 00a6 3A       		.uleb128 0x3a
- 1460 00a7 0B       		.uleb128 0xb
- 1461 00a8 3B       		.uleb128 0x3b
- 1462 00a9 0B       		.uleb128 0xb
- 1463 00aa 49       		.uleb128 0x49
- 1464 00ab 13       		.uleb128 0x13
- 1465 00ac 02       		.uleb128 0x2
- 1466 00ad 18       		.uleb128 0x18
- 1467 00ae 00       		.byte	0
- 1468 00af 00       		.byte	0
- 1469 00b0 0E       		.uleb128 0xe
- 1470 00b1 34       		.uleb128 0x34
- 1471 00b2 00       		.byte	0
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 31
+ 1415 0098 0B       		.uleb128 0xb
+ 1416 0099 3B       		.uleb128 0x3b
+ 1417 009a 0B       		.uleb128 0xb
+ 1418 009b 49       		.uleb128 0x49
+ 1419 009c 13       		.uleb128 0x13
+ 1420 009d 02       		.uleb128 0x2
+ 1421 009e 18       		.uleb128 0x18
+ 1422 009f 00       		.byte	0
+ 1423 00a0 00       		.byte	0
+ 1424 00a1 0D       		.uleb128 0xd
+ 1425 00a2 34       		.uleb128 0x34
+ 1426 00a3 00       		.byte	0
+ 1427 00a4 03       		.uleb128 0x3
+ 1428 00a5 0E       		.uleb128 0xe
+ 1429 00a6 3A       		.uleb128 0x3a
+ 1430 00a7 0B       		.uleb128 0xb
+ 1431 00a8 3B       		.uleb128 0x3b
+ 1432 00a9 0B       		.uleb128 0xb
+ 1433 00aa 49       		.uleb128 0x49
+ 1434 00ab 13       		.uleb128 0x13
+ 1435 00ac 02       		.uleb128 0x2
+ 1436 00ad 17       		.uleb128 0x17
+ 1437 00ae 00       		.byte	0
+ 1438 00af 00       		.byte	0
+ 1439 00b0 0E       		.uleb128 0xe
+ 1440 00b1 34       		.uleb128 0x34
+ 1441 00b2 00       		.byte	0
+ 1442 00b3 03       		.uleb128 0x3
+ 1443 00b4 0E       		.uleb128 0xe
+ 1444 00b5 3A       		.uleb128 0x3a
+ 1445 00b6 0B       		.uleb128 0xb
+ 1446 00b7 3B       		.uleb128 0x3b
+ 1447 00b8 0B       		.uleb128 0xb
+ 1448 00b9 49       		.uleb128 0x49
+ 1449 00ba 13       		.uleb128 0x13
+ 1450 00bb 1C       		.uleb128 0x1c
+ 1451 00bc 0B       		.uleb128 0xb
+ 1452 00bd 00       		.byte	0
+ 1453 00be 00       		.byte	0
+ 1454 00bf 0F       		.uleb128 0xf
+ 1455 00c0 34       		.uleb128 0x34
+ 1456 00c1 00       		.byte	0
+ 1457 00c2 03       		.uleb128 0x3
+ 1458 00c3 0E       		.uleb128 0xe
+ 1459 00c4 3A       		.uleb128 0x3a
+ 1460 00c5 0B       		.uleb128 0xb
+ 1461 00c6 3B       		.uleb128 0x3b
+ 1462 00c7 0B       		.uleb128 0xb
+ 1463 00c8 49       		.uleb128 0x49
+ 1464 00c9 13       		.uleb128 0x13
+ 1465 00ca 00       		.byte	0
+ 1466 00cb 00       		.byte	0
+ 1467 00cc 10       		.uleb128 0x10
+ 1468 00cd 34       		.uleb128 0x34
+ 1469 00ce 00       		.byte	0
+ 1470 00cf 03       		.uleb128 0x3
+ 1471 00d0 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 31
 
 
- 1472 00b3 03       		.uleb128 0x3
- 1473 00b4 0E       		.uleb128 0xe
- 1474 00b5 3A       		.uleb128 0x3a
- 1475 00b6 0B       		.uleb128 0xb
- 1476 00b7 3B       		.uleb128 0x3b
- 1477 00b8 0B       		.uleb128 0xb
- 1478 00b9 49       		.uleb128 0x49
- 1479 00ba 13       		.uleb128 0x13
- 1480 00bb 1C       		.uleb128 0x1c
- 1481 00bc 0B       		.uleb128 0xb
- 1482 00bd 00       		.byte	0
- 1483 00be 00       		.byte	0
- 1484 00bf 0F       		.uleb128 0xf
- 1485 00c0 34       		.uleb128 0x34
- 1486 00c1 00       		.byte	0
- 1487 00c2 03       		.uleb128 0x3
- 1488 00c3 0E       		.uleb128 0xe
- 1489 00c4 3A       		.uleb128 0x3a
- 1490 00c5 0B       		.uleb128 0xb
- 1491 00c6 3B       		.uleb128 0x3b
- 1492 00c7 0B       		.uleb128 0xb
- 1493 00c8 49       		.uleb128 0x49
- 1494 00c9 13       		.uleb128 0x13
- 1495 00ca 00       		.byte	0
- 1496 00cb 00       		.byte	0
- 1497 00cc 10       		.uleb128 0x10
- 1498 00cd 34       		.uleb128 0x34
- 1499 00ce 00       		.byte	0
- 1500 00cf 03       		.uleb128 0x3
- 1501 00d0 0E       		.uleb128 0xe
- 1502 00d1 3A       		.uleb128 0x3a
- 1503 00d2 0B       		.uleb128 0xb
- 1504 00d3 3B       		.uleb128 0x3b
- 1505 00d4 0B       		.uleb128 0xb
- 1506 00d5 49       		.uleb128 0x49
- 1507 00d6 13       		.uleb128 0x13
- 1508 00d7 02       		.uleb128 0x2
- 1509 00d8 17       		.uleb128 0x17
- 1510 00d9 00       		.byte	0
- 1511 00da 00       		.byte	0
- 1512 00db 11       		.uleb128 0x11
- 1513 00dc 34       		.uleb128 0x34
- 1514 00dd 00       		.byte	0
- 1515 00de 03       		.uleb128 0x3
- 1516 00df 0E       		.uleb128 0xe
- 1517 00e0 3A       		.uleb128 0x3a
- 1518 00e1 0B       		.uleb128 0xb
- 1519 00e2 3B       		.uleb128 0x3b
- 1520 00e3 0B       		.uleb128 0xb
- 1521 00e4 49       		.uleb128 0x49
- 1522 00e5 13       		.uleb128 0x13
- 1523 00e6 1C       		.uleb128 0x1c
- 1524 00e7 0A       		.uleb128 0xa
- 1525 00e8 00       		.byte	0
- 1526 00e9 00       		.byte	0
- 1527 00ea 12       		.uleb128 0x12
- 1528 00eb 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 32
+ 1472 00d1 3A       		.uleb128 0x3a
+ 1473 00d2 0B       		.uleb128 0xb
+ 1474 00d3 3B       		.uleb128 0x3b
+ 1475 00d4 0B       		.uleb128 0xb
+ 1476 00d5 49       		.uleb128 0x49
+ 1477 00d6 13       		.uleb128 0x13
+ 1478 00d7 1C       		.uleb128 0x1c
+ 1479 00d8 0A       		.uleb128 0xa
+ 1480 00d9 00       		.byte	0
+ 1481 00da 00       		.byte	0
+ 1482 00db 11       		.uleb128 0x11
+ 1483 00dc 0B       		.uleb128 0xb
+ 1484 00dd 01       		.byte	0x1
+ 1485 00de 11       		.uleb128 0x11
+ 1486 00df 01       		.uleb128 0x1
+ 1487 00e0 12       		.uleb128 0x12
+ 1488 00e1 06       		.uleb128 0x6
+ 1489 00e2 01       		.uleb128 0x1
+ 1490 00e3 13       		.uleb128 0x13
+ 1491 00e4 00       		.byte	0
+ 1492 00e5 00       		.byte	0
+ 1493 00e6 12       		.uleb128 0x12
+ 1494 00e7 898201   		.uleb128 0x4109
+ 1495 00ea 01       		.byte	0x1
+ 1496 00eb 11       		.uleb128 0x11
+ 1497 00ec 01       		.uleb128 0x1
+ 1498 00ed 31       		.uleb128 0x31
+ 1499 00ee 13       		.uleb128 0x13
+ 1500 00ef 01       		.uleb128 0x1
+ 1501 00f0 13       		.uleb128 0x13
+ 1502 00f1 00       		.byte	0
+ 1503 00f2 00       		.byte	0
+ 1504 00f3 13       		.uleb128 0x13
+ 1505 00f4 8A8201   		.uleb128 0x410a
+ 1506 00f7 00       		.byte	0
+ 1507 00f8 02       		.uleb128 0x2
+ 1508 00f9 18       		.uleb128 0x18
+ 1509 00fa 9142     		.uleb128 0x2111
+ 1510 00fc 18       		.uleb128 0x18
+ 1511 00fd 00       		.byte	0
+ 1512 00fe 00       		.byte	0
+ 1513 00ff 14       		.uleb128 0x14
+ 1514 0100 898201   		.uleb128 0x4109
+ 1515 0103 00       		.byte	0
+ 1516 0104 11       		.uleb128 0x11
+ 1517 0105 01       		.uleb128 0x1
+ 1518 0106 31       		.uleb128 0x31
+ 1519 0107 13       		.uleb128 0x13
+ 1520 0108 00       		.byte	0
+ 1521 0109 00       		.byte	0
+ 1522 010a 15       		.uleb128 0x15
+ 1523 010b 898201   		.uleb128 0x4109
+ 1524 010e 01       		.byte	0x1
+ 1525 010f 11       		.uleb128 0x11
+ 1526 0110 01       		.uleb128 0x1
+ 1527 0111 31       		.uleb128 0x31
+ 1528 0112 13       		.uleb128 0x13
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 32
 
 
- 1529 00ec 01       		.byte	0x1
- 1530 00ed 11       		.uleb128 0x11
- 1531 00ee 01       		.uleb128 0x1
- 1532 00ef 12       		.uleb128 0x12
- 1533 00f0 06       		.uleb128 0x6
- 1534 00f1 01       		.uleb128 0x1
- 1535 00f2 13       		.uleb128 0x13
- 1536 00f3 00       		.byte	0
- 1537 00f4 00       		.byte	0
- 1538 00f5 13       		.uleb128 0x13
- 1539 00f6 898201   		.uleb128 0x4109
- 1540 00f9 01       		.byte	0x1
- 1541 00fa 11       		.uleb128 0x11
- 1542 00fb 01       		.uleb128 0x1
- 1543 00fc 31       		.uleb128 0x31
- 1544 00fd 13       		.uleb128 0x13
- 1545 00fe 01       		.uleb128 0x1
- 1546 00ff 13       		.uleb128 0x13
- 1547 0100 00       		.byte	0
- 1548 0101 00       		.byte	0
- 1549 0102 14       		.uleb128 0x14
- 1550 0103 8A8201   		.uleb128 0x410a
- 1551 0106 00       		.byte	0
- 1552 0107 02       		.uleb128 0x2
- 1553 0108 18       		.uleb128 0x18
- 1554 0109 9142     		.uleb128 0x2111
- 1555 010b 18       		.uleb128 0x18
- 1556 010c 00       		.byte	0
- 1557 010d 00       		.byte	0
- 1558 010e 15       		.uleb128 0x15
- 1559 010f 898201   		.uleb128 0x4109
- 1560 0112 00       		.byte	0
- 1561 0113 11       		.uleb128 0x11
- 1562 0114 01       		.uleb128 0x1
- 1563 0115 31       		.uleb128 0x31
- 1564 0116 13       		.uleb128 0x13
- 1565 0117 00       		.byte	0
- 1566 0118 00       		.byte	0
- 1567 0119 16       		.uleb128 0x16
- 1568 011a 898201   		.uleb128 0x4109
- 1569 011d 01       		.byte	0x1
- 1570 011e 11       		.uleb128 0x11
- 1571 011f 01       		.uleb128 0x1
- 1572 0120 31       		.uleb128 0x31
- 1573 0121 13       		.uleb128 0x13
- 1574 0122 00       		.byte	0
- 1575 0123 00       		.byte	0
- 1576 0124 17       		.uleb128 0x17
- 1577 0125 2E       		.uleb128 0x2e
- 1578 0126 01       		.byte	0x1
- 1579 0127 3F       		.uleb128 0x3f
- 1580 0128 19       		.uleb128 0x19
- 1581 0129 03       		.uleb128 0x3
- 1582 012a 0E       		.uleb128 0xe
- 1583 012b 3A       		.uleb128 0x3a
- 1584 012c 0B       		.uleb128 0xb
- 1585 012d 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 33
+ 1529 0113 00       		.byte	0
+ 1530 0114 00       		.byte	0
+ 1531 0115 16       		.uleb128 0x16
+ 1532 0116 2E       		.uleb128 0x2e
+ 1533 0117 01       		.byte	0x1
+ 1534 0118 3F       		.uleb128 0x3f
+ 1535 0119 19       		.uleb128 0x19
+ 1536 011a 03       		.uleb128 0x3
+ 1537 011b 0E       		.uleb128 0xe
+ 1538 011c 3A       		.uleb128 0x3a
+ 1539 011d 0B       		.uleb128 0xb
+ 1540 011e 3B       		.uleb128 0x3b
+ 1541 011f 0B       		.uleb128 0xb
+ 1542 0120 27       		.uleb128 0x27
+ 1543 0121 19       		.uleb128 0x19
+ 1544 0122 49       		.uleb128 0x49
+ 1545 0123 13       		.uleb128 0x13
+ 1546 0124 11       		.uleb128 0x11
+ 1547 0125 01       		.uleb128 0x1
+ 1548 0126 12       		.uleb128 0x12
+ 1549 0127 06       		.uleb128 0x6
+ 1550 0128 40       		.uleb128 0x40
+ 1551 0129 18       		.uleb128 0x18
+ 1552 012a 9742     		.uleb128 0x2117
+ 1553 012c 19       		.uleb128 0x19
+ 1554 012d 01       		.uleb128 0x1
+ 1555 012e 13       		.uleb128 0x13
+ 1556 012f 00       		.byte	0
+ 1557 0130 00       		.byte	0
+ 1558 0131 17       		.uleb128 0x17
+ 1559 0132 05       		.uleb128 0x5
+ 1560 0133 00       		.byte	0
+ 1561 0134 03       		.uleb128 0x3
+ 1562 0135 0E       		.uleb128 0xe
+ 1563 0136 3A       		.uleb128 0x3a
+ 1564 0137 0B       		.uleb128 0xb
+ 1565 0138 3B       		.uleb128 0x3b
+ 1566 0139 0B       		.uleb128 0xb
+ 1567 013a 49       		.uleb128 0x49
+ 1568 013b 13       		.uleb128 0x13
+ 1569 013c 02       		.uleb128 0x2
+ 1570 013d 17       		.uleb128 0x17
+ 1571 013e 00       		.byte	0
+ 1572 013f 00       		.byte	0
+ 1573 0140 18       		.uleb128 0x18
+ 1574 0141 05       		.uleb128 0x5
+ 1575 0142 00       		.byte	0
+ 1576 0143 03       		.uleb128 0x3
+ 1577 0144 08       		.uleb128 0x8
+ 1578 0145 3A       		.uleb128 0x3a
+ 1579 0146 0B       		.uleb128 0xb
+ 1580 0147 3B       		.uleb128 0x3b
+ 1581 0148 0B       		.uleb128 0xb
+ 1582 0149 49       		.uleb128 0x49
+ 1583 014a 13       		.uleb128 0x13
+ 1584 014b 02       		.uleb128 0x2
+ 1585 014c 17       		.uleb128 0x17
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 33
 
 
- 1586 012e 0B       		.uleb128 0xb
- 1587 012f 27       		.uleb128 0x27
- 1588 0130 19       		.uleb128 0x19
- 1589 0131 49       		.uleb128 0x49
- 1590 0132 13       		.uleb128 0x13
- 1591 0133 11       		.uleb128 0x11
- 1592 0134 01       		.uleb128 0x1
- 1593 0135 12       		.uleb128 0x12
- 1594 0136 06       		.uleb128 0x6
- 1595 0137 40       		.uleb128 0x40
- 1596 0138 18       		.uleb128 0x18
- 1597 0139 9742     		.uleb128 0x2117
- 1598 013b 19       		.uleb128 0x19
- 1599 013c 01       		.uleb128 0x1
- 1600 013d 13       		.uleb128 0x13
- 1601 013e 00       		.byte	0
- 1602 013f 00       		.byte	0
- 1603 0140 18       		.uleb128 0x18
- 1604 0141 05       		.uleb128 0x5
- 1605 0142 00       		.byte	0
- 1606 0143 03       		.uleb128 0x3
- 1607 0144 0E       		.uleb128 0xe
- 1608 0145 3A       		.uleb128 0x3a
- 1609 0146 0B       		.uleb128 0xb
- 1610 0147 3B       		.uleb128 0x3b
- 1611 0148 0B       		.uleb128 0xb
- 1612 0149 49       		.uleb128 0x49
- 1613 014a 13       		.uleb128 0x13
- 1614 014b 02       		.uleb128 0x2
- 1615 014c 17       		.uleb128 0x17
- 1616 014d 00       		.byte	0
- 1617 014e 00       		.byte	0
- 1618 014f 19       		.uleb128 0x19
- 1619 0150 05       		.uleb128 0x5
- 1620 0151 00       		.byte	0
- 1621 0152 03       		.uleb128 0x3
- 1622 0153 08       		.uleb128 0x8
- 1623 0154 3A       		.uleb128 0x3a
- 1624 0155 0B       		.uleb128 0xb
- 1625 0156 3B       		.uleb128 0x3b
- 1626 0157 0B       		.uleb128 0xb
- 1627 0158 49       		.uleb128 0x49
- 1628 0159 13       		.uleb128 0x13
- 1629 015a 02       		.uleb128 0x2
- 1630 015b 17       		.uleb128 0x17
- 1631 015c 00       		.byte	0
- 1632 015d 00       		.byte	0
- 1633 015e 1A       		.uleb128 0x1a
- 1634 015f 34       		.uleb128 0x34
- 1635 0160 00       		.byte	0
- 1636 0161 03       		.uleb128 0x3
- 1637 0162 08       		.uleb128 0x8
- 1638 0163 3A       		.uleb128 0x3a
- 1639 0164 0B       		.uleb128 0xb
- 1640 0165 3B       		.uleb128 0x3b
- 1641 0166 0B       		.uleb128 0xb
- 1642 0167 49       		.uleb128 0x49
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 34
+ 1586 014d 00       		.byte	0
+ 1587 014e 00       		.byte	0
+ 1588 014f 19       		.uleb128 0x19
+ 1589 0150 34       		.uleb128 0x34
+ 1590 0151 00       		.byte	0
+ 1591 0152 03       		.uleb128 0x3
+ 1592 0153 08       		.uleb128 0x8
+ 1593 0154 3A       		.uleb128 0x3a
+ 1594 0155 0B       		.uleb128 0xb
+ 1595 0156 3B       		.uleb128 0x3b
+ 1596 0157 0B       		.uleb128 0xb
+ 1597 0158 49       		.uleb128 0x49
+ 1598 0159 13       		.uleb128 0x13
+ 1599 015a 02       		.uleb128 0x2
+ 1600 015b 17       		.uleb128 0x17
+ 1601 015c 00       		.byte	0
+ 1602 015d 00       		.byte	0
+ 1603 015e 1A       		.uleb128 0x1a
+ 1604 015f 34       		.uleb128 0x34
+ 1605 0160 00       		.byte	0
+ 1606 0161 03       		.uleb128 0x3
+ 1607 0162 0E       		.uleb128 0xe
+ 1608 0163 3A       		.uleb128 0x3a
+ 1609 0164 0B       		.uleb128 0xb
+ 1610 0165 3B       		.uleb128 0x3b
+ 1611 0166 05       		.uleb128 0x5
+ 1612 0167 49       		.uleb128 0x49
+ 1613 0168 13       		.uleb128 0x13
+ 1614 0169 3F       		.uleb128 0x3f
+ 1615 016a 19       		.uleb128 0x19
+ 1616 016b 3C       		.uleb128 0x3c
+ 1617 016c 19       		.uleb128 0x19
+ 1618 016d 00       		.byte	0
+ 1619 016e 00       		.byte	0
+ 1620 016f 1B       		.uleb128 0x1b
+ 1621 0170 35       		.uleb128 0x35
+ 1622 0171 00       		.byte	0
+ 1623 0172 49       		.uleb128 0x49
+ 1624 0173 13       		.uleb128 0x13
+ 1625 0174 00       		.byte	0
+ 1626 0175 00       		.byte	0
+ 1627 0176 1C       		.uleb128 0x1c
+ 1628 0177 2E       		.uleb128 0x2e
+ 1629 0178 01       		.byte	0x1
+ 1630 0179 3F       		.uleb128 0x3f
+ 1631 017a 19       		.uleb128 0x19
+ 1632 017b 03       		.uleb128 0x3
+ 1633 017c 0E       		.uleb128 0xe
+ 1634 017d 3A       		.uleb128 0x3a
+ 1635 017e 0B       		.uleb128 0xb
+ 1636 017f 3B       		.uleb128 0x3b
+ 1637 0180 0B       		.uleb128 0xb
+ 1638 0181 27       		.uleb128 0x27
+ 1639 0182 19       		.uleb128 0x19
+ 1640 0183 3C       		.uleb128 0x3c
+ 1641 0184 19       		.uleb128 0x19
+ 1642 0185 01       		.uleb128 0x1
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 34
 
 
- 1643 0168 13       		.uleb128 0x13
- 1644 0169 02       		.uleb128 0x2
- 1645 016a 17       		.uleb128 0x17
- 1646 016b 00       		.byte	0
- 1647 016c 00       		.byte	0
- 1648 016d 1B       		.uleb128 0x1b
- 1649 016e 34       		.uleb128 0x34
- 1650 016f 00       		.byte	0
- 1651 0170 03       		.uleb128 0x3
- 1652 0171 0E       		.uleb128 0xe
- 1653 0172 3A       		.uleb128 0x3a
- 1654 0173 0B       		.uleb128 0xb
- 1655 0174 3B       		.uleb128 0x3b
- 1656 0175 05       		.uleb128 0x5
- 1657 0176 49       		.uleb128 0x49
- 1658 0177 13       		.uleb128 0x13
- 1659 0178 3F       		.uleb128 0x3f
- 1660 0179 19       		.uleb128 0x19
- 1661 017a 3C       		.uleb128 0x3c
- 1662 017b 19       		.uleb128 0x19
- 1663 017c 00       		.byte	0
- 1664 017d 00       		.byte	0
- 1665 017e 1C       		.uleb128 0x1c
- 1666 017f 35       		.uleb128 0x35
- 1667 0180 00       		.byte	0
- 1668 0181 49       		.uleb128 0x49
- 1669 0182 13       		.uleb128 0x13
- 1670 0183 00       		.byte	0
- 1671 0184 00       		.byte	0
- 1672 0185 1D       		.uleb128 0x1d
- 1673 0186 2E       		.uleb128 0x2e
- 1674 0187 01       		.byte	0x1
- 1675 0188 3F       		.uleb128 0x3f
- 1676 0189 19       		.uleb128 0x19
- 1677 018a 03       		.uleb128 0x3
- 1678 018b 0E       		.uleb128 0xe
- 1679 018c 3A       		.uleb128 0x3a
- 1680 018d 0B       		.uleb128 0xb
- 1681 018e 3B       		.uleb128 0x3b
- 1682 018f 0B       		.uleb128 0xb
- 1683 0190 27       		.uleb128 0x27
- 1684 0191 19       		.uleb128 0x19
- 1685 0192 3C       		.uleb128 0x3c
- 1686 0193 19       		.uleb128 0x19
- 1687 0194 01       		.uleb128 0x1
- 1688 0195 13       		.uleb128 0x13
- 1689 0196 00       		.byte	0
- 1690 0197 00       		.byte	0
- 1691 0198 1E       		.uleb128 0x1e
- 1692 0199 05       		.uleb128 0x5
- 1693 019a 00       		.byte	0
- 1694 019b 49       		.uleb128 0x49
- 1695 019c 13       		.uleb128 0x13
- 1696 019d 00       		.byte	0
- 1697 019e 00       		.byte	0
- 1698 019f 1F       		.uleb128 0x1f
- 1699 01a0 2E       		.uleb128 0x2e
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 35
+ 1643 0186 13       		.uleb128 0x13
+ 1644 0187 00       		.byte	0
+ 1645 0188 00       		.byte	0
+ 1646 0189 1D       		.uleb128 0x1d
+ 1647 018a 05       		.uleb128 0x5
+ 1648 018b 00       		.byte	0
+ 1649 018c 49       		.uleb128 0x49
+ 1650 018d 13       		.uleb128 0x13
+ 1651 018e 00       		.byte	0
+ 1652 018f 00       		.byte	0
+ 1653 0190 1E       		.uleb128 0x1e
+ 1654 0191 2E       		.uleb128 0x2e
+ 1655 0192 01       		.byte	0x1
+ 1656 0193 3F       		.uleb128 0x3f
+ 1657 0194 19       		.uleb128 0x19
+ 1658 0195 03       		.uleb128 0x3
+ 1659 0196 0E       		.uleb128 0xe
+ 1660 0197 3A       		.uleb128 0x3a
+ 1661 0198 0B       		.uleb128 0xb
+ 1662 0199 3B       		.uleb128 0x3b
+ 1663 019a 0B       		.uleb128 0xb
+ 1664 019b 6E       		.uleb128 0x6e
+ 1665 019c 0E       		.uleb128 0xe
+ 1666 019d 27       		.uleb128 0x27
+ 1667 019e 19       		.uleb128 0x19
+ 1668 019f 49       		.uleb128 0x49
+ 1669 01a0 13       		.uleb128 0x13
+ 1670 01a1 3C       		.uleb128 0x3c
+ 1671 01a2 19       		.uleb128 0x19
+ 1672 01a3 01       		.uleb128 0x1
+ 1673 01a4 13       		.uleb128 0x13
+ 1674 01a5 00       		.byte	0
+ 1675 01a6 00       		.byte	0
+ 1676 01a7 1F       		.uleb128 0x1f
+ 1677 01a8 2E       		.uleb128 0x2e
+ 1678 01a9 01       		.byte	0x1
+ 1679 01aa 3F       		.uleb128 0x3f
+ 1680 01ab 19       		.uleb128 0x19
+ 1681 01ac 03       		.uleb128 0x3
+ 1682 01ad 0E       		.uleb128 0xe
+ 1683 01ae 3A       		.uleb128 0x3a
+ 1684 01af 0B       		.uleb128 0xb
+ 1685 01b0 3B       		.uleb128 0x3b
+ 1686 01b1 0B       		.uleb128 0xb
+ 1687 01b2 3C       		.uleb128 0x3c
+ 1688 01b3 19       		.uleb128 0x19
+ 1689 01b4 01       		.uleb128 0x1
+ 1690 01b5 13       		.uleb128 0x13
+ 1691 01b6 00       		.byte	0
+ 1692 01b7 00       		.byte	0
+ 1693 01b8 20       		.uleb128 0x20
+ 1694 01b9 18       		.uleb128 0x18
+ 1695 01ba 00       		.byte	0
+ 1696 01bb 00       		.byte	0
+ 1697 01bc 00       		.byte	0
+ 1698 01bd 21       		.uleb128 0x21
+ 1699 01be 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 35
 
 
- 1700 01a1 01       		.byte	0x1
- 1701 01a2 3F       		.uleb128 0x3f
- 1702 01a3 19       		.uleb128 0x19
- 1703 01a4 03       		.uleb128 0x3
- 1704 01a5 0E       		.uleb128 0xe
- 1705 01a6 3A       		.uleb128 0x3a
- 1706 01a7 0B       		.uleb128 0xb
- 1707 01a8 3B       		.uleb128 0x3b
- 1708 01a9 0B       		.uleb128 0xb
- 1709 01aa 6E       		.uleb128 0x6e
- 1710 01ab 0E       		.uleb128 0xe
- 1711 01ac 27       		.uleb128 0x27
- 1712 01ad 19       		.uleb128 0x19
- 1713 01ae 49       		.uleb128 0x49
- 1714 01af 13       		.uleb128 0x13
- 1715 01b0 3C       		.uleb128 0x3c
- 1716 01b1 19       		.uleb128 0x19
- 1717 01b2 01       		.uleb128 0x1
- 1718 01b3 13       		.uleb128 0x13
- 1719 01b4 00       		.byte	0
- 1720 01b5 00       		.byte	0
- 1721 01b6 20       		.uleb128 0x20
- 1722 01b7 2E       		.uleb128 0x2e
- 1723 01b8 01       		.byte	0x1
- 1724 01b9 3F       		.uleb128 0x3f
- 1725 01ba 19       		.uleb128 0x19
- 1726 01bb 03       		.uleb128 0x3
- 1727 01bc 0E       		.uleb128 0xe
- 1728 01bd 3A       		.uleb128 0x3a
- 1729 01be 0B       		.uleb128 0xb
- 1730 01bf 3B       		.uleb128 0x3b
- 1731 01c0 0B       		.uleb128 0xb
- 1732 01c1 3C       		.uleb128 0x3c
- 1733 01c2 19       		.uleb128 0x19
- 1734 01c3 01       		.uleb128 0x1
- 1735 01c4 13       		.uleb128 0x13
- 1736 01c5 00       		.byte	0
- 1737 01c6 00       		.byte	0
- 1738 01c7 21       		.uleb128 0x21
- 1739 01c8 18       		.uleb128 0x18
- 1740 01c9 00       		.byte	0
- 1741 01ca 00       		.byte	0
- 1742 01cb 00       		.byte	0
- 1743 01cc 22       		.uleb128 0x22
- 1744 01cd 2E       		.uleb128 0x2e
- 1745 01ce 00       		.byte	0
- 1746 01cf 3F       		.uleb128 0x3f
- 1747 01d0 19       		.uleb128 0x19
- 1748 01d1 03       		.uleb128 0x3
- 1749 01d2 0E       		.uleb128 0xe
- 1750 01d3 3A       		.uleb128 0x3a
- 1751 01d4 0B       		.uleb128 0xb
- 1752 01d5 3B       		.uleb128 0x3b
- 1753 01d6 0B       		.uleb128 0xb
- 1754 01d7 27       		.uleb128 0x27
- 1755 01d8 19       		.uleb128 0x19
- 1756 01d9 3C       		.uleb128 0x3c
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 36
+ 1700 01bf 00       		.byte	0
+ 1701 01c0 3F       		.uleb128 0x3f
+ 1702 01c1 19       		.uleb128 0x19
+ 1703 01c2 03       		.uleb128 0x3
+ 1704 01c3 0E       		.uleb128 0xe
+ 1705 01c4 3A       		.uleb128 0x3a
+ 1706 01c5 0B       		.uleb128 0xb
+ 1707 01c6 3B       		.uleb128 0x3b
+ 1708 01c7 0B       		.uleb128 0xb
+ 1709 01c8 27       		.uleb128 0x27
+ 1710 01c9 19       		.uleb128 0x19
+ 1711 01ca 3C       		.uleb128 0x3c
+ 1712 01cb 19       		.uleb128 0x19
+ 1713 01cc 00       		.byte	0
+ 1714 01cd 00       		.byte	0
+ 1715 01ce 22       		.uleb128 0x22
+ 1716 01cf 2E       		.uleb128 0x2e
+ 1717 01d0 00       		.byte	0
+ 1718 01d1 3F       		.uleb128 0x3f
+ 1719 01d2 19       		.uleb128 0x19
+ 1720 01d3 03       		.uleb128 0x3
+ 1721 01d4 0E       		.uleb128 0xe
+ 1722 01d5 3A       		.uleb128 0x3a
+ 1723 01d6 0B       		.uleb128 0xb
+ 1724 01d7 3B       		.uleb128 0x3b
+ 1725 01d8 0B       		.uleb128 0xb
+ 1726 01d9 27       		.uleb128 0x27
+ 1727 01da 19       		.uleb128 0x19
+ 1728 01db 49       		.uleb128 0x49
+ 1729 01dc 13       		.uleb128 0x13
+ 1730 01dd 3C       		.uleb128 0x3c
+ 1731 01de 19       		.uleb128 0x19
+ 1732 01df 00       		.byte	0
+ 1733 01e0 00       		.byte	0
+ 1734 01e1 00       		.byte	0
+ 1735              		.section	.debug_loc,"",%progbits
+ 1736              	.Ldebug_loc0:
+ 1737              	.LLST0:
+ 1738 0000 56000000 		.4byte	.LVL13
+ 1739 0004 FC010000 		.4byte	.LVL58
+ 1740 0008 0100     		.2byte	0x1
+ 1741 000a 54       		.byte	0x54
+ 1742 000b 00000000 		.4byte	0
+ 1743 000f 00000000 		.4byte	0
+ 1744              	.LLST1:
+ 1745 0013 4E000000 		.4byte	.LVL12
+ 1746 0017 F2010000 		.4byte	.LVL56
+ 1747 001b 0100     		.2byte	0x1
+ 1748 001d 55       		.byte	0x55
+ 1749 001e 00000000 		.4byte	0
+ 1750 0022 00000000 		.4byte	0
+ 1751              	.LLST2:
+ 1752 0026 0C000000 		.4byte	.LVL0
+ 1753 002a 34000000 		.4byte	.LVL8
+ 1754 002e 0200     		.2byte	0x2
+ 1755 0030 31       		.byte	0x31
+ 1756 0031 9F       		.byte	0x9f
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 36
 
 
- 1757 01da 19       		.uleb128 0x19
- 1758 01db 00       		.byte	0
- 1759 01dc 00       		.byte	0
- 1760 01dd 23       		.uleb128 0x23
- 1761 01de 2E       		.uleb128 0x2e
- 1762 01df 00       		.byte	0
- 1763 01e0 3F       		.uleb128 0x3f
- 1764 01e1 19       		.uleb128 0x19
- 1765 01e2 03       		.uleb128 0x3
- 1766 01e3 0E       		.uleb128 0xe
- 1767 01e4 3A       		.uleb128 0x3a
- 1768 01e5 0B       		.uleb128 0xb
- 1769 01e6 3B       		.uleb128 0x3b
- 1770 01e7 0B       		.uleb128 0xb
- 1771 01e8 27       		.uleb128 0x27
- 1772 01e9 19       		.uleb128 0x19
- 1773 01ea 49       		.uleb128 0x49
- 1774 01eb 13       		.uleb128 0x13
- 1775 01ec 3C       		.uleb128 0x3c
- 1776 01ed 19       		.uleb128 0x19
- 1777 01ee 00       		.byte	0
- 1778 01ef 00       		.byte	0
- 1779 01f0 00       		.byte	0
- 1780              		.section	.debug_loc,"",%progbits
- 1781              	.Ldebug_loc0:
- 1782              	.LLST0:
- 1783 0000 0C000000 		.4byte	.LVL0
- 1784 0004 34000000 		.4byte	.LVL8
- 1785 0008 0200     		.2byte	0x2
- 1786 000a 31       		.byte	0x31
- 1787 000b 9F       		.byte	0x9f
- 1788 000c 34000000 		.4byte	.LVL8
- 1789 0010 C8020000 		.4byte	.LFE63
- 1790 0014 0100     		.2byte	0x1
- 1791 0016 5A       		.byte	0x5a
- 1792 0017 00000000 		.4byte	0
- 1793 001b 00000000 		.4byte	0
- 1794              	.LLST1:
- 1795 001f C4000000 		.4byte	.LVL23
- 1796 0023 28010000 		.4byte	.LVL33
- 1797 0027 0600     		.2byte	0x6
- 1798 0029 56       		.byte	0x56
- 1799 002a 93       		.byte	0x93
- 1800 002b 04       		.uleb128 0x4
- 1801 002c 57       		.byte	0x57
- 1802 002d 93       		.byte	0x93
- 1803 002e 04       		.uleb128 0x4
- 1804 002f 28010000 		.4byte	.LVL33
- 1805 0033 34010000 		.4byte	.LVL35
- 1806 0037 0A00     		.2byte	0xa
- 1807 0039 9E       		.byte	0x9e
- 1808 003a 08       		.uleb128 0x8
- 1809 003b 00000000 		.4byte	0
- 1810 003f 00C06F40 		.4byte	0x406fc000
- 1811 0043 34010000 		.4byte	.LVL35
- 1812 0047 72010000 		.4byte	.LVL43
- 1813 004b 0600     		.2byte	0x6
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 37
+ 1757 0032 34000000 		.4byte	.LVL8
+ 1758 0036 A0020000 		.4byte	.LFE63
+ 1759 003a 0100     		.2byte	0x1
+ 1760 003c 5A       		.byte	0x5a
+ 1761 003d 00000000 		.4byte	0
+ 1762 0041 00000000 		.4byte	0
+ 1763              	.LLST3:
+ 1764 0045 C0000000 		.4byte	.LVL23
+ 1765 0049 24010000 		.4byte	.LVL33
+ 1766 004d 0600     		.2byte	0x6
+ 1767 004f 58       		.byte	0x58
+ 1768 0050 93       		.byte	0x93
+ 1769 0051 04       		.uleb128 0x4
+ 1770 0052 59       		.byte	0x59
+ 1771 0053 93       		.byte	0x93
+ 1772 0054 04       		.uleb128 0x4
+ 1773 0055 24010000 		.4byte	.LVL33
+ 1774 0059 32010000 		.4byte	.LVL35
+ 1775 005d 0A00     		.2byte	0xa
+ 1776 005f 9E       		.byte	0x9e
+ 1777 0060 08       		.uleb128 0x8
+ 1778 0061 00000000 		.4byte	0
+ 1779 0065 00C06F40 		.4byte	0x406fc000
+ 1780 0069 32010000 		.4byte	.LVL35
+ 1781 006d 60010000 		.4byte	.LVL42
+ 1782 0071 0600     		.2byte	0x6
+ 1783 0073 58       		.byte	0x58
+ 1784 0074 93       		.byte	0x93
+ 1785 0075 04       		.uleb128 0x4
+ 1786 0076 59       		.byte	0x59
+ 1787 0077 93       		.byte	0x93
+ 1788 0078 04       		.uleb128 0x4
+ 1789 0079 60010000 		.4byte	.LVL42
+ 1790 007d 68010000 		.4byte	.LVL43
+ 1791 0081 0A00     		.2byte	0xa
+ 1792 0083 9E       		.byte	0x9e
+ 1793 0084 08       		.uleb128 0x8
+ 1794 0085 00000000 		.4byte	0
+ 1795 0089 00000000 		.4byte	0
+ 1796 008d 68010000 		.4byte	.LVL43
+ 1797 0091 7A010000 		.4byte	.LVL45
+ 1798 0095 0600     		.2byte	0x6
+ 1799 0097 58       		.byte	0x58
+ 1800 0098 93       		.byte	0x93
+ 1801 0099 04       		.uleb128 0x4
+ 1802 009a 59       		.byte	0x59
+ 1803 009b 93       		.byte	0x93
+ 1804 009c 04       		.uleb128 0x4
+ 1805 009d 7C010000 		.4byte	.LVL46
+ 1806 00a1 E4010000 		.4byte	.LVL53
+ 1807 00a5 0600     		.2byte	0x6
+ 1808 00a7 58       		.byte	0x58
+ 1809 00a8 93       		.byte	0x93
+ 1810 00a9 04       		.uleb128 0x4
+ 1811 00aa 59       		.byte	0x59
+ 1812 00ab 93       		.byte	0x93
+ 1813 00ac 04       		.uleb128 0x4
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 37
 
 
- 1814 004d 56       		.byte	0x56
- 1815 004e 93       		.byte	0x93
- 1816 004f 04       		.uleb128 0x4
- 1817 0050 57       		.byte	0x57
- 1818 0051 93       		.byte	0x93
- 1819 0052 04       		.uleb128 0x4
- 1820 0053 74010000 		.4byte	.LVL44
- 1821 0057 8A010000 		.4byte	.LVL47
- 1822 005b 0600     		.2byte	0x6
- 1823 005d 56       		.byte	0x56
- 1824 005e 93       		.byte	0x93
- 1825 005f 04       		.uleb128 0x4
- 1826 0060 57       		.byte	0x57
- 1827 0061 93       		.byte	0x93
- 1828 0062 04       		.uleb128 0x4
- 1829 0063 8A010000 		.4byte	.LVL47
- 1830 0067 8E010000 		.4byte	.LVL48
- 1831 006b 0A00     		.2byte	0xa
- 1832 006d 9E       		.byte	0x9e
- 1833 006e 08       		.uleb128 0x8
- 1834 006f 00000000 		.4byte	0
- 1835 0073 00000000 		.4byte	0
- 1836 0077 8E010000 		.4byte	.LVL48
- 1837 007b A2010000 		.4byte	.LVL50
- 1838 007f 0600     		.2byte	0x6
- 1839 0081 56       		.byte	0x56
- 1840 0082 93       		.byte	0x93
- 1841 0083 04       		.uleb128 0x4
- 1842 0084 57       		.byte	0x57
- 1843 0085 93       		.byte	0x93
- 1844 0086 04       		.uleb128 0x4
- 1845 0087 A4010000 		.4byte	.LVL51
- 1846 008b 0A020000 		.4byte	.LVL58
- 1847 008f 0600     		.2byte	0x6
- 1848 0091 56       		.byte	0x56
- 1849 0092 93       		.byte	0x93
- 1850 0093 04       		.uleb128 0x4
- 1851 0094 57       		.byte	0x57
- 1852 0095 93       		.byte	0x93
- 1853 0096 04       		.uleb128 0x4
- 1854 0097 0C020000 		.4byte	.LVL59
- 1855 009b 16020000 		.4byte	.LVL61
- 1856 009f 0600     		.2byte	0x6
- 1857 00a1 56       		.byte	0x56
- 1858 00a2 93       		.byte	0x93
- 1859 00a3 04       		.uleb128 0x4
- 1860 00a4 57       		.byte	0x57
- 1861 00a5 93       		.byte	0x93
- 1862 00a6 04       		.uleb128 0x4
- 1863 00a7 00000000 		.4byte	0
- 1864 00ab 00000000 		.4byte	0
- 1865              	.LLST2:
- 1866 00af 1A010000 		.4byte	.LVL31
- 1867 00b3 42010000 		.4byte	.LVL37
- 1868 00b7 0600     		.2byte	0x6
- 1869 00b9 54       		.byte	0x54
- 1870 00ba 93       		.byte	0x93
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 38
+ 1814 00ad E8010000 		.4byte	.LVL54
+ 1815 00b1 A0020000 		.4byte	.LFE63
+ 1816 00b5 0600     		.2byte	0x6
+ 1817 00b7 58       		.byte	0x58
+ 1818 00b8 93       		.byte	0x93
+ 1819 00b9 04       		.uleb128 0x4
+ 1820 00ba 59       		.byte	0x59
+ 1821 00bb 93       		.byte	0x93
+ 1822 00bc 04       		.uleb128 0x4
+ 1823 00bd 00000000 		.4byte	0
+ 1824 00c1 00000000 		.4byte	0
+ 1825              	.LLST4:
+ 1826 00c5 16010000 		.4byte	.LVL31
+ 1827 00c9 40010000 		.4byte	.LVL37
+ 1828 00cd 0600     		.2byte	0x6
+ 1829 00cf 56       		.byte	0x56
+ 1830 00d0 93       		.byte	0x93
+ 1831 00d1 04       		.uleb128 0x4
+ 1832 00d2 57       		.byte	0x57
+ 1833 00d3 93       		.byte	0x93
+ 1834 00d4 04       		.uleb128 0x4
+ 1835 00d5 40010000 		.4byte	.LVL37
+ 1836 00d9 4C010000 		.4byte	.LVL39
+ 1837 00dd 0A00     		.2byte	0xa
+ 1838 00df 9E       		.byte	0x9e
+ 1839 00e0 08       		.uleb128 0x8
+ 1840 00e1 00000000 		.4byte	0
+ 1841 00e5 00C06F40 		.4byte	0x406fc000
+ 1842 00e9 4C010000 		.4byte	.LVL39
+ 1843 00ed 5E010000 		.4byte	.LVL41
+ 1844 00f1 0600     		.2byte	0x6
+ 1845 00f3 56       		.byte	0x56
+ 1846 00f4 93       		.byte	0x93
+ 1847 00f5 04       		.uleb128 0x4
+ 1848 00f6 57       		.byte	0x57
+ 1849 00f7 93       		.byte	0x93
+ 1850 00f8 04       		.uleb128 0x4
+ 1851 00f9 60010000 		.4byte	.LVL42
+ 1852 00fd 7C010000 		.4byte	.LVL46
+ 1853 0101 0600     		.2byte	0x6
+ 1854 0103 56       		.byte	0x56
+ 1855 0104 93       		.byte	0x93
+ 1856 0105 04       		.uleb128 0x4
+ 1857 0106 57       		.byte	0x57
+ 1858 0107 93       		.byte	0x93
+ 1859 0108 04       		.uleb128 0x4
+ 1860 0109 7C010000 		.4byte	.LVL46
+ 1861 010d 80010000 		.4byte	.LVL47
+ 1862 0111 0A00     		.2byte	0xa
+ 1863 0113 9E       		.byte	0x9e
+ 1864 0114 08       		.uleb128 0x8
+ 1865 0115 00000000 		.4byte	0
+ 1866 0119 00000000 		.4byte	0
+ 1867 011d 80010000 		.4byte	.LVL47
+ 1868 0121 B4010000 		.4byte	.LVL50
+ 1869 0125 0600     		.2byte	0x6
+ 1870 0127 56       		.byte	0x56
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 38
 
 
- 1871 00bb 04       		.uleb128 0x4
- 1872 00bc 55       		.byte	0x55
- 1873 00bd 93       		.byte	0x93
- 1874 00be 04       		.uleb128 0x4
- 1875 00bf 42010000 		.4byte	.LVL37
- 1876 00c3 4E010000 		.4byte	.LVL39
- 1877 00c7 0A00     		.2byte	0xa
- 1878 00c9 9E       		.byte	0x9e
- 1879 00ca 08       		.uleb128 0x8
- 1880 00cb 00000000 		.4byte	0
- 1881 00cf 00C06F40 		.4byte	0x406fc000
- 1882 00d3 4E010000 		.4byte	.LVL39
- 1883 00d7 70010000 		.4byte	.LVL42
- 1884 00db 0600     		.2byte	0x6
- 1885 00dd 54       		.byte	0x54
- 1886 00de 93       		.byte	0x93
- 1887 00df 04       		.uleb128 0x4
- 1888 00e0 55       		.byte	0x55
- 1889 00e1 93       		.byte	0x93
- 1890 00e2 04       		.uleb128 0x4
- 1891 00e3 74010000 		.4byte	.LVL44
- 1892 00e7 88010000 		.4byte	.LVL46
- 1893 00eb 0600     		.2byte	0x6
- 1894 00ed 54       		.byte	0x54
- 1895 00ee 93       		.byte	0x93
- 1896 00ef 04       		.uleb128 0x4
- 1897 00f0 55       		.byte	0x55
- 1898 00f1 93       		.byte	0x93
- 1899 00f2 04       		.uleb128 0x4
- 1900 00f3 8A010000 		.4byte	.LVL47
- 1901 00f7 A4010000 		.4byte	.LVL51
- 1902 00fb 0600     		.2byte	0x6
- 1903 00fd 54       		.byte	0x54
- 1904 00fe 93       		.byte	0x93
- 1905 00ff 04       		.uleb128 0x4
- 1906 0100 55       		.byte	0x55
- 1907 0101 93       		.byte	0x93
- 1908 0102 04       		.uleb128 0x4
- 1909 0103 A4010000 		.4byte	.LVL51
- 1910 0107 A8010000 		.4byte	.LVL52
- 1911 010b 0A00     		.2byte	0xa
- 1912 010d 9E       		.byte	0x9e
- 1913 010e 08       		.uleb128 0x8
- 1914 010f 00000000 		.4byte	0
- 1915 0113 00000000 		.4byte	0
- 1916 0117 A8010000 		.4byte	.LVL52
- 1917 011b DE010000 		.4byte	.LVL55
- 1918 011f 0600     		.2byte	0x6
- 1919 0121 54       		.byte	0x54
- 1920 0122 93       		.byte	0x93
- 1921 0123 04       		.uleb128 0x4
- 1922 0124 55       		.byte	0x55
- 1923 0125 93       		.byte	0x93
- 1924 0126 04       		.uleb128 0x4
- 1925 0127 E6010000 		.4byte	.LVL56
- 1926 012b 08020000 		.4byte	.LVL57
- 1927 012f 0600     		.2byte	0x6
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 39
+ 1871 0128 93       		.byte	0x93
+ 1872 0129 04       		.uleb128 0x4
+ 1873 012a 57       		.byte	0x57
+ 1874 012b 93       		.byte	0x93
+ 1875 012c 04       		.uleb128 0x4
+ 1876 012d BE010000 		.4byte	.LVL51
+ 1877 0131 E0010000 		.4byte	.LVL52
+ 1878 0135 0600     		.2byte	0x6
+ 1879 0137 56       		.byte	0x56
+ 1880 0138 93       		.byte	0x93
+ 1881 0139 04       		.uleb128 0x4
+ 1882 013a 57       		.byte	0x57
+ 1883 013b 93       		.byte	0x93
+ 1884 013c 04       		.uleb128 0x4
+ 1885 013d E8010000 		.4byte	.LVL54
+ 1886 0141 A0020000 		.4byte	.LFE63
+ 1887 0145 0600     		.2byte	0x6
+ 1888 0147 56       		.byte	0x56
+ 1889 0148 93       		.byte	0x93
+ 1890 0149 04       		.uleb128 0x4
+ 1891 014a 57       		.byte	0x57
+ 1892 014b 93       		.byte	0x93
+ 1893 014c 04       		.uleb128 0x4
+ 1894 014d 00000000 		.4byte	0
+ 1895 0151 00000000 		.4byte	0
+ 1896              	.LLST5:
+ 1897 0155 16010000 		.4byte	.LVL31
+ 1898 0159 32010000 		.4byte	.LVL35
+ 1899 015d 0800     		.2byte	0x8
+ 1900 015f F5       		.byte	0xf5
+ 1901 0160 08       		.uleb128 0x8
+ 1902 0161 25       		.uleb128 0x25
+ 1903 0162 F7       		.byte	0xf7
+ 1904 0163 2C       		.uleb128 0x2c
+ 1905 0164 F7       		.byte	0xf7
+ 1906 0165 00       		.uleb128 0
+ 1907 0166 9F       		.byte	0x9f
+ 1908 0167 00000000 		.4byte	0
+ 1909 016b 00000000 		.4byte	0
+ 1910              	.LLST6:
+ 1911 016f 16010000 		.4byte	.LVL31
+ 1912 0173 4C010000 		.4byte	.LVL39
+ 1913 0177 0800     		.2byte	0x8
+ 1914 0179 F5       		.byte	0xf5
+ 1915 017a 06       		.uleb128 0x6
+ 1916 017b 25       		.uleb128 0x25
+ 1917 017c F7       		.byte	0xf7
+ 1918 017d 2C       		.uleb128 0x2c
+ 1919 017e F7       		.byte	0xf7
+ 1920 017f 00       		.uleb128 0
+ 1921 0180 9F       		.byte	0x9f
+ 1922 0181 00000000 		.4byte	0
+ 1923 0185 00000000 		.4byte	0
+ 1924              	.LLST7:
+ 1925 0189 00000000 		.4byte	.LVL67
+ 1926 018d 0A000000 		.4byte	.LVL69
+ 1927 0191 0100     		.2byte	0x1
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 39
 
 
- 1928 0131 54       		.byte	0x54
- 1929 0132 93       		.byte	0x93
- 1930 0133 04       		.uleb128 0x4
- 1931 0134 55       		.byte	0x55
- 1932 0135 93       		.byte	0x93
- 1933 0136 04       		.uleb128 0x4
- 1934 0137 0C020000 		.4byte	.LVL59
- 1935 013b 20020000 		.4byte	.LVL63
- 1936 013f 0600     		.2byte	0x6
- 1937 0141 54       		.byte	0x54
- 1938 0142 93       		.byte	0x93
- 1939 0143 04       		.uleb128 0x4
- 1940 0144 55       		.byte	0x55
- 1941 0145 93       		.byte	0x93
- 1942 0146 04       		.uleb128 0x4
- 1943 0147 00000000 		.4byte	0
- 1944 014b 00000000 		.4byte	0
- 1945              	.LLST3:
- 1946 014f 1A010000 		.4byte	.LVL31
- 1947 0153 34010000 		.4byte	.LVL35
- 1948 0157 0800     		.2byte	0x8
- 1949 0159 F5       		.byte	0xf5
- 1950 015a 06       		.uleb128 0x6
- 1951 015b 25       		.uleb128 0x25
- 1952 015c F7       		.byte	0xf7
- 1953 015d 2C       		.uleb128 0x2c
- 1954 015e F7       		.byte	0xf7
- 1955 015f 00       		.uleb128 0
- 1956 0160 9F       		.byte	0x9f
- 1957 0161 00000000 		.4byte	0
- 1958 0165 00000000 		.4byte	0
- 1959              	.LLST4:
- 1960 0169 1A010000 		.4byte	.LVL31
- 1961 016d 4E010000 		.4byte	.LVL39
- 1962 0171 0800     		.2byte	0x8
- 1963 0173 F5       		.byte	0xf5
- 1964 0174 04       		.uleb128 0x4
- 1965 0175 25       		.uleb128 0x25
- 1966 0176 F7       		.byte	0xf7
- 1967 0177 2C       		.uleb128 0x2c
- 1968 0178 F7       		.byte	0xf7
- 1969 0179 00       		.uleb128 0
- 1970 017a 9F       		.byte	0x9f
- 1971 017b 00000000 		.4byte	0
- 1972 017f 00000000 		.4byte	0
- 1973              	.LLST5:
- 1974 0183 00000000 		.4byte	.LVL72
- 1975 0187 0A000000 		.4byte	.LVL74
- 1976 018b 0100     		.2byte	0x1
- 1977 018d 50       		.byte	0x50
- 1978 018e 0A000000 		.4byte	.LVL74
- 1979 0192 2A000000 		.4byte	.LFE64
- 1980 0196 0400     		.2byte	0x4
- 1981 0198 F3       		.byte	0xf3
- 1982 0199 01       		.uleb128 0x1
- 1983 019a 50       		.byte	0x50
- 1984 019b 9F       		.byte	0x9f
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 40
+ 1928 0193 50       		.byte	0x50
+ 1929 0194 0A000000 		.4byte	.LVL69
+ 1930 0198 2A000000 		.4byte	.LFE64
+ 1931 019c 0400     		.2byte	0x4
+ 1932 019e F3       		.byte	0xf3
+ 1933 019f 01       		.uleb128 0x1
+ 1934 01a0 50       		.byte	0x50
+ 1935 01a1 9F       		.byte	0x9f
+ 1936 01a2 00000000 		.4byte	0
+ 1937 01a6 00000000 		.4byte	0
+ 1938              	.LLST8:
+ 1939 01aa 00000000 		.4byte	.LVL67
+ 1940 01ae 0A000000 		.4byte	.LVL69
+ 1941 01b2 0100     		.2byte	0x1
+ 1942 01b4 51       		.byte	0x51
+ 1943 01b5 0A000000 		.4byte	.LVL69
+ 1944 01b9 18000000 		.4byte	.LVL71
+ 1945 01bd 0100     		.2byte	0x1
+ 1946 01bf 54       		.byte	0x54
+ 1947 01c0 18000000 		.4byte	.LVL71
+ 1948 01c4 22000000 		.4byte	.LVL74
+ 1949 01c8 0100     		.2byte	0x1
+ 1950 01ca 56       		.byte	0x56
+ 1951 01cb 22000000 		.4byte	.LVL74
+ 1952 01cf 2A000000 		.4byte	.LFE64
+ 1953 01d3 0100     		.2byte	0x1
+ 1954 01d5 54       		.byte	0x54
+ 1955 01d6 00000000 		.4byte	0
+ 1956 01da 00000000 		.4byte	0
+ 1957              	.LLST9:
+ 1958 01de 00000000 		.4byte	.LVL67
+ 1959 01e2 0A000000 		.4byte	.LVL69
+ 1960 01e6 0100     		.2byte	0x1
+ 1961 01e8 52       		.byte	0x52
+ 1962 01e9 0A000000 		.4byte	.LVL69
+ 1963 01ed 2A000000 		.4byte	.LFE64
+ 1964 01f1 0100     		.2byte	0x1
+ 1965 01f3 57       		.byte	0x57
+ 1966 01f4 00000000 		.4byte	0
+ 1967 01f8 00000000 		.4byte	0
+ 1968              	.LLST10:
+ 1969 01fc 06000000 		.4byte	.LVL68
+ 1970 0200 0A000000 		.4byte	.LVL69
+ 1971 0204 0200     		.2byte	0x2
+ 1972 0206 30       		.byte	0x30
+ 1973 0207 9F       		.byte	0x9f
+ 1974 0208 0A000000 		.4byte	.LVL69
+ 1975 020c 2A000000 		.4byte	.LFE64
+ 1976 0210 0100     		.2byte	0x1
+ 1977 0212 55       		.byte	0x55
+ 1978 0213 00000000 		.4byte	0
+ 1979 0217 00000000 		.4byte	0
+ 1980              	.LLST11:
+ 1981 021b 00000000 		.4byte	.LVL75
+ 1982 021f 0A000000 		.4byte	.LVL77
+ 1983 0223 0100     		.2byte	0x1
+ 1984 0225 50       		.byte	0x50
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 40
 
 
- 1985 019c 00000000 		.4byte	0
- 1986 01a0 00000000 		.4byte	0
- 1987              	.LLST6:
- 1988 01a4 00000000 		.4byte	.LVL72
- 1989 01a8 0A000000 		.4byte	.LVL74
- 1990 01ac 0100     		.2byte	0x1
- 1991 01ae 51       		.byte	0x51
- 1992 01af 0A000000 		.4byte	.LVL74
- 1993 01b3 18000000 		.4byte	.LVL76
- 1994 01b7 0100     		.2byte	0x1
- 1995 01b9 54       		.byte	0x54
- 1996 01ba 18000000 		.4byte	.LVL76
- 1997 01be 22000000 		.4byte	.LVL79
- 1998 01c2 0100     		.2byte	0x1
- 1999 01c4 56       		.byte	0x56
- 2000 01c5 22000000 		.4byte	.LVL79
- 2001 01c9 2A000000 		.4byte	.LFE64
- 2002 01cd 0100     		.2byte	0x1
- 2003 01cf 54       		.byte	0x54
- 2004 01d0 00000000 		.4byte	0
- 2005 01d4 00000000 		.4byte	0
- 2006              	.LLST7:
- 2007 01d8 00000000 		.4byte	.LVL72
- 2008 01dc 0A000000 		.4byte	.LVL74
- 2009 01e0 0100     		.2byte	0x1
- 2010 01e2 52       		.byte	0x52
- 2011 01e3 0A000000 		.4byte	.LVL74
- 2012 01e7 2A000000 		.4byte	.LFE64
- 2013 01eb 0100     		.2byte	0x1
- 2014 01ed 57       		.byte	0x57
- 2015 01ee 00000000 		.4byte	0
- 2016 01f2 00000000 		.4byte	0
- 2017              	.LLST8:
- 2018 01f6 06000000 		.4byte	.LVL73
- 2019 01fa 0A000000 		.4byte	.LVL74
- 2020 01fe 0200     		.2byte	0x2
- 2021 0200 30       		.byte	0x30
- 2022 0201 9F       		.byte	0x9f
- 2023 0202 0A000000 		.4byte	.LVL74
- 2024 0206 2A000000 		.4byte	.LFE64
- 2025 020a 0100     		.2byte	0x1
- 2026 020c 55       		.byte	0x55
- 2027 020d 00000000 		.4byte	0
- 2028 0211 00000000 		.4byte	0
- 2029              	.LLST9:
- 2030 0215 00000000 		.4byte	.LVL80
- 2031 0219 0A000000 		.4byte	.LVL82
- 2032 021d 0100     		.2byte	0x1
- 2033 021f 50       		.byte	0x50
- 2034 0220 0A000000 		.4byte	.LVL82
- 2035 0224 38000000 		.4byte	.LFE65
- 2036 0228 0400     		.2byte	0x4
- 2037 022a F3       		.byte	0xf3
- 2038 022b 01       		.uleb128 0x1
- 2039 022c 50       		.byte	0x50
- 2040 022d 9F       		.byte	0x9f
- 2041 022e 00000000 		.4byte	0
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 41
+ 1985 0226 0A000000 		.4byte	.LVL77
+ 1986 022a 38000000 		.4byte	.LFE65
+ 1987 022e 0400     		.2byte	0x4
+ 1988 0230 F3       		.byte	0xf3
+ 1989 0231 01       		.uleb128 0x1
+ 1990 0232 50       		.byte	0x50
+ 1991 0233 9F       		.byte	0x9f
+ 1992 0234 00000000 		.4byte	0
+ 1993 0238 00000000 		.4byte	0
+ 1994              	.LLST12:
+ 1995 023c 00000000 		.4byte	.LVL75
+ 1996 0240 0A000000 		.4byte	.LVL77
+ 1997 0244 0100     		.2byte	0x1
+ 1998 0246 51       		.byte	0x51
+ 1999 0247 0A000000 		.4byte	.LVL77
+ 2000 024b 26000000 		.4byte	.LVL84
+ 2001 024f 0100     		.2byte	0x1
+ 2002 0251 57       		.byte	0x57
+ 2003 0252 26000000 		.4byte	.LVL84
+ 2004 0256 30000000 		.4byte	.LVL86
+ 2005 025a 0100     		.2byte	0x1
+ 2006 025c 53       		.byte	0x53
+ 2007 025d 30000000 		.4byte	.LVL86
+ 2008 0261 34000000 		.4byte	.LVL87
+ 2009 0265 0100     		.2byte	0x1
+ 2010 0267 57       		.byte	0x57
+ 2011 0268 00000000 		.4byte	0
+ 2012 026c 00000000 		.4byte	0
+ 2013              	.LLST13:
+ 2014 0270 00000000 		.4byte	.LVL75
+ 2015 0274 0A000000 		.4byte	.LVL77
+ 2016 0278 0100     		.2byte	0x1
+ 2017 027a 52       		.byte	0x52
+ 2018 027b 0A000000 		.4byte	.LVL77
+ 2019 027f 38000000 		.4byte	.LFE65
+ 2020 0283 0100     		.2byte	0x1
+ 2021 0285 54       		.byte	0x54
+ 2022 0286 00000000 		.4byte	0
+ 2023 028a 00000000 		.4byte	0
+ 2024              	.LLST14:
+ 2025 028e 06000000 		.4byte	.LVL76
+ 2026 0292 0A000000 		.4byte	.LVL77
+ 2027 0296 0200     		.2byte	0x2
+ 2028 0298 30       		.byte	0x30
+ 2029 0299 9F       		.byte	0x9f
+ 2030 029a 0A000000 		.4byte	.LVL77
+ 2031 029e 38000000 		.4byte	.LFE65
+ 2032 02a2 0100     		.2byte	0x1
+ 2033 02a4 56       		.byte	0x56
+ 2034 02a5 00000000 		.4byte	0
+ 2035 02a9 00000000 		.4byte	0
+ 2036              	.LLST15:
+ 2037 02ad 0E000000 		.4byte	.LVL78
+ 2038 02b1 15000000 		.4byte	.LVL79-1
+ 2039 02b5 0100     		.2byte	0x1
+ 2040 02b7 50       		.byte	0x50
+ 2041 02b8 1C000000 		.4byte	.LVL81
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 41
 
 
- 2042 0232 00000000 		.4byte	0
- 2043              	.LLST10:
- 2044 0236 00000000 		.4byte	.LVL80
- 2045 023a 0A000000 		.4byte	.LVL82
- 2046 023e 0100     		.2byte	0x1
- 2047 0240 51       		.byte	0x51
- 2048 0241 0A000000 		.4byte	.LVL82
- 2049 0245 26000000 		.4byte	.LVL89
- 2050 0249 0100     		.2byte	0x1
- 2051 024b 57       		.byte	0x57
- 2052 024c 26000000 		.4byte	.LVL89
- 2053 0250 30000000 		.4byte	.LVL91
- 2054 0254 0100     		.2byte	0x1
- 2055 0256 53       		.byte	0x53
- 2056 0257 30000000 		.4byte	.LVL91
- 2057 025b 34000000 		.4byte	.LVL92
- 2058 025f 0100     		.2byte	0x1
- 2059 0261 57       		.byte	0x57
- 2060 0262 00000000 		.4byte	0
- 2061 0266 00000000 		.4byte	0
- 2062              	.LLST11:
- 2063 026a 00000000 		.4byte	.LVL80
- 2064 026e 0A000000 		.4byte	.LVL82
- 2065 0272 0100     		.2byte	0x1
- 2066 0274 52       		.byte	0x52
- 2067 0275 0A000000 		.4byte	.LVL82
- 2068 0279 38000000 		.4byte	.LFE65
- 2069 027d 0100     		.2byte	0x1
- 2070 027f 54       		.byte	0x54
- 2071 0280 00000000 		.4byte	0
- 2072 0284 00000000 		.4byte	0
- 2073              	.LLST12:
- 2074 0288 06000000 		.4byte	.LVL81
- 2075 028c 0A000000 		.4byte	.LVL82
- 2076 0290 0200     		.2byte	0x2
- 2077 0292 30       		.byte	0x30
- 2078 0293 9F       		.byte	0x9f
- 2079 0294 0A000000 		.4byte	.LVL82
- 2080 0298 38000000 		.4byte	.LFE65
- 2081 029c 0100     		.2byte	0x1
- 2082 029e 56       		.byte	0x56
- 2083 029f 00000000 		.4byte	0
- 2084 02a3 00000000 		.4byte	0
- 2085              	.LLST13:
- 2086 02a7 0E000000 		.4byte	.LVL83
- 2087 02ab 15000000 		.4byte	.LVL84-1
- 2088 02af 0100     		.2byte	0x1
- 2089 02b1 50       		.byte	0x50
- 2090 02b2 1C000000 		.4byte	.LVL86
- 2091 02b6 24000000 		.4byte	.LVL88
- 2092 02ba 0200     		.2byte	0x2
- 2093 02bc 3A       		.byte	0x3a
- 2094 02bd 9F       		.byte	0x9f
- 2095 02be 24000000 		.4byte	.LVL88
- 2096 02c2 30000000 		.4byte	.LVL91
- 2097 02c6 0100     		.2byte	0x1
- 2098 02c8 55       		.byte	0x55
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 42
+ 2042 02bc 24000000 		.4byte	.LVL83
+ 2043 02c0 0200     		.2byte	0x2
+ 2044 02c2 3A       		.byte	0x3a
+ 2045 02c3 9F       		.byte	0x9f
+ 2046 02c4 24000000 		.4byte	.LVL83
+ 2047 02c8 30000000 		.4byte	.LVL86
+ 2048 02cc 0100     		.2byte	0x1
+ 2049 02ce 55       		.byte	0x55
+ 2050 02cf 00000000 		.4byte	0
+ 2051 02d3 00000000 		.4byte	0
+ 2052              		.section	.debug_aranges,"",%progbits
+ 2053 0000 2C000000 		.4byte	0x2c
+ 2054 0004 0200     		.2byte	0x2
+ 2055 0006 00000000 		.4byte	.Ldebug_info0
+ 2056 000a 04       		.byte	0x4
+ 2057 000b 00       		.byte	0
+ 2058 000c 0000     		.2byte	0
+ 2059 000e 0000     		.2byte	0
+ 2060 0010 00000000 		.4byte	.LFB63
+ 2061 0014 A0020000 		.4byte	.LFE63-.LFB63
+ 2062 0018 00000000 		.4byte	.LFB64
+ 2063 001c 2A000000 		.4byte	.LFE64-.LFB64
+ 2064 0020 00000000 		.4byte	.LFB65
+ 2065 0024 38000000 		.4byte	.LFE65-.LFB65
+ 2066 0028 00000000 		.4byte	0
+ 2067 002c 00000000 		.4byte	0
+ 2068              		.section	.debug_ranges,"",%progbits
+ 2069              	.Ldebug_ranges0:
+ 2070 0000 00000000 		.4byte	.LFB63
+ 2071 0004 A0020000 		.4byte	.LFE63
+ 2072 0008 00000000 		.4byte	.LFB64
+ 2073 000c 2A000000 		.4byte	.LFE64
+ 2074 0010 00000000 		.4byte	.LFB65
+ 2075 0014 38000000 		.4byte	.LFE65
+ 2076 0018 00000000 		.4byte	0
+ 2077 001c 00000000 		.4byte	0
+ 2078              		.section	.debug_line,"",%progbits
+ 2079              	.Ldebug_line0:
+ 2080 0000 AE020000 		.section	.debug_str,"MS",%progbits,1
+ 2080      0200DB01 
+ 2080      00000201 
+ 2080      FB0E0D00 
+ 2080      01010101 
+ 2081              	.LASF49:
+ 2082 0000 5F5F6275 		.ascii	"__builtin_puts\000"
+ 2082      696C7469 
+ 2082      6E5F7075 
+ 2082      747300
+ 2083              	.LASF60:
+ 2084 000f 55415254 		.ascii	"UART_1_GetChar\000"
+ 2084      5F315F47 
+ 2084      65744368 
+ 2084      617200
+ 2085              	.LASF40:
+ 2086 001e 6D6F746F 		.ascii	"motor_stop\000"
+ 2086      725F7374 
+ 2086      6F7000
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 42
 
 
- 2099 02c9 00000000 		.4byte	0
- 2100 02cd 00000000 		.4byte	0
- 2101              		.section	.debug_aranges,"",%progbits
- 2102 0000 2C000000 		.4byte	0x2c
- 2103 0004 0200     		.2byte	0x2
- 2104 0006 00000000 		.4byte	.Ldebug_info0
- 2105 000a 04       		.byte	0x4
- 2106 000b 00       		.byte	0
- 2107 000c 0000     		.2byte	0
- 2108 000e 0000     		.2byte	0
- 2109 0010 00000000 		.4byte	.LFB63
- 2110 0014 C8020000 		.4byte	.LFE63-.LFB63
- 2111 0018 00000000 		.4byte	.LFB64
- 2112 001c 2A000000 		.4byte	.LFE64-.LFB64
- 2113 0020 00000000 		.4byte	.LFB65
- 2114 0024 38000000 		.4byte	.LFE65-.LFB65
- 2115 0028 00000000 		.4byte	0
- 2116 002c 00000000 		.4byte	0
- 2117              		.section	.debug_ranges,"",%progbits
- 2118              	.Ldebug_ranges0:
- 2119 0000 00000000 		.4byte	.LFB63
- 2120 0004 C8020000 		.4byte	.LFE63
- 2121 0008 00000000 		.4byte	.LFB64
- 2122 000c 2A000000 		.4byte	.LFE64
- 2123 0010 00000000 		.4byte	.LFB65
- 2124 0014 38000000 		.4byte	.LFE65
- 2125 0018 00000000 		.4byte	0
- 2126 001c 00000000 		.4byte	0
- 2127              		.section	.debug_line,"",%progbits
- 2128              	.Ldebug_line0:
- 2129 0000 B6020000 		.section	.debug_str,"MS",%progbits,1
- 2129      0200DB01 
- 2129      00000201 
- 2129      FB0E0D00 
- 2129      01010101 
- 2130              	.LASF49:
- 2131 0000 5F5F6275 		.ascii	"__builtin_puts\000"
- 2131      696C7469 
- 2131      6E5F7075 
- 2131      747300
- 2132              	.LASF60:
- 2133 000f 55415254 		.ascii	"UART_1_GetChar\000"
- 2133      5F315F47 
- 2133      65744368 
- 2133      617200
- 2134              	.LASF40:
- 2135 001e 6D6F746F 		.ascii	"motor_stop\000"
- 2135      725F7374 
- 2135      6F7000
- 2136              	.LASF3:
- 2137 0029 73686F72 		.ascii	"short int\000"
- 2137      7420696E 
- 2137      7400
- 2138              	.LASF20:
- 2139 0033 73697A65 		.ascii	"sizetype\000"
- 2139      74797065 
- 2139      00
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 43
+ 2087              	.LASF3:
+ 2088 0029 73686F72 		.ascii	"short int\000"
+ 2088      7420696E 
+ 2088      7400
+ 2089              	.LASF20:
+ 2090 0033 73697A65 		.ascii	"sizetype\000"
+ 2090      74797065 
+ 2090      00
+ 2091              	.LASF50:
+ 2092 003c 70757463 		.ascii	"putchar\000"
+ 2092      68617200 
+ 2093              	.LASF9:
+ 2094 0044 6C6F6E67 		.ascii	"long long int\000"
+ 2094      206C6F6E 
+ 2094      6720696E 
+ 2094      7400
+ 2095              	.LASF23:
+ 2096 0052 6F696B65 		.ascii	"oikee\000"
+ 2096      6500
+ 2097              	.LASF5:
+ 2098 0058 5F5F7569 		.ascii	"__uint16_t\000"
+ 2098      6E743136 
+ 2098      5F7400
+ 2099              	.LASF32:
+ 2100 0063 66696C65 		.ascii	"file\000"
+ 2100      00
+ 2101              	.LASF57:
+ 2102 0068 73656E73 		.ascii	"sensors_\000"
+ 2102      6F72735F 
+ 2102      00
+ 2103              	.LASF16:
+ 2104 0071 696E7431 		.ascii	"int16\000"
+ 2104      3600
+ 2105              	.LASF39:
+ 2106 0077 6D6F746F 		.ascii	"motor_turn\000"
+ 2106      725F7475 
+ 2106      726E00
+ 2107              	.LASF14:
+ 2108 0082 75696E74 		.ascii	"uint8\000"
+ 2108      3800
+ 2109              	.LASF56:
+ 2110 0088 433A5C55 		.ascii	"C:\\Users\\Oskari\\Documents\\PSoC Creator\\Zumo01\\"
+ 2110      73657273 
+ 2110      5C4F736B 
+ 2110      6172695C 
+ 2110      446F6375 
+ 2111 00b6 5A756D6F 		.ascii	"ZumoBot.cydsn\000"
+ 2111      426F742E 
+ 2111      63796473 
+ 2111      6E00
+ 2112              	.LASF26:
+ 2113 00c4 73706565 		.ascii	"speedVtupla\000"
+ 2113      64567475 
+ 2113      706C6100 
+ 2114              	.LASF44:
+ 2115 00d0 7265666C 		.ascii	"reflectance_start\000"
+ 2115      65637461 
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 43
 
 
- 2140              	.LASF50:
- 2141 003c 70757463 		.ascii	"putchar\000"
- 2141      68617200 
- 2142              	.LASF9:
- 2143 0044 6C6F6E67 		.ascii	"long long int\000"
- 2143      206C6F6E 
- 2143      6720696E 
- 2143      7400
- 2144              	.LASF23:
- 2145 0052 6F696B65 		.ascii	"oikee\000"
- 2145      6500
- 2146              	.LASF5:
- 2147 0058 5F5F7569 		.ascii	"__uint16_t\000"
- 2147      6E743136 
- 2147      5F7400
- 2148              	.LASF32:
- 2149 0063 66696C65 		.ascii	"file\000"
+ 2115      6E63655F 
+ 2115      73746172 
+ 2115      7400
+ 2116              	.LASF43:
+ 2117 00e2 55415254 		.ascii	"UART_1_Start\000"
+ 2117      5F315F53 
+ 2117      74617274 
+ 2117      00
+ 2118              	.LASF53:
+ 2119 00ef 55415254 		.ascii	"UART_1_PutChar\000"
+ 2119      5F315F50 
+ 2119      75744368 
+ 2119      617200
+ 2120              	.LASF30:
+ 2121 00fe 73706565 		.ascii	"speedO\000"
+ 2121      644F00
+ 2122              	.LASF17:
+ 2123 0105 666C6F61 		.ascii	"float\000"
+ 2123      7400
+ 2124              	.LASF25:
+ 2125 010b 73706565 		.ascii	"speedOtupla\000"
+ 2125      644F7475 
+ 2125      706C6100 
+ 2126              	.LASF31:
+ 2127 0117 73706565 		.ascii	"speedV\000"
+ 2127      645600
+ 2128              	.LASF37:
+ 2129 011e 7265666C 		.ascii	"reflectance_digital\000"
+ 2129      65637461 
+ 2129      6E63655F 
+ 2129      64696769 
+ 2129      74616C00 
+ 2130              	.LASF7:
+ 2131 0132 6C6F6E67 		.ascii	"long int\000"
+ 2131      20696E74 
+ 2131      00
+ 2132              	.LASF33:
+ 2133 013b 5F777269 		.ascii	"_write\000"
+ 2133      746500
+ 2134              	.LASF2:
+ 2135 0142 756E7369 		.ascii	"unsigned char\000"
+ 2135      676E6564 
+ 2135      20636861 
+ 2135      7200
+ 2136              	.LASF21:
+ 2137 0150 6C6F6E67 		.ascii	"long double\000"
+ 2137      20646F75 
+ 2137      626C6500 
+ 2138              	.LASF45:
+ 2139 015c 4144435F 		.ascii	"ADC_Battery_Start\000"
+ 2139      42617474 
+ 2139      6572795F 
+ 2139      53746172 
+ 2139      7400
+ 2140              	.LASF19:
+ 2141 016e 63796973 		.ascii	"cyisraddress\000"
+ 2141      72616464 
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 44
+
+
+ 2141      72657373 
+ 2141      00
+ 2142              	.LASF34:
+ 2143 017b 5F726561 		.ascii	"_read\000"
+ 2143      6400
+ 2144              	.LASF1:
+ 2145 0181 7369676E 		.ascii	"signed char\000"
+ 2145      65642063 
+ 2145      68617200 
+ 2146              	.LASF10:
+ 2147 018d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2147      206C6F6E 
+ 2147      6720756E 
+ 2147      7369676E 
+ 2147      65642069 
+ 2148              	.LASF11:
+ 2149 01a4 756E7369 		.ascii	"unsigned int\000"
+ 2149      676E6564 
+ 2149      20696E74 
  2149      00
- 2150              	.LASF57:
- 2151 0068 73656E73 		.ascii	"sensors_\000"
- 2151      6F72735F 
+ 2150              	.LASF12:
+ 2151 01b1 75696E74 		.ascii	"uint16_t\000"
+ 2151      31365F74 
  2151      00
- 2152              	.LASF16:
- 2153 0071 696E7431 		.ascii	"int16\000"
- 2153      3600
- 2154              	.LASF39:
- 2155 0077 6D6F746F 		.ascii	"motor_turn\000"
- 2155      725F7475 
- 2155      726E00
- 2156              	.LASF14:
- 2157 0082 75696E74 		.ascii	"uint8\000"
- 2157      3800
- 2158              	.LASF56:
- 2159 0088 433A5C55 		.ascii	"C:\\Users\\Oskari\\Documents\\PSoC Creator\\Zumo01\\"
- 2159      73657273 
- 2159      5C4F736B 
- 2159      6172695C 
- 2159      446F6375 
- 2160 00b6 5A756D6F 		.ascii	"ZumoBot.cydsn\000"
- 2160      426F742E 
- 2160      63796473 
- 2160      6E00
- 2161              	.LASF26:
- 2162 00c4 73706565 		.ascii	"speedVtupla\000"
- 2162      64567475 
- 2162      706C6100 
- 2163              	.LASF44:
- 2164 00d0 7265666C 		.ascii	"reflectance_start\000"
- 2164      65637461 
- 2164      6E63655F 
- 2164      73746172 
- 2164      7400
- 2165              	.LASF43:
- 2166 00e2 55415254 		.ascii	"UART_1_Start\000"
- 2166      5F315F53 
- 2166      74617274 
- 2166      00
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 44
+ 2152              	.LASF51:
+ 2153 01ba 70757473 		.ascii	"puts\000"
+ 2153      00
+ 2154              	.LASF4:
+ 2155 01bf 73686F72 		.ascii	"short unsigned int\000"
+ 2155      7420756E 
+ 2155      7369676E 
+ 2155      65642069 
+ 2155      6E7400
+ 2156              	.LASF29:
+ 2157 01d2 766F6C74 		.ascii	"volts\000"
+ 2157      7300
+ 2158              	.LASF22:
+ 2159 01d8 76617365 		.ascii	"vase\000"
+ 2159      00
+ 2160              	.LASF18:
+ 2161 01dd 63686172 		.ascii	"char\000"
+ 2161      00
+ 2162              	.LASF54:
+ 2163 01e2 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 2163      4320342E 
+ 2163      392E3320 
+ 2163      32303135 
+ 2163      30333033 
+ 2164 0215 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 2164      20726576 
+ 2164      6973696F 
+ 2164      6E203232 
+ 2164      31323230 
+ 2165 0248 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2165      66756E63 
+ 2165      74696F6E 
+ 2165      2D736563 
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 45
 
 
- 2167              	.LASF53:
- 2168 00ef 55415254 		.ascii	"UART_1_PutChar\000"
- 2168      5F315F50 
- 2168      75744368 
- 2168      617200
- 2169              	.LASF30:
- 2170 00fe 73706565 		.ascii	"speedO\000"
- 2170      644F00
- 2171              	.LASF17:
- 2172 0105 666C6F61 		.ascii	"float\000"
- 2172      7400
- 2173              	.LASF25:
- 2174 010b 73706565 		.ascii	"speedOtupla\000"
- 2174      644F7475 
- 2174      706C6100 
- 2175              	.LASF31:
- 2176 0117 73706565 		.ascii	"speedV\000"
- 2176      645600
- 2177              	.LASF37:
- 2178 011e 7265666C 		.ascii	"reflectance_digital\000"
- 2178      65637461 
- 2178      6E63655F 
- 2178      64696769 
- 2178      74616C00 
- 2179              	.LASF7:
- 2180 0132 6C6F6E67 		.ascii	"long int\000"
- 2180      20696E74 
- 2180      00
- 2181              	.LASF33:
- 2182 013b 5F777269 		.ascii	"_write\000"
- 2182      746500
- 2183              	.LASF2:
- 2184 0142 756E7369 		.ascii	"unsigned char\000"
- 2184      676E6564 
- 2184      20636861 
- 2184      7200
- 2185              	.LASF21:
- 2186 0150 6C6F6E67 		.ascii	"long double\000"
- 2186      20646F75 
- 2186      626C6500 
- 2187              	.LASF45:
- 2188 015c 4144435F 		.ascii	"ADC_Battery_Start\000"
- 2188      42617474 
- 2188      6572795F 
- 2188      53746172 
- 2188      7400
- 2189              	.LASF19:
- 2190 016e 63796973 		.ascii	"cyisraddress\000"
- 2190      72616464 
- 2190      72657373 
- 2190      00
- 2191              	.LASF34:
- 2192 017b 5F726561 		.ascii	"_read\000"
- 2192      6400
- 2193              	.LASF1:
- 2194 0181 7369676E 		.ascii	"signed char\000"
- 2194      65642063 
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 45
+ 2165      74696F6E 
+ 2166              	.LASF58:
+ 2167 0270 6D61696E 		.ascii	"main\000"
+ 2167      00
+ 2168              	.LASF13:
+ 2169 0275 696E7433 		.ascii	"int32_t\000"
+ 2169      325F7400 
+ 2170              	.LASF52:
+ 2171 027d 42617474 		.ascii	"BatteryLed_Write\000"
+ 2171      6572794C 
+ 2171      65645F57 
+ 2171      72697465 
+ 2171      00
+ 2172              	.LASF48:
+ 2173 028e 5F5F6275 		.ascii	"__builtin_putchar\000"
+ 2173      696C7469 
+ 2173      6E5F7075 
+ 2173      74636861 
+ 2173      7200
+ 2174              	.LASF15:
+ 2175 02a0 75696E74 		.ascii	"uint32\000"
+ 2175      333200
+ 2176              	.LASF55:
+ 2177 02a7 6D61696E 		.ascii	"main.c\000"
+ 2177      2E6300
+ 2178              	.LASF8:
+ 2179 02ae 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2179      20756E73 
+ 2179      69676E65 
+ 2179      6420696E 
+ 2179      7400
+ 2180              	.LASF47:
+ 2181 02c0 73656E73 		.ascii	"sensor_isr_StartEx\000"
+ 2181      6F725F69 
+ 2181      73725F53 
+ 2181      74617274 
+ 2181      457800
+ 2182              	.LASF42:
+ 2183 02d3 6D6F746F 		.ascii	"motor_start\000"
+ 2183      725F7374 
+ 2183      61727400 
+ 2184              	.LASF41:
+ 2185 02df 77616974 		.ascii	"wait_going_down\000"
+ 2185      5F676F69 
+ 2185      6E675F64 
+ 2185      6F776E00 
+ 2186              	.LASF35:
+ 2187 02ef 636F756E 		.ascii	"count\000"
+ 2187      7400
+ 2188              	.LASF6:
+ 2189 02f5 5F5F696E 		.ascii	"__int32_t\000"
+ 2189      7433325F 
+ 2189      7400
+ 2190              	.LASF36:
+ 2191 02ff 7265666C 		.ascii	"reflectance_read\000"
+ 2191      65637461 
+ 2191      6E63655F 
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccuNf4mj.s 			page 46
 
 
- 2194      68617200 
- 2195              	.LASF10:
- 2196 018d 6C6F6E67 		.ascii	"long long unsigned int\000"
- 2196      206C6F6E 
- 2196      6720756E 
- 2196      7369676E 
- 2196      65642069 
- 2197              	.LASF11:
- 2198 01a4 756E7369 		.ascii	"unsigned int\000"
- 2198      676E6564 
- 2198      20696E74 
- 2198      00
- 2199              	.LASF12:
- 2200 01b1 75696E74 		.ascii	"uint16_t\000"
- 2200      31365F74 
- 2200      00
- 2201              	.LASF51:
- 2202 01ba 70757473 		.ascii	"puts\000"
- 2202      00
- 2203              	.LASF4:
- 2204 01bf 73686F72 		.ascii	"short unsigned int\000"
- 2204      7420756E 
- 2204      7369676E 
- 2204      65642069 
- 2204      6E7400
- 2205              	.LASF29:
- 2206 01d2 766F6C74 		.ascii	"volts\000"
- 2206      7300
- 2207              	.LASF22:
- 2208 01d8 76617365 		.ascii	"vase\000"
- 2208      00
- 2209              	.LASF18:
- 2210 01dd 63686172 		.ascii	"char\000"
- 2210      00
- 2211              	.LASF54:
- 2212 01e2 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 2212      4320342E 
- 2212      392E3320 
- 2212      32303135 
- 2212      30333033 
- 2213 0215 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 2213      20726576 
- 2213      6973696F 
- 2213      6E203232 
- 2213      31323230 
- 2214 0248 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 2214      66756E63 
- 2214      74696F6E 
- 2214      2D736563 
- 2214      74696F6E 
- 2215              	.LASF58:
- 2216 0270 6D61696E 		.ascii	"main\000"
- 2216      00
- 2217              	.LASF13:
- 2218 0275 696E7433 		.ascii	"int32_t\000"
- 2218      325F7400 
- 2219              	.LASF52:
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 46
-
-
- 2220 027d 42617474 		.ascii	"BatteryLed_Write\000"
- 2220      6572794C 
- 2220      65645F57 
- 2220      72697465 
- 2220      00
- 2221              	.LASF48:
- 2222 028e 5F5F6275 		.ascii	"__builtin_putchar\000"
- 2222      696C7469 
- 2222      6E5F7075 
- 2222      74636861 
- 2222      7200
- 2223              	.LASF15:
- 2224 02a0 75696E74 		.ascii	"uint32\000"
- 2224      333200
- 2225              	.LASF55:
- 2226 02a7 6D61696E 		.ascii	"main.c\000"
- 2226      2E6300
- 2227              	.LASF8:
- 2228 02ae 6C6F6E67 		.ascii	"long unsigned int\000"
- 2228      20756E73 
- 2228      69676E65 
- 2228      6420696E 
- 2228      7400
- 2229              	.LASF47:
- 2230 02c0 73656E73 		.ascii	"sensor_isr_StartEx\000"
- 2230      6F725F69 
- 2230      73725F53 
- 2230      74617274 
- 2230      457800
- 2231              	.LASF42:
- 2232 02d3 6D6F746F 		.ascii	"motor_start\000"
- 2232      725F7374 
- 2232      61727400 
- 2233              	.LASF41:
- 2234 02df 77616974 		.ascii	"wait_going_down\000"
- 2234      5F676F69 
- 2234      6E675F64 
- 2234      6F776E00 
- 2235              	.LASF35:
- 2236 02ef 636F756E 		.ascii	"count\000"
- 2236      7400
- 2237              	.LASF6:
- 2238 02f5 5F5F696E 		.ascii	"__int32_t\000"
- 2238      7433325F 
- 2238      7400
- 2239              	.LASF36:
- 2240 02ff 7265666C 		.ascii	"reflectance_read\000"
- 2240      65637461 
- 2240      6E63655F 
- 2240      72656164 
- 2240      00
- 2241              	.LASF24:
- 2242 0310 73706565 		.ascii	"speedmax\000"
- 2242      646D6178 
- 2242      00
- 2243              	.LASF28:
- 2244 0319 61646372 		.ascii	"adcresult\000"
-ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccDeCfCX.s 			page 47
-
-
- 2244      6573756C 
- 2244      7400
- 2245              	.LASF0:
- 2246 0323 646F7562 		.ascii	"double\000"
- 2246      6C6500
- 2247              	.LASF59:
- 2248 032a 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 2248      52784275 
- 2248      66666572 
- 2248      00
- 2249              	.LASF27:
- 2250 0337 6D757374 		.ascii	"mustaviiva\000"
- 2250      61766969 
- 2250      766100
- 2251              	.LASF38:
- 2252 0342 43794465 		.ascii	"CyDelay\000"
- 2252      6C617900 
- 2253              	.LASF46:
- 2254 034a 49525F6C 		.ascii	"IR_led_Write\000"
- 2254      65645F57 
- 2254      72697465 
- 2254      00
- 2255              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 2191      72656164 
+ 2191      00
+ 2192              	.LASF24:
+ 2193 0310 73706565 		.ascii	"speedmax\000"
+ 2193      646D6178 
+ 2193      00
+ 2194              	.LASF28:
+ 2195 0319 61646372 		.ascii	"adcresult\000"
+ 2195      6573756C 
+ 2195      7400
+ 2196              	.LASF0:
+ 2197 0323 646F7562 		.ascii	"double\000"
+ 2197      6C6500
+ 2198              	.LASF59:
+ 2199 032a 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2199      52784275 
+ 2199      66666572 
+ 2199      00
+ 2200              	.LASF27:
+ 2201 0337 6D757374 		.ascii	"mustaviiva\000"
+ 2201      61766969 
+ 2201      766100
+ 2202              	.LASF38:
+ 2203 0342 43794465 		.ascii	"CyDelay\000"
+ 2203      6C617900 
+ 2204              	.LASF46:
+ 2205 034a 49525F6C 		.ascii	"IR_led_Write\000"
+ 2205      65645F57 
+ 2205      72697465 
+ 2205      00
+ 2206              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

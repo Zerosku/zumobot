@@ -54,13 +54,13 @@ int main()
             if(ADC_Battery_IsEndConversion(ADC_Battery_WAIT_FOR_RESULT)) {   // wait for get ADC converted value
                 adcresult = ADC_Battery_GetResult16();
                 volts = ADC_Battery_CountsTo_Volts(adcresult);                  // convert value to Volts
+    
                 float realvolts = volts * 1.5;
+    
                 // If you want to print value
                  //printf("%d %f\r\n",adcresult, realvolts);
             
                 // jos volttimäärä pattereissa putoaa alle 4 niin pysäyttää moottorit
-
-                
 
                 if (realvolts< 4){
                     printf("AKKULOPPU\n");
@@ -80,89 +80,90 @@ int main()
         CyDelay(5);
         
         // matikkaa
-        oikee = ref.r1 + 500;
-        vase = ref.l1 + 500;
+            oikee = ref.r1 + 500;
+            vase = ref.l1 + 500;
         
 
-        if (oikee<=11000){
-            oikee=ref.r1/2;
-        }
-        if (vase<=11000){
-            vase=ref.l1/2;
-        }
-        
-        //toisen asteen yhtälöä käytetty jotta zumo osaisi kiihdyttää ja jarruttaa todella nätisti
-        double speedO = ((0.391571*oikee*oikee)-(3.84672*oikee)-227.19)/1000000;
-        double speedV = ((0.391571*vase*vase)-(3.84672*vase)-227.19)/1000000;
-        
-        int speedOtupla = (int)speedO;
-        int speedVtupla = (int)speedV;
+            if (oikee<=11000){
+                oikee=ref.r1/2;
+            }
+            if (vase<=11000){
+                vase=ref.l1/2;
+            }
+
+            //käytämme zumon mittaamia IR arvoja ja muunnamme ne nopeudeksi toisen asteen yhtälöllä
+            double speedO = ((0.391571*oikee*oikee)-(3.84672*oikee)-227.19)/1000000;
+            double speedV = ((0.391571*vase*vase)-(3.84672*vase)-227.19)/1000000;
+            
+            //muunnamme doublen intiksi
+            int speedOtupla = (int)speedO;
+            int speedVtupla = (int)speedV;
 
         
         // asettaa huippunopeuden päälle kun tietyt kriteerit täyttyvät
-        if (speedO >=210){
+        if (speedO >=200){
             speedO=speedmax;
-            printf("1");
+            
         }
-        if (speedV >=210){
+        if (speedV >=200){
             speedV=speedmax;
-            printf("2");
+            
         }
-        if (speedV >=200 && speedO >=200){
-            speedO=speedmax;
-            speedV=speedmax;
-        }
-        
         
         //jos toisen moottorin nopeus laskee tietyn nopeuden alle niin lisää toiseen moottoriin nopeutta.
-        if (oikee < 30) {
+        if (oikee < 60) {
             speedV = 220+speedO;
             speedO = 0;
         }
-        if (vase < 30) {
+        if (vase < 60) {
             speedO = 220+speedV;
             speedV = 0;
         }
-        if (oikee < 80) {
+        if (oikee < 73) {
             speedV = speedmax;
                     }
-        if (vase < 80) {
+        if (vase < 73) {
             speedO = speedmax;
-              
         }
         
         // hätätilanteisiin joissa robotti eksyy radalta, käytämme reunimmaisia antureita
         if (ref.r3 > 6000 && dig.l1 == 1 && dig.l3 == 1){
             speedO = speedmax;
-            speedV = 15;
+            speedV = 0;
         }
         if (dig.r3 == 1 && dig.r1 == 1 && ref.l3 > 6000){
             speedV = speedmax;
-            speedO = 15;
+            speedO = 0;
         }
-        if (ref.l3 > 13000 && ref.l3 < 8000){
-            motor_turboturnLeft(255,255);
+        /*if (ref.l3 > 13000 && ref.l3 < 8000){
+            motor_turboturnLeft(255,0);
         }
         if (ref.r3 > 13000 && ref.r3 < 8000){
-            motor_turboturnRight(255,255);
-        }
+            motor_turboturnRight(255,0);
+        }*/
         
-        // pääasiallinen ajaminen
+        
+        // pääasiallinen ajaminen, laitteen mittaamat ir arvot muunnetaan suoraan robotin nopeudeksi toisen asteen yhtälöllä
              motor_turn(speedO,speedV,0);
+            
             
         // viivoille pysähtyminen ja ohjaimella lähettäminen
         if(dig.l3 == 0 && dig.l1== 0 && dig.r1== 0 && dig.r3== 0){
         
+            // mustaviivo arvo on alussa aina yksi, ja kun se on yksi niin silloin olemme lähtöviivalla
             if(mustaviiva==1){
                 motor_stop();
                 wait_going_down();
                 motor_start();
                 motor_turn(speedO,speedV,0);
+                
+            // lisää aina yhden mustaviivan kun kulkee semmoisen ohi, joten viimeisellä eli kolmannella mustalla viivalla pysäyttää moottorit    
             }else if(mustaviiva == 3){
                 motor_stop();
         }
-        mustaviiva++;
-        CyDelay(92);
+            // viive 92ms on aika joka kuluu kun robotti kulkee yhden viivan yli, testaamalla saatu
+            mustaviiva++;
+            CyDelay(92);
     }
 
     }
