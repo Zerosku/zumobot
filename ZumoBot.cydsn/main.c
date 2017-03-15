@@ -48,7 +48,7 @@ int main()
     
     
     
-    /*for (;;){
+    for (;;){
         
             ADC_Battery_StartConvert();
             if(ADC_Battery_IsEndConversion(ADC_Battery_WAIT_FOR_RESULT)) {   // wait for get ADC converted value
@@ -67,11 +67,7 @@ int main()
                     motor_stop();
                 }
             }
-    }*/
     
-    
-    for(;;)
-    {
         reflectance_read(&ref);
        // printf("%d %d %d %d \r\n", ref.l3-5735, ref.l1-4874, ref.r1-4816, ref.r3-7000);       //print out each period of reflectance sensors
         reflectance_digital(&dig);      //print out 0 or 1 according to results of reflectance period
